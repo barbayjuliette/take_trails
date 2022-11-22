@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   # GET /trips
   def index
-    @trips = Trip.where(users: current_user)
+    @trips = Trip.where(user: current_user)
   end
 
   # POST /trails/:trail_id/trips
