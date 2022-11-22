@@ -37,6 +37,7 @@ trail = Trail.create!(
     name: Faker::Mountain.name,
     distance: rand(0.1..50).round(2),
     difficulty: ["Easy", "Intermediate", "Difficult"].shuffle.first,
+    description: Faker::Quote.famous_last_words,
     duration: rand(10..500).round(2),
     location: Faker::Address.city
   )
