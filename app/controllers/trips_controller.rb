@@ -9,9 +9,7 @@ class TripsController < ApplicationController
     @trail = Trail.find(params[:trail_id])
     trip = Trip.new(user: current_user, trail: @trail)
     if trip.save
-      redirect_to trips_path
-    else
-      render :new, status: :unprocessable_entity
+      redirect_to trips_path, notice: "Trip created!"
     end
   end
 end
