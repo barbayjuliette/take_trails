@@ -34,9 +34,9 @@ puts "Creating zh's..."
 
 20.times do
 trail = Trail.create!(
-    name: Faker::Mountain.name,
+    name: Faker::Mountain.unique.name,
     distance: rand(0.1..50).round(2),
-    difficulty: ["Easy", "Intermediate", "Difficult"].shuffle.first,
+    difficulty: ["Easy", "Intermediate", "Difficult"].sample,
     description: Faker::Quote.famous_last_words,
     duration: rand(10..500).round(2),
     location: Faker::Address.city
