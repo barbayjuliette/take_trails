@@ -13,11 +13,13 @@
         <i id="bookmark" class="fa-regular fa-bookmark"></i>
       </div>
     </a>
-    <a class="text-decoration-none text-dark" href="#">
-      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2">
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </a>
+    <%= simple_form_for [@trail, @trip], {html: {data: {turbo: false}}} do |f| %>
+      <%= f.button :button, class: "p-0" do %>
+        <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      <% end %>
+    <% end %>
     <a class="text-decoration-none text-dark" href="#">
       <div class="d-flex justify-content-center align-items-center mx-2">
         <i id="friends" class="fa-solid fa-users"></i>
