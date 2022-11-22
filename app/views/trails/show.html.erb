@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1><strong><%= @trail.name %></strong></h1>
     <%= link_to trails_path, class: "text-decoration-none text-dark" do %>
-      <div class="border border-2 border-dark d-flex justify-content-center align-items-center" style="border-radius: 50%; height: 1.8rem; width: 1.8rem">
+      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center">
         <i class="fa-solid fa-chevron-left"></i>
       </div>
     <% end %>
@@ -14,7 +14,7 @@
       </div>
     </a>
     <a class="text-decoration-none text-dark" href="#">
-      <div class="border border-2 border-dark d-flex justify-content-center align-items-center mx-2" style="border-radius: 50%; height: 1.8rem; width: 1.8rem">
+      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2">
         <i class="fa-solid fa-plus"></i>
       </div>
     </a>
@@ -28,14 +28,14 @@
 
 <section class="container">
   <div class="row mb-4">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-lg-6">
       <img class="img-fluid rounded-3 mb-3" src="https://www.roverista.com/img/article/27_1.jpg" alt="">
       <p><%= @trail.description %></p>
     </div>
 
-    <div class="col-12 col-md-6 py-2">
+    <div class="col-12 col-lg-6 py-2">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-10 flex-column">
+        <div class="col-12 col-lg-10 flex-column">
           <div class="mb-4">
             <h3 class="mb-3"><strong>Trail Information</strong></h3>
             <div class="row">
@@ -53,11 +53,11 @@
           <div class="mb-4">
             <h3 class="mb-3"><strong>What You Will Need</strong></h3>
             <div class="row">
-              <div class="col-12 col-lg-6">
+              <div class="col-12 col-md-6">
                 <p class="mb-0"><i class="fa-regular fa-square"></i> Sunscreen</p>
                 <p class="mb-0"><i class="fa-regular fa-square"></i> Water Bottle</p>
               </div>
-              <div class="col-12 col-lg-6">
+              <div class="col-12 col-md-6">
                 <p class="mb-0"><i class="fa-regular fa-square"></i> Mosquito Repellent</p>
               </div>
             </div>
