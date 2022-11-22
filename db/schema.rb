@@ -20,10 +20,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_064241) do
     t.float "distance", null: false
     t.float "duration", null: false
     t.string "location", null: false
-    t.bigint "user_id"
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_trails_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -50,7 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_064241) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "trails", "users"
   add_foreign_key "trips", "trails"
   add_foreign_key "trips", "users"
 end
