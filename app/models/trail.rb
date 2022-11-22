@@ -1,9 +1,9 @@
 class Trail < ApplicationRecord
   has_many :trips
 
-  validates :name, presence: true
-  validates :difficulty, presence: true
-  validates :distance, presence: true
-  validates :duration, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :difficulty, presence: true, inclusion: { in: %w(Easy Intermediate Difficult)}
+  validates :distance, presence: true, numericality: true
+  validates :duration, presence: true, numericality: true
   validates :location, presence: true
 end

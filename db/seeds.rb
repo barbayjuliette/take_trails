@@ -32,12 +32,12 @@ zh = User.create!(
 #   last_name: 'Ard'
 puts "Creating zh's..."
 
-2.times do
+20.times do
 trail = Trail.create!(
-    name: "Marang Trail",
-    distance: 3.2,
-    difficulty: "Easy",
-    duration: 54,
-    location: "Mount Faber Park"
+    name: Faker::Mountain.name,
+    distance: rand(0.1..50).round(2),
+    difficulty: ["Easy", "Intermediate", "Difficult"].shuffle.first,
+    duration: rand(10..500).round(2),
+    location: Faker::Address.city
   )
 end
