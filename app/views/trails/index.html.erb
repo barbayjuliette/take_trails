@@ -23,7 +23,11 @@
           <p class="card-text"><i class="fa-regular fa-clock"></i></i>
           <% hour = (trail.duration / 60).to_i %>
           <% minutes = (trail.duration % 60).to_i %>
-          <%= hour %>h<%= minutes %>
+          <% if minutes < 10 %>
+            <%= hour %>h0<%= minutes %>
+          <% else %>
+            <%= hour %>h<%= minutes %>
+          <% end %>
           </p>
         </div>
       <% end %>
