@@ -6,9 +6,9 @@
         <i class="fa-solid fa-plus"></i>
       </div>
       <%= simple_form_for [@trail, trip], html: {data: {turbo: false, display_form_target: "form"}, id: :date_card, class: "#{trip.errors.any? ? "" : "d-none"} bg-white border p-2"} do |f| %>
-        <%= f.label :date, 'Date/Time', class: "d-block" %>
+        <%= f.label :date, 'Set a date/time', class: "d-block" %>
         <div class="d-flex my-2">
-          <%= f.input_field :date, class:"mx-1", start_year: Date.today.year %>
+          <%= f.input_field :date, class:"mx-1", start_year: Date.today.year, minute_step: 15, ampm: true %>
         </div>
         <% if trip.errors.any? %>
           <ul class="list-inline">
