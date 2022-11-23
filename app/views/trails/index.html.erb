@@ -8,6 +8,12 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
+<% if params[:query].present? %>
+  <div class="text-center fs-5">
+    <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
+  </div>
+<% end %>
+
 <%# list of trail details - to be deleted when jul adds hers in %>
 <div class="container">
   <div class="row justify-content-center">
