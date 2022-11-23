@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
@@ -32,10 +32,7 @@
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
-<<<<<<< HEAD
 
-=======
->>>>>>> 5d78ac3da6c0a2ccaf2a1d32e3460d47be778f4f
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

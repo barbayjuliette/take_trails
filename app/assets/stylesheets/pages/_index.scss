@@ -45,6 +45,7 @@ $font-serif      : 'Playfair Display', serif;
 	height: auto;
 	padding: 30px 50px;
 	position: relative;
+  align-content: center;
 	z-index: 2;
 
   // set our fade for when the JS kicks in on scroll
@@ -70,18 +71,29 @@ $font-serif      : 'Playfair Display', serif;
 }
 
 .hero-button {
-  background:$trailyellow;
+  background-color:$trailyellow;
   color: $trailgreen;
   font-size: 15px;
   float: center;
+  width:120px;
+  height:35px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-  margin-top: 30px;
-  padding: 10px 20px;
   text-decoration: none;
-align-content: center;
   border-radius: 20px;
+  padding-top:6px;
+  align-content:center;
+  justify-content: center;
+  margin-top:20px;
+  text-align:center;
+  text-decoration: none;
+}
+
+.hero-button:hover {
+  background-color:white;
+  color: $trailyellow;
+
 }
 
 .hero-title {
@@ -91,12 +103,14 @@ align-content: center;
   // we're sizing the image according viewport height
 	font-size: 5vw !important;
   margin-top:20px;
+  margin:auto;
 	font-weight: 500;
 	letter-spacing: 1px;
   line-height: 1.1;
-  align-content: center;
-  width: 100%;
-  text-align: center;
+  width: 50%;
+  align-items:center;
+  text-align:center;
+  justify-content: center;
   @media screen and (min-width:640px) {
 		font-size: 10vw;
 	}
