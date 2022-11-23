@@ -47,6 +47,11 @@ h1 {
   justify-content: space-between;
 }
 
+.card {
+  border: 0px;
+  border-radius: 10px;
+}
+
 @media(max-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
