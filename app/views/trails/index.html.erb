@@ -15,7 +15,7 @@
       <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 mx-3 card-image">
       <div class="card-body">
         <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
-        <p class="card-text"><i class="fa-regular fa-clock"></i></i> <%= trail.duration %> </p>
+        <p class="card-text"><i class="fa-regular fa-clock"></i></i> <%= pluralize(trail.duration,"minutes") %> </p>
       </div>
     <% end %>
   <% end %>
