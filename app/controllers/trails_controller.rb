@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
     @trails = Trail.all
     # search bar query
     if params[:query].present?
-      @trails = Trail.search_by_name_and_description(params[:query])
+      @trails = Trail.search_by_name_description_location(params[:query])
     else
       @trails =Trail.all
     end
