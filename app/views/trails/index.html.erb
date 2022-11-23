@@ -1,4 +1,15 @@
-<h1> Find your next hike ...</h1>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+
+<section class="hero image-as-background" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
+  <div class="hero-container">
+
+    <h1 class="hero-title animate fadeInLeft delay-600">This is a large hero section</h1>
+    <a href="#" class="hero-button animate fadeInLeft delay-800" title="Click to see more">Click Me</a>
+  </div>
+</section>
+
+
+<section class="main-content">
 
 <div class="cards">
   <% @trails.each do |trail| %>
@@ -20,3 +31,55 @@
     <% end %>
   <% end %>
 </div>
+</section>
+
+
+
+
+<script>
+/**
+ * Hero fade transition
+ */
+window.HeroFade_Object = {};
+( function( window, $, that ) {
+
+	// Constructor.
+	that.init = function() {
+		that.cache();
+
+		if ( that.meetsRequirements ) {
+			that.bindEvents();
+		}
+	};
+
+	// Cache all the things.
+	that.cache = function() {
+		that.$c = {
+			window: $(window),
+			heroSelector: $( '.hero' ),
+		};
+	};
+
+	// Combine all events.
+	that.bindEvents = function() {
+		that.$c.window.on( 'load', that.doHero );
+	};
+
+	// Do we meet the requirements?
+	that.meetsRequirements = function() {
+		return that.$c.heroSelector.length;
+	};
+
+	// Watch the user scroll position and fade the hero
+	that.doHero = function() {
+		  $(window).scroll(function(){
+          // transition the fade by dividing div height & opacity
+          $( ".hero" ).css("opacity", 1 - $(window).scrollTop() / $('.hero').height());
+      });
+	};
+
+	// Engage!
+	$( that.init );
+
+})( window, jQuery, window.HeroFade_Object );
+</script>
