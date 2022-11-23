@@ -11,6 +11,8 @@ class TripsController < ApplicationController
     trip = Trip.new(user: current_user, trail: @trail, date: trip_date)
     if trip.save
       redirect_to trips_path, notice: "Trip created!"
+    else
+      render 'trails/show', locals: {trip: trip}
     end
   end
 
