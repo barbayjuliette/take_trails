@@ -1,3 +1,14 @@
+
+<%# search form %>
+<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a trail"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <h1> Find your next hike ...</h1>
   <div class="cards">
     <% @trails.each do |trail| %>
@@ -19,3 +30,4 @@
       <% end %>
     <% end %>
   </div>
+
