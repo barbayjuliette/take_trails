@@ -5,11 +5,18 @@
       <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2" data-action="click->display-form#display">
         <i class="fa-solid fa-plus"></i>
       </div>
-      <%= simple_form_for [@trail, @trip], html: {data: {turbo: false, display_form_target: "form"}, id: :date_card, class: "d-none bg-white border p-2"} do |f| %>
+      <%= simple_form_for [@trail, trip], html: {data: {turbo: false, display_form_target: "form"}, id: :date_card, class: "#{trip.errors.any? ? "" : "d-none"} bg-white border p-2"} do |f| %>
         <%= f.label :date, 'Date/Time', class: "d-block" %>
         <div class="d-flex my-2">
-          <%= f.input_field :date, class:"mx-1" %>
+          <%= f.input_field :date, class:"mx-1", start_year: Date.today.year %>
         </div>
+        <% if trip.errors.any? %>
+          <ul class="list-inline">
+              <% trip.errors.full_messages.each do |message| %>
+                  <li class="text-danger list-inline-item fs-6 mb-0 ms-1"><%= message %></li>
+              <% end %>
+          </ul>
+        <% end %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
