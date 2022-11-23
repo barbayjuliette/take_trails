@@ -41,6 +41,7 @@ $font-serif      : 'Playfair Display', serif;
 
 .hero-container {
 	box-sizing: border-box;
+  display: grid;
 	height: auto;
 	padding: 30px 50px;
 	position: relative;
@@ -69,31 +70,32 @@ $font-serif      : 'Playfair Display', serif;
 }
 
 .hero-button {
-  background: rgba(255,255,255,0.8);
-  color: #44575b;
+  background:$trailyellow;
+  color: $trailgreen;
   font-size: 15px;
   float: center;
   text-transform: uppercase;
+  font-weight: bold;
   letter-spacing: 2px;
   margin-top: 30px;
   padding: 10px 20px;
   text-decoration: none;
-
+align-content: center;
   border-radius: 20px;
 }
 
 .hero-title {
-	color: white;
+	color: $trailyellow;
 	font-family: $headers-font;
   // Respond to viewport width–works well since
   // we're sizing the image according viewport height
-	font-size: 10vw;
+	font-size: 5vw !important;
+  margin-top:20px;
 	font-weight: 500;
 	letter-spacing: 1px;
   line-height: 1.1;
-  margin: 5px 0;
-  text-align: left;
-  width: 85%;
+  align-content: center;
+  width: 100%;
   text-align: center;
   @media screen and (min-width:640px) {
 		font-size: 10vw;
