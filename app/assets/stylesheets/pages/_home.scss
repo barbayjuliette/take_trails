@@ -5,28 +5,27 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
-  margin: 16px;
- }
-
-body {
-  margin: 16px;
+  margin: 20px;
+  align-items: center;
+  min-height: 0
  }
 
  p {
   line-height: 0.1;
  }
 
- .card-link {
+ .my-card-link {
     text-decoration: none !important;
     color: black;
+    // margin: 0 !important;
  }
 
- .card-link:hover {
+ .my-card-link:hover {
   text-decoration: none !important;
   color: black;
 }
 
-.card-link:visited {
+.my-card-link:visited {
   text-decoration: none !important;
   color: black;
 }
