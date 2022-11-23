@@ -4,6 +4,12 @@ class TrailsController < ApplicationController
   # GET /
   def index
     @trails = Trail.all
+    # search bar query
+    if params[:query].present?
+      @trails = Trail.where(name: params[:query])
+    else
+      @trails =Trail.all
+    end
   end
 
   # GET /trips
