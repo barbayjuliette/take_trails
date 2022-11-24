@@ -148,35 +148,6 @@ legend ~ div.form-check:first-of-type {
   transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
 }
 
-// add meal form
-
-.meal-label-style{
-  background-color: white !important;
-  border: 1px solid black !important;
-  color: black !important;
-  height:60px;
-  border-radius: 2px;
-  padding-left:20px;
-  font-family: 'Lekton', sans-serif;
-
-}
-
-.meal-label-style:focus{
-  background-color: #FFDED6 !important;
-  border: 0px solid black  !important;
-  height:60px;
-  padding-left:20px;
-  font-family: 'Lekton', sans-serif;
-}
-
-.meal-label-style:hover{
-  background-color: #FFDED6 !important;
-  border: 0px solid black  !important;
-  height:60px;
-  padding-left:20px;
-  font-family: 'Lekton', sans-serif;
-}
-
 // get rid of default blue border when focus
 .form-control:focus{
   -webkit-box-shadow: none;

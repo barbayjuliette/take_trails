@@ -91,8 +91,9 @@ $font-serif      : 'Playfair Display', serif;
 }
 
 .hero-button:hover {
-  background-color:white;
-  color: $trailyellow;
+  color: $trailgreen;
+  background-color:$trailyellow;
+  opacity: 0.8 !important;
 
 }
 
