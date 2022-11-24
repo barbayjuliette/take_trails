@@ -37,8 +37,24 @@ h1 {
   margin-left: 200px;
 }
 
+.image-container {
+  // margin-left: 10px;
+  // margin-right: 10px;
+  overflow: hidden;
+}
+
 .card-image {
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
   opacity: 0.85;
+  overflow: hidden;
+  // transition: transform .3s ease-in-out;
+}
+
+.card-image:hover {
+  opacity: 0.85;
+  // transform: scale(1.07);
 }
 
 .title-body {
@@ -47,9 +63,18 @@ h1 {
   justify-content: space-between;
 }
 
+.card-body {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
 .card {
   border: 0px;
   border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 @media(max-width: 1200px) {
