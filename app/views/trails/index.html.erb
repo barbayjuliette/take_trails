@@ -1,10 +1,28 @@
+
+<%# search form %>
+<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a trail"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <h1> Find your next hike ...</h1>
+
   <div class="cards">
     <% @trails.each do |trail| %>
       <%= link_to trail, class:"card my-card-link" do %>
         <div class ="card-body title-body">
-          <div class="title-rating">
-            <h5 class="card-title"><%= trail.name %></h5>
+          <div class="title-rating pt-2">
+            <h5 class="card-title">
+            <% if trail.name.length > 28 %>
+              <p><%= trail.name.slice(0..26)... %></p>
+            <% else %>
+              <p><%= trail.name %></p>
+            <% end %>
+            </h5>
             <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
           </div>
           <p><i class="fa-regular fa-bookmark"></i> <i class="fa-regular fa-plus"></i></p>
@@ -16,8 +34,17 @@
         </div>
         <div class="card-body">
           <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
-          <p class="card-text"><i class="fa-regular fa-clock"></i></i> <%= pluralize(trail.duration,"minutes") %> </p>
+          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+          <% hour = (trail.duration / 60).to_i %>
+          <% minutes = (trail.duration % 60).to_i %>
+          <% if minutes < 10 %>
+            <%= hour %>h0<%= minutes %>
+          <% else %>
+            <%= hour %>h<%= minutes %>
+          <% end %>
+          </p>
         </div>
       <% end %>
     <% end %>
   </div>
+
