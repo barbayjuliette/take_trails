@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :trails, only: %i[index show] do
-    resources :trips, only: :create
+    resources :trips, only: :create do
+      resources :reviews, only: :create
+    end
     # collection do
     #   get :mine
     # end
