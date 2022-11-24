@@ -1,26 +1,39 @@
 <div class="container mb-3 pt-3">
   <div class="d-flex justify-content-between align-items-center">
     <h1><strong><%= @trail.name %></strong></h1>
-    <%= link_to trails_path, class: "text-decoration-none text-dark" do %>
+    <div id="add-trip" data-controller="display-form">
+      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2" data-action="click->display-form#display">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <%= simple_form_for [@trail, trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
+        <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
+        <%# <div class="d-flex my-2"> %>
+          <%#= f.input_field :date, class:"mx-1", start_year: Date.today.year, minute_step: 15, ampm: true %>
+        <%# </div> %>
+        <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
+        <% if trip.errors.any? %>
+          <ul class="list-inline mb-0">
+              <% trip.errors.full_messages.each do |message| %>
+                  <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
+              <% end %>
+          </ul>
+        <% end %>
+        <%= f.button :submit, class: "btn btn-primary mt-2" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <%= link_to trails_path, class: "text-decoration-none text-dark mx-2" do %>
       <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center">
         <i class="fa-solid fa-chevron-left"></i>
       </div>
     <% end %>
-  </div>
-  <div class="d-flex align-items-center">
-    <a class="text-decoration-none text-dark">
-      <div class="d-flex justify-content-center align-items-center me-2">
-      <p><%= link_to "Add new review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %></p>
+    <a class="text-decoration-none text-dark" href="#">
+      <div class="d-flex justify-content-center align-items-center mx-2">
         <i id="bookmark" class="fa-regular fa-bookmark"></i>
       </div>
     </a>
-    <%= simple_form_for [@trail, @trip], {html: {data: {turbo: false}}} do |f| %>
-      <%= f.button :button, class: "p-0" do %>
-        <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2">
-          <i class="fa-solid fa-plus"></i>
-        </div>
-      <% end %>
-    <% end %>
     <a class="text-decoration-none text-dark" href="#">
       <div class="d-flex justify-content-center align-items-center mx-2">
         <i id="friends" class="fa-solid fa-users"></i>
@@ -49,6 +62,8 @@
                   <% minutes = (@trail.duration % 60).to_i %>
                   <% if minutes == 0 %>
                     <%= pluralize(hour, "hour") %>
+                  <% elsif hour == 0 %>
+                    <%= pluralize(minutes, "minute") %>
                   <% elsif minutes < 10 %>
                     <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
                   <% else %>
