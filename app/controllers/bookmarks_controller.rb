@@ -5,10 +5,13 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmark.find(bookmark_params)
+    @trail = Trail.find(params[:trail_id])
+    bookmark = Bookmark.new(user: current_user, trail: @trail)
     @bookmark.user = current_user
     if bookmark.save
       redirect_to trips_path, notice: "Trip is saved as bookmark!"
+    else
+      render 'trails/show', locals: {bookmark: bookmark}
     end
   end
 
@@ -17,10 +20,5 @@ class BookmarksController < ApplicationController
     redirect_to trips_path
   end
 
-  private
-
-  def bookmark_params
-    params.require(:bookmark).permit(:trail_id, :user_id)
-  end
 
 end

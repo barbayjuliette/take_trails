@@ -1,1 +1,43 @@
 <h1>Your Bookmarks</h1>
+  <div class="cards">
+    <% @bookmarks.each do |bookmark.trail| %>
+      <%= link_to bookmark.trail, class:"card my-card-link" do %>
+        <div class ="card-body title-body">
+
+          <div class="title-rating pt-2">
+            <h5 class="card-title">
+            <% if bookmark.trail.name.length > 28 %>
+              <p><%= bookmark.trail.name.slice(0..26)... %></p>
+            <% else %>
+              <p><%= bookmark.trail.name %></p>
+            <% end %>
+            </h5>
+
+            <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+          </div>
+          <p><i class="fa-regular fa-bookmark"></i></p>
+        </div>
+
+        <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
+        </div> %>
+        <div class= "image-container">
+          <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image">
+        </div>
+        <div class="card-body">
+          <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= bookmark.trail.difficulty %></p>
+          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+          <% hour = (bookmark.trail.duration / 60).to_i %>
+          <% minutes = (bookmark.trail.duration % 60).to_i %>
+          <% if hour == 00 %>
+            <%= minutes %>m
+          <% elsif minutes < 10 %>
+            <%= hour %>h 0<%= minutes %>m
+          <% else %>
+            <%= hour %>h <%= minutes %>m
+          <% end %>
+          </p>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
