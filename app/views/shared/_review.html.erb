@@ -10,6 +10,7 @@
         <p><strong>Reviews</strong></p>
 <ul class="list-group">
   <% @trip.reviews.each do |review| %>
+
     <li class="list-group-item"><%= review.comment %></li>
   <% end %>
 </ul>

@@ -24,3 +24,30 @@
   background-color: #f1f7f2 !important;
   border: none !important;
 }
+
+
+.user-info {
+  width:98%;
+  margin: auto;
+  margin-bottom: 0px;
+  padding: 10px;
+  display:grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+
+  h4 {
+    margin: 0px !important;
+  }
+
+  p {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    font-size:12px;
+    color:rgb(70, 70, 70);
+
+  }
+}
+
+.avatar {
+  font-size:40px;
+}
