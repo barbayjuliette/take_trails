@@ -64,6 +64,11 @@ class TrailsController < ApplicationController
     if trip.save
       redirect_to trips_path, notice: "Trip created!"
     end
+  # GET /trips
+  def show
+    @trail = Trail.find(params[:id])
+    @trip = Trip.new
+    render locals: {trip: @trip}
   end
 
 
