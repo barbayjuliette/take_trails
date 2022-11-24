@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_064241) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_044956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment", null: false
+    t.integer "rating", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_reviews_on_trip_id"
+  end
 
   create_table "trails", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_064241) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "trips"
   add_foreign_key "trips", "trails"
   add_foreign_key "trips", "users"
 end
