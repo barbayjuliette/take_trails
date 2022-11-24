@@ -114,7 +114,8 @@
         <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
         </div> %>
         <div class= "image-container">
-          <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image">
+          <%= cl_image_tag trail.photos.first.key, class: "rounded-3 card-image" %>
+          <%# <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image"> %>
         </div>
         <div class="card-body">
           <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
