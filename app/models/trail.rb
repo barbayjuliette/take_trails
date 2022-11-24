@@ -1,6 +1,7 @@
 class Trail < ApplicationRecord
   has_many :trips
   has_many_attached :photos
+  has_many :bookmarks, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :difficulty, presence: true, inclusion: { in: %w(Easy Intermediate Difficult)}
