@@ -18,7 +18,7 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<h1> Find your next hike ...</h1>
+<h1 class="margin-title-lg"> Find your next hike ...</h1>
 
 
   <div class="cards">
@@ -37,21 +37,25 @@
 
             <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
           </div>
-          <p><i class="fa-regular fa-bookmark"></i> <i class="fa-regular fa-plus"></i></p>
+          <p><i class="fa-regular fa-bookmark"></i></p>
         </div>
 
         <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
         </div> %>
-        <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 mx-3 card-image">
+        <div class= "image-container">
+          <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image">
+        </div>
         <div class="card-body">
           <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
           <p class="card-text"><i class="fa-regular fa-clock"></i></i>
           <% hour = (trail.duration / 60).to_i %>
           <% minutes = (trail.duration % 60).to_i %>
-          <% if minutes < 10 %>
-            <%= hour %>h0<%= minutes %>
+          <% if hour == 00 %>
+            <%= minutes %>m
+          <% elsif minutes < 10 %>
+            <%= hour %>h 0<%= minutes %>m
           <% else %>
-            <%= hour %>h<%= minutes %>
+            <%= hour %>h <%= minutes %>m
           <% end %>
           </p>
 
@@ -59,4 +63,3 @@
       <% end %>
     <% end %>
   </div>
-

@@ -62,6 +62,8 @@
                   <% minutes = (@trail.duration % 60).to_i %>
                   <% if minutes == 0 %>
                     <%= pluralize(hour, "hour") %>
+                  <% elsif hour == 0 %>
+                    <%= pluralize(minutes, "minute") %>
                   <% elsif minutes < 10 %>
                     <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
                   <% else %>
