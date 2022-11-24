@@ -45,7 +45,37 @@
 <section class="container mb-4">
   <div class="row mb-4">
     <div class="col-12 col-lg-6">
-      <img class="img-fluid custom-img-rounded mb-3" src="https://www.roverista.com/img/article/27_1.jpg" alt="">
+      <%# image carousel %>
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <% if @trail.photos.size > 1 %>
+            <% (@trail.photos.size - 1).times do |i| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i + 1 %>" aria-label="Slide <%= i + 2 %>"></button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @trail.photos.first.key, class: "custom-img-rounded mb-3 d-block w-100", id: :trail_img %>
+            <%# class: "custom-img-rounded mb-3 d-block w-100"  %>
+          </div>
+          <% @trail.photos[1..].each do |photo| %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class: "custom-img-rounded mb-3 d-block w-100", id: :trail_img %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <p style="white-space: pre-line;"><%= @trail.description %></p>
     </div>
 

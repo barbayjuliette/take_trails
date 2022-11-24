@@ -70,8 +70,7 @@ require "open-uri"
 #   name: 'Prunus Trail',
 #   distance: 3,
 #   difficulty: 'Easy',
-#   description: "Surrounded by more than 500ha of primary and secondary forests in the Catchment Nature Reserve, MacRitchie Reservoir is Singapore's oldest reservoir.\n\nAside from the intriguing plants and trees, keep a lookout for native creatures of the forest. Tread softly. Talk quietly. You will be rewarded with sights of the Common Sun Skink,
-#   Clouded Monitor Lizard and Oriental Whip Snake basking in the sun, Plantain and Slender squirrels leaping gracefully from tree to tree, a cheeky Long-tailed Macaque or two.",
+#   description: "Surrounded by more than 500ha of primary and secondary forests in the Catchment Nature Reserve, MacRitchie Reservoir is Singapore's oldest reservoir.\n\nAside from the intriguing plants and trees, keep a lookout for native creatures of the forest. Tread softly. Talk quietly. You will be rewarded with sights of the Common Sun Skink, Clouded Monitor Lizard and Oriental Whip Snake basking in the sun, Plantain and Slender squirrels leaping gracefully from tree to tree, a cheeky Long-tailed Macaque or two.",
 #   duration: 60,
 #   location: 'Macritchie Prunus Trail'
 # )
@@ -157,8 +156,7 @@ tampines = Trail.create!(
   name: 'Tampines Eco Green',
   distance: 3,
   difficulty: 'Easy',
-  description: "Tucked away in the Tampines heartland is Tampines Eco Green, a 36.5-hectare ecological park that resembles a savannah with marshlands, secondary forests and freshwater ponds. The green sanctuary is home to over 75 species of birds, 20 species of dragonflies, 35 species of butterflies and 32 species of spiders. To minimise disturbance to the sensitive wildlife in the park, the area is not lit at night.\n\nThis ecologically conscious park includes features like an eco-toilet, vegetated swales, bird hides and green roofs on all the shelters. Even the park furniture was made using recycled materials and environmentally friendly products.\n\nThe park offers three trails, namely Diversity Trail, Forest Trail and Marsh Trail, that weave through
-  the secondary forests. Along those trails, nature lovers and wildlife photographers encounter nature at close proximity inside bird hides while visitors walk or exercise on the green, easy terrain.",
+  description: "Tucked away in the Tampines heartland is Tampines Eco Green, a 36.5-hectare ecological park that resembles a savannah with marshlands, secondary forests and freshwater ponds. The green sanctuary is home to over 75 species of birds, 20 species of dragonflies, 35 species of butterflies and 32 species of spiders. To minimise disturbance to the sensitive wildlife in the park, the area is not lit at night.\n\nThis ecologically conscious park includes features like an eco-toilet, vegetated swales, bird hides and green roofs on all the shelters. Even the park furniture was made using recycled materials and environmentally friendly products.\n\nThe park offers three trails, namely Diversity Trail, Forest Trail and Marsh Trail, that weave through the secondary forests. Along those trails, nature lovers and wildlife photographers encounter nature at close proximity inside bird hides while visitors walk or exercise on the green, easy terrain.",
   duration: 105,
   location: 'Tampines Eco Green'
 )
@@ -184,8 +182,7 @@ woodlands = Trail.create!(
   name: 'Woodlands Waterfront Park',
   distance: 2,
   difficulty: 'Easy',
-  description: "With an exceptional view of the sea from the north, Woodlands Waterfront Park is a favourite among residents and visitors young and old. A scenic and tranquil 11-hectare coastal park, it houses a large playground with a  wide range of equipment and a 1.5kmlong waterfront promenade. From high vantage points along the scenic trail, visitors are offered an unobstructed and panoramic view of the entire coastal park and the Straits
-  of Johor. The undulating terrain of the park is furnished with rest shelters and dedicated jogging and cycling tracks, providing exercise enthusiasts with both adventurous and challenging trails.\n\nWoodlands Waterfront Park also forms part of the comprehensive network of parks and park connectors in the area, improving accessibility to the waterfront. It is also linked to the existing Admiralty Park via the 25-km Northern Explorer Loop.",
+  description: "With an exceptional view of the sea from the north, Woodlands Waterfront Park is a favourite among residents and visitors young and old. A scenic and tranquil 11-hectare coastal park, it houses a large playground with a  wide range of equipment and a 1.5kmlong waterfront promenade. From high vantage points along the scenic trail, visitors are offered an unobstructed and panoramic view of the entire coastal park and the Straits of Johor. The undulating terrain of the park is furnished with rest shelters and dedicated jogging and cycling tracks, providing exercise enthusiasts with both adventurous and challenging trails.\n\nWoodlands Waterfront Park also forms part of the comprehensive network of parks and park connectors in the area, improving accessibility to the waterfront. It is also linked to the existing Admiralty Park via the 25-km Northern Explorer Loop.",
   duration: 90,
   location: 'Woodlands Waterfront Park'
 )
