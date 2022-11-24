@@ -9,7 +9,8 @@ export default class extends Controller {
     flatpickr(this.dateTarget, {
       altInput: true,
       enableTime: true,
-      inline: true
+      inline: true,
+      minDate: new Date()
     })
   }
 }
