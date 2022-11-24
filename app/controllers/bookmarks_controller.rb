@@ -6,12 +6,12 @@ class BookmarksController < ApplicationController
 
   def create
     @trail = Trail.find(params[:trail_id])
-    bookmark = Bookmark.new(user: current_user, trail: @trail)
-    @bookmark.user = current_user
-    if bookmark.save
-      redirect_to trips_path, notice: "Trip is saved as bookmark!"
+    @bookmark = Bookmark.new(user: current_user, trail: @trail)
+
+    if @bookmark.save
+      redirect_to bookmarks_path, notice: "Trip is saved as bookmark!"
     else
-      render 'trails/show', locals: {bookmark: bookmark}
+      redirect_to trail_path(@trail), :alert => @bookmark.errors.full_messages[0]
     end
   end
 

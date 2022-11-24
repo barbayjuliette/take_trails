@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :trails, only: %i[index show] do
     resources :trips, only: :create
-    resources :bookmarks, only: :create
+    resources :bookmarks, only: %i[index create]
     # collection do
     #   get :mine
     # end

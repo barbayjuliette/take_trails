@@ -5,13 +5,13 @@
       <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2" data-action="click->display-form#display">
         <i class="fa-solid fa-plus"></i>
       </div>
-      <%= simple_form_for [@trail, trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
+      <%= simple_form_for [@trail, @trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
         <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
         <%# <div class="d-flex my-2"> %>
           <%#= f.input_field :date, class:"mx-1", start_year: Date.today.year, minute_step: 15, ampm: true %>
         <%# </div> %>
         <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
-        <% if trip.errors.any? %>
+        <% if @trip.errors.any? %>
           <ul class="list-inline mb-0">
               <% trip.errors.full_messages.each do |message| %>
                   <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
@@ -29,11 +29,15 @@
         <i class="fa-solid fa-chevron-left"></i>
       </div>
     <% end %>
-    <a class="text-decoration-none text-dark" href="#">
+
+    <span class="text-decoration-none text-dark">
       <div class="d-flex justify-content-center align-items-center mx-2">
-        <i id="bookmark" class="fa-regular fa-bookmark"></i>
+        <%= simple_form_for [@trail, @bookmark],  html: { method: :post } do |f| %>
+          <%= f.button :submit, class:"btn" %>
+        <%# button icon for bookmark <i id="bookmark" class="fa-regular fa-bookmark"></i> %>
+        <% end %>
       </div>
-    </a>
+    </span>
     <a class="text-decoration-none text-dark" href="#">
       <div class="d-flex justify-content-center align-items-center mx-2">
         <i id="friends" class="fa-solid fa-users"></i>
