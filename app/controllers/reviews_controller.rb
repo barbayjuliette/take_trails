@@ -10,10 +10,14 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.trip = @trip
-    if @review.save
-      redirect_to trip_path(@trip)
-    else
-      render "trips/show", status: :unprocessable_entity
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to trip_path(@trip) }
+        format.json
+      else
+        format.html { render "trips/show", status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 

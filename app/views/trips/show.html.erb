@@ -1,6 +1,4 @@
 <%= render "shared/navbar2" %>
-<%= render "shared/review" %>
-<%= render "shared/leavereview" %>
 
 <div class="container mb-3 pt-3">
 
@@ -86,7 +84,7 @@ Leave a review
               </div>
               <!-- Button trigger modal -->
 <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  4.8 (32 reviews)
+  4.8 (<%= @trip.reviews.count %> reviews)
 </button>
               <%# <a class="text-muted text-decoration-underline" href="#"> 4.8 (32 reviews)</a> %>
             </div>
@@ -106,8 +104,6 @@ Leave a review
     <img class="img-fluid custom-img-rounded px-0" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
   </div>
 
-
-
-
-
 </section>
+<%= render "shared/review" %>
+<%= render "shared/leavereview" %>
