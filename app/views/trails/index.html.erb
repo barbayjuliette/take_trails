@@ -1,18 +1,8 @@
-
-<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
-
-<section class="hero image-as-background" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
-  <div class="hero-container">
-
-    <div class="hero-title animate fadeInLeft delay-600 d-flex">Plan a new adventure</div>
-    <div class="d-flex justify-content-center"><a href="#scrollspycontent" class="hero-button animate fadeInLeft delay-800" title="Click to see more">EXPLORE</a></div>
-  </div>
-</section>
-
-
- <%= render "shared/navbar" %>
-
-
+<% if current_user  %>
+<%= render "shared/navbar2" %>
+<% else  %>
+<%= render "shared/navbar" %>
+<% end %>
 
 <h1 id="scrollspycontent"> Find your next hike ...</h1>
   <div class="cards">
@@ -24,10 +14,8 @@
             <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
           </div>
           <p><i class="fa-regular fa-bookmark"></i> <i class="fa-regular fa-plus"></i></p>
-
         </div>
-        <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
-        </div> %>
+
         <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 mx-3 card-image">
         <div class="card-body">
           <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
