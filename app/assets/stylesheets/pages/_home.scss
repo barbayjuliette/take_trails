@@ -49,12 +49,12 @@
   min-width: 100%;
   opacity: 0.85;
   overflow: hidden;
-  // transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
 }
 
 .card-image:hover {
   opacity: 0.85;
-  // transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 .title-body {
