@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import DisplayFormController from "./display_form_controller"
+application.register("display-form", DisplayFormController)
+
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

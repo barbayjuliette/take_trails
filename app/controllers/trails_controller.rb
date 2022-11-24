@@ -16,5 +16,6 @@ class TrailsController < ApplicationController
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
+    render locals: {trip: @trip}
   end
 end
