@@ -118,9 +118,6 @@
         </div>
         <div class="card-body">
           <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
-<<<<<<< HEAD
-          <p class="card-text"><i class="fa-regular fa-clock"></i></i> <%= pluralize(trail.duration,"minutes") %> </p>
-=======
           <p class="card-text"><i class="fa-regular fa-clock"></i></i>
           <% hour = (trail.duration / 60).to_i %>
           <% minutes = (trail.duration % 60).to_i %>
@@ -133,7 +130,6 @@
           <% end %>
           </p>
 
->>>>>>> master
         </div>
       <% end %>
     <% end %>
