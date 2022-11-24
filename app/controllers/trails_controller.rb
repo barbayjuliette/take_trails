@@ -5,12 +5,14 @@ class TrailsController < ApplicationController
   def index
       # params[:search].present?
       # pp params[:search]
-    if pp params[:search][:difficulty_levels]
-      ..
-    end
+    # if pp params[:search][:difficulty_levels]
+    #   ..
+    # end
 #  or
     if params.dig(:search, :difficulty_levels)
-      @trails = Trail.where(params [:difficulty])
+      @trails = Trail.where(params[:search][:difficulty_levels])
+    else
+      @trails = Trail.all
     end
 
 
@@ -65,6 +67,8 @@ class TrailsController < ApplicationController
       redirect_to trips_path, notice: "Trip created!"
     end
   # GET /trips
+  end
+
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
