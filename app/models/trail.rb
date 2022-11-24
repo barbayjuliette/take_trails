@@ -9,4 +9,10 @@ class Trail < ApplicationRecord
   validates :duration, presence: true, numericality: true
   validates :location, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_name_description_location,
+    against: [ :name, :description, :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

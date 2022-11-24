@@ -1,0 +1,61 @@
+
+<% if current_user  %>
+<%= render "shared/navbar2" %>
+<% else  %>
+<%= render "shared/navbar" %>
+<% end %>
+
+<h1 id="scrollspycontent"> Find your next hike ...</h1>
+
+
+<%# search form %>
+<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a trail"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<h1> Find your next hike ...</h1>
+
+
+  <div class="cards">
+    <% @trips.each do |trip| %>
+      <%= link_to trip, class:"card my-card-link" do %>
+        <div class ="card-body title-body">
+
+          <div class="title-rating pt-2">
+            <h5 class="card-title">
+            <% if trip.trail.name.length > 28 %>
+              <p><%= trip.trail.name.slice(0..26)... %></p>
+            <% else %>
+              <p><%= trip.trail.name %></p>
+            <% end %>
+            </h5>
+
+            <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+          </div>
+          <p><i class="fa-regular fa-bookmark"></i> <i class="fa-regular fa-plus"></i></p>
+        </div>
+
+        <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
+        </div> %>
+        <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 mx-3 card-image">
+        <div class="card-body">
+          <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
+          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+          <% hour = (trip.trail.duration / 60).to_i %>
+          <% minutes = (trip.trail.duration % 60).to_i %>
+          <% if minutes < 10 %>
+            <%= hour %>h0<%= minutes %>
+          <% else %>
+            <%= hour %>h<%= minutes %>
+          <% end %>
+          </p>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>

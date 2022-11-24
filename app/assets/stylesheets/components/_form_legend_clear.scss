@@ -112,7 +112,8 @@ legend ~ div.form-check:first-of-type {
   background-color: $trailgreen;
   box-shadow: .1px .1px 5px rgb(192, 191, 191);
   transition: all .15s ease-out;
-  color:white;
+  color:$trailyellow;
+  opacity: .8;
 }
 
 .devise-links{
