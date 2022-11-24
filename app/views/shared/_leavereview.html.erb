@@ -2,48 +2,37 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable rounded-2">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <h1 class="modal-title " id="staticBackdropLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Reviews</strong></p>
+        <h2><strong>Leave a review</strong></h2>
+        <div class="review-form">
   <%= simple_form_for([@trip, @review]) do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.button :submit %>
+  <%= f.input :comment,
+              required: true,
+              autofocus: true,
+              label: false,
+              placeholder: "COMMENT",
+              input_html: { class: "review-label"} %>
+<%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+  <%= f.button :submit, "SUBMIT REVIEW", class: "login-btn" %>
 <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
 </div>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Reviews</strong></p>
+<br><br>
+        <h2><strong>Reviews</strong></h2>
 <ul class="list-group">
   <% @trip.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.comment %></li>
+  <div class="review">
+    <li class="list-group-item review"><%= review.comment %></li>
+    </div>
   <% end %>
 </ul>
 <br>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,26 @@
+.review {
+  width:98%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  line-height: 1.8em;
+  background-color: #f1f7f2;
+  border-radius: 10px;
+  border: none !important;
+}
+
+.review-form {
+  width:98%;
+  margin: auto;
+}
+
+.review-label {
+  border:1px solid $trailgreen !important;
+  background-color: white !important;
+  border-radius: 5px !important;
+}
+
+.review-label:focus{
+  background-color: #f1f7f2 !important;
+  border: none !important;
+}
