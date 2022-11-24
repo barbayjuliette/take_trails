@@ -15,6 +15,13 @@ class Trail < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+
+
+  enum :difficulty_level, %i(easy intermediate difficult)
+
+  # $difficulties = ["Easy", "Intermediate", "Difficult"]
+  # $duration = ["320.0", "268.0", "385.0"]
 end
 
 # Trail::DIFFICULTIES
