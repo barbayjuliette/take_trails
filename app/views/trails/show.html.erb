@@ -33,7 +33,9 @@
     <span class="text-decoration-none text-dark">
       <div class="d-flex justify-content-center align-items-center mx-2">
         <%= simple_form_for [@trail, @bookmark],  html: { method: :post } do |f| %>
-          <%= f.button :submit, class:"btn" %>
+          <%= f.button :button do %>
+            <i id="bookmark" class="fa-regular fa-bookmark"></i>
+          <% end %>
         <%# button icon for bookmark <i id="bookmark" class="fa-regular fa-bookmark"></i> %>
         <% end %>
       </div>

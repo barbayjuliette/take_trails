@@ -9,7 +9,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(user: current_user, trail: @trail)
 
     if @bookmark.save
-      redirect_to bookmarks_path, notice: "Trip is saved as bookmark!"
+      redirect_to bookmarks_path, notice: "Bookmarked!"
     else
       redirect_to trail_path(@trail), :alert => @bookmark.errors.full_messages[0]
     end
