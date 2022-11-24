@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :trails, only: %i[index show] do
-    resources :trips, only: :create do
-      resources :reviews, only: :create
-    end
+    resources :trips, only: :create
+  end
     # collection do
     #   get :mine
     # end
+
+  resources :trips, only: %i[index show] do
+    resources :reviews, only: %i[new create show index]
   end
-  resources :trips, only: %i[index show]
 end
