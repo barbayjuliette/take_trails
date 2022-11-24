@@ -3,7 +3,7 @@ class CreateTrips < ActiveRecord::Migration[7.0]
     create_table :trips do |t|
       t.references :user, foreign_key: true
       t.references :trail, foreign_key: true
-      t.datetime :date
+      t.datetime :date, null: false
       t.timestamps
     end
   end
