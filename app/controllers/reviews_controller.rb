@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @reviews = Review.all
-
   end
 
   def create
@@ -13,10 +12,23 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to trail_path(@trail) }
-        format.json # Follow the classic Rails flow and look for a create.json view
+        format.json do
+          render json: {
+            success: true,
+            review: @review.comment,
+            review_tags: [],
+            rating: @review.rating,
+            reviewer:  current_user.first_name + " " + current_user.last_name,
+            created_at: @review.created_at.to_s.split(" ").first
+          }
+        end
       else
         format.html { render "shared/leavereview", status: :unprocessable_entity }
-        format.json # Follow the classic Rails flow and look for a create.json view
+        format.json do
+          render json: {
+            success: false
+          }
+        end
       end
     end
   end

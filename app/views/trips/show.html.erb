@@ -84,7 +84,7 @@ Leave a review
               </div>
               <!-- Button trigger modal -->
 <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  4.8 (<%= @trip.reviews.count %> reviews)
+  4.8 (<span id="main_review_count"><%= @trip.reviews.count %> reviews</span>)
 </button>
               <%# <a class="text-muted text-decoration-underline" href="#"> 4.8 (32 reviews)</a> %>
             </div>

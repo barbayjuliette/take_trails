@@ -1,9 +1,11 @@
+  <h4 data-insert-in-list-target="blank">
+    <% if @trip.reviews.blank? %>
+        Be the first to leave a review for <%= @trip.trail.name %>
+    <% end %>
+  </h4>
 
- <% if @trip.reviews.blank? %>
-    <h4>Be the first to leave a review for <%= @trip.trail.name %></h4>
-  <% else %>
-  <h2><strong><%= @trip.reviews.count %> reviews</strong></h2>
- <% @trip.reviews.reverse_each do |review| %>
+
+  <% @trip.reviews.reverse_each do |review| %>
     <div class="review">
       <div class="user-info">
         <i class="fa-solid fa-circle-user avatar"></i>
@@ -16,5 +18,4 @@
       <%= review.comment %>
     </div>
   </div>
-<% end %>
 <% end %>

@@ -11,11 +11,16 @@
       </div>
       <div class="modal-body">
         <h2><strong>Leave a review</strong></h2>
-        <div data-controller="insert-in-list">
+        <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
         <%= render "reviews/reviewform" %>
 
         <br><br>
         <%# Review list %>
+          <% if @trip.reviews.blank? %>
+            <h2><strong data-insert-in-list-target="count"></h2>
+          <% else %>
+            <h2><strong data-insert-in-list-target="count"><%= @trip.reviews.count %> reviews</strong></h2>
+          <% end %>
         <div data-insert-in-list-target="items">
           <%= render "reviews/reviews" %>
         <%# end of reivew list %>

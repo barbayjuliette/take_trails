@@ -2,18 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-in-list"
 export default class extends Controller {
-  static targets = ["items", "form"]
-
-  connect() {
-    console.log(this.element)
-    console.log(this.itemsTarget)
-    console.log(this.formTarget)
-  }
+  static targets = ["items", "form", "blank", "count"]
 
   send(event) {
     event.preventDefault()
-
-  console.log("TODO: send request in AJAX")
 
   fetch(this.formTarget.action, {
     method: "POST",
@@ -22,10 +14,47 @@ export default class extends Controller {
   })
     .then(response => response.json())
     .then((data) => {
-      if (data.inserted_item) {
-        this.itemsTarget.insertAdjacentHTML("afterbegin", data.inserted_item)
+      if (data.success) {
+         this.itemsTarget.insertAdjacentHTML("afterbegin", `
+         <div class="review">
+              <div class="user-info">
+                <i class="fa-solid fa-circle-user avatar"></i>
+              <div>
+                <h4>${data.reviewer}</h4>
+                <p>${data.created_at}</p>
+              </div>
+            </div>
+            <div class="reviews">
+              ${data.review}
+            </div>
+          </div>
+         `)
+
+        this.formTarget.innerHTML = `
+          <div class=''>
+            Review Submitted
+          </div>
+        `
+
+        this.blankTarget.innerHTML = ``
+
+        let newCount = 0
+
+        if (this.countTarget.innerHTML) {
+          newCount = this.countTarget.innerHTML.match(/\d+/)[0]
+          this.countTarget.innerHTML = (Number(newCount)+1) + " reviews"
+        } else {
+          this.countTarget.innerHTML = "1 review"
+        }
+
+        document.querySelector("#main_review_count").innerHTML = (Number(newCount)+1) + " reviews"
+      } else {
+        console.log("FAILED")
       }
-      this.formTarget.outerHTML = data.form
+      // if (data.inserted_item) {
+      //   this.itemsTarget.insertAdjacentHTML(this.positionValue, data.inserted_item)
+      // })
+      // this.formTarget.outerHTML = data.form
     })
 }
 }
