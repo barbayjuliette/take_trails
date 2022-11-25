@@ -28,6 +28,7 @@ export default class extends Controller {
         </div>
             </div>
             <div class="reviews review-size">
+            ${data.review_tags}
               ${data.review}
             </div>
           </div>

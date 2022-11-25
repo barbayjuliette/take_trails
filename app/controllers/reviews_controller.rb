@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
           render json: {
             success: true,
             review: @review.comment,
-            # review_tags: [],
+            review_tags: @review.tag,
             rating: @review.rating,
             reviewer:  current_user.first_name + " " + current_user.last_name,
             created_at: @review.created_at.to_s.split(" ").first
@@ -46,6 +46,6 @@ class ReviewsController < ApplicationController
   # private
 
   def review_params
-    params.require(:review).permit(:comment, :rating)
+    params.require(:review).permit(:comment, :rating, tag: [])
   end
 end
