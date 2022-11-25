@@ -38,10 +38,10 @@
   </div>
 </div>
 
-<div class="cust-container">
+<div class="cust-container border-bottom divider mb-3">
   <div class="row py-2">
     <%# buttons %>
-    <div class="col-12 col-lg-3">
+    <div class="col-12 col-lg-3 pe-4">
       <%# back, bookmark, add friends %>
       <div class="d-flex justify-content-center align-items-center mb-1">
         <%= link_to trails_path, class: "text-decoration-none text-dark mx-2" do %>
@@ -66,7 +66,7 @@
       </div>
       <%# create trip %>
       <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
-        <button id="create-trip-btn" class="btn login-btn mx-3 mb-3" data-action="click->display-form#display">Create Trip</button>
+        <button id="create-trip-btn" class="btn mb-3" data-action="click->display-form#display">Create Trip</button>
         <%= simple_form_for [@trail, @trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
           <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
           <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
@@ -87,10 +87,10 @@
       <h1><strong><%= @trail.name %></strong></h1>
       <%# basic trail info %>
       <div class="mb-2">
-        <span class="me-1"><i class="fa-solid fa-location-pin"></i> <a href="#map_directions"><%= @trail.location %></a></span>
+        <span class="me-1 show-pg-font-size"><i class="fa-solid fa-location-pin"></i> <a href="#map_directions"><%= @trail.location %></a></span>
       </div>
       <div class="d-flex mb-3">
-        <span class="me-5">
+        <span class="me-5 show-pg-font-size">
           <i class="fa-regular fa-clock me-1"></i>
           <% hour = (@trail.duration / 60).to_i %>
           <% minutes = (@trail.duration % 60).to_i %>
@@ -104,19 +104,19 @@
             <%= pluralize(hour, "hour") %> <%= minutes %> minutes
           <% end %>
         </span>
-        <span class="me-5"><i class="fa-solid fa-arrows-left-right me-1"></i> <%= @trail.distance %> km</span>
-        <span><i class="fa-solid fa-person-hiking me-1"></i> <%= @trail.difficulty %></span>
+        <span class="me-5 show-pg-font-size"><i class="fa-solid fa-arrows-left-right me-1"></i> <%= @trail.distance %> km</span>
+        <span class="show-pg-font-size"><i class="fa-solid fa-person-hiking me-1"></i> <%= @trail.difficulty %></span>
       </div>
       <%# description %>
-      <p style="white-space: pre-line;"><%= @trail.description %></p>
+      <p style="white-space: pre-line;" class="show-pg-font-size"><%= @trail.description %></p>
     </div>
   </div>
 </div>
-<hr>
+
 <div class="cust-container">
   <div class="row py-2">
     <%# overall rating, tags %>
-    <div class="col-12 col-lg-3 mb-2">
+    <div class="col-12 col-lg-3 pe-4 mb-2">
       <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
       <div class="d-flex align-items-center mb-3">
         <% unless @trail.reviews.empty? %>
@@ -174,7 +174,7 @@
 <hr>
 <div class="cust-container">
   <div class="row py-2">
-    <div class="col-12 col-lg-3">
+    <div class="col-12 col-lg-3 pe-4">
       <h3 class="mb-3"><strong>Getting There</strong></h3>
     </div>
     <div class="col-12 col-lg-9">
