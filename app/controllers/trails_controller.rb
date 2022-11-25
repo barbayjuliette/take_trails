@@ -13,8 +13,8 @@ class TrailsController < ApplicationController
       @trails = @trails.search_by_name_description_location(params[:query])
     end
 
-    if params[:distance].present?
-      @trails = @trails.(params[Trail::DIFFICULTIES])
+    if params.dig(:search, :distance)
+      @trails = @trails.where(distance: params[:search][Trail::DIFFICULTIES])
     end
 
     # if params["search"].present?
