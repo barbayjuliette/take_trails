@@ -37,8 +37,8 @@
         <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trail.location %></p>
       </div>
       <div class="card-body">
-        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %> &nbsp;• &nbsp;
-        <i class="fa-solid fa-arrows-left-right"></i> <%= trail.distance %> km &nbsp;• &nbsp;
+        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %>&nbsp;&nbsp;&nbsp;
+        <i class="fa-solid fa-arrows-left-right"></i> <%= trail.distance %> km&nbsp;&nbsp;&nbsp;
         <i class="fa-regular fa-clock"></i></i>
         <% hour = (trail.duration / 60).to_i %>
         <% minutes = (trail.duration % 60).to_i %>
