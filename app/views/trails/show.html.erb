@@ -2,14 +2,13 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1><strong><%= @trail.name %></strong></h1>
     <div id="add-trip" data-controller="display-form">
+      <%# button for trip creation %>
       <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2" data-action="click->display-form#display">
         <i class="fa-solid fa-plus"></i>
       </div>
+      <%# date select form for trip creation %>
       <%= simple_form_for [@trail, @trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
         <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
-        <%# <div class="d-flex my-2"> %>
-          <%#= f.input_field :date, class:"mx-1", start_year: Date.today.year, minute_step: 15, ampm: true %>
-        <%# </div> %>
         <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
         <% if @trip.errors.any? %>
           <ul class="list-inline mb-0">
@@ -23,20 +22,19 @@
     </div>
   </div>
 
+  <%# buttons under header (back, bookmark, add friends) %>
   <div class="d-flex align-items-center">
     <%= link_to trails_path, class: "text-decoration-none text-dark mx-2" do %>
       <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center">
         <i class="fa-solid fa-chevron-left"></i>
       </div>
     <% end %>
-
     <span class="text-decoration-none text-dark">
       <div class="d-flex justify-content-center align-items-center mx-2">
         <%= simple_form_for [@trail, @bookmark],  html: { method: :post } do |f| %>
           <%= f.button :button do %>
             <i id="bookmark" class="fa-regular fa-bookmark"></i>
           <% end %>
-        <%# button icon for bookmark <i id="bookmark" class="fa-regular fa-bookmark"></i> %>
         <% end %>
       </div>
     </span>
@@ -50,6 +48,7 @@
 
 <section class="container mb-4">
   <div class="row mb-4">
+    <%# trail image and description %>
     <div class="col-12 col-lg-6">
       <%# image carousel %>
       <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -64,7 +63,6 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <%= cl_image_tag @trail.photos.first.key, class: "custom-img-rounded mb-3 d-block w-100", id: :trail_img %>
-            <%# class: "custom-img-rounded mb-3 d-block w-100"  %>
           </div>
           <% @trail.photos[1..].each do |photo| %>
             <div class="carousel-item">
@@ -85,6 +83,7 @@
       <p style="white-space: pre-line;"><%= @trail.description %></p>
     </div>
 
+    <%# trail information %>
     <div class="col-12 col-lg-6 py-2">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10 flex-column">
@@ -92,7 +91,7 @@
             <h3 class="mb-3"><strong>Trail Information</strong></h3>
             <div class="row">
               <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-location-pin mb-2"></i> <%= @trail.location %></span>
+                <span class="mb-1"><i class="fa-solid fa-location-pin mb-2"></i> <a href="#map_directions"><%= @trail.location %></a></span>
                 <span><i class="fa-regular fa-clock"></i>
                   <% hour = (@trail.duration / 60).to_i %>
                   <% minutes = (@trail.duration % 60).to_i %>
@@ -108,7 +107,7 @@
                 </span>
               </div>
               <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-arrows-left-right"></i> <%= @trail.distance %> km</span>
+                <span class="mb-1"><i class="fa-solid fa-arrows-left-right"></i> <%= @trail.distance %> km</span>
                 <span><i class="fa-solid fa-person-hiking"></i> <%= @trail.difficulty %></span>
               </div>
             </div>
@@ -150,8 +149,10 @@
 
     </div>
   </div>
+</section>
 
-  <div class="row px-2">
-    <img class="img-fluid custom-img-rounded px-0" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
-  </div>
+<%# map for directions %>
+<section class="container mb-4 d-flex flex-column align-items-center">
+  <h3 class="mb-3"><strong>Getting There</strong></h3>
+  <a id="map_directions"><iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
 </section>
