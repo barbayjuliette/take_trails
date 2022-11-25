@@ -1,150 +1,50 @@
-
 <%= render "shared/navbar2" %>
 
-<%# search form %>
-<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a trail"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<h1 class="margin-title-lg">My Trips</h1>
 
-<h1> Find your next hike ...</h1>
-
-
-  <div class="cards">
-    <% @trips.each do |trip| %>
-      <%= link_to trip, class:"card my-card-link" do %>
-        <div class ="card-body title-body">
-
-          <div class="title-rating pt-2">
-            <h5 class="card-title">
-            <% if trip.trail.name.length > 28 %>
-              <p><%= trip.trail.name.slice(0..26)... %></p>
-            <% else %>
-              <p><%= trip.trail.name %></p>
-            <% end %>
-            </h5>
-
-            <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-          </div>
-          <p><i class="fa-regular fa-bookmark"></i> <i class="fa-regular fa-plus"></i></p>
-        </div>
-
-        <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
-        </div> %>
-        <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 mx-3 card-image">
-        <div class="card-body">
-          <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
-          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
-          <% hour = (trip.trail.duration / 60).to_i %>
-          <% minutes = (trip.trail.duration % 60).to_i %>
-          <% if minutes < 10 %>
-            <%= hour %>h0<%= minutes %>
-          <% else %>
-            <%= hour %>h<%= minutes %>
-          <% end %>
-          </p>
-
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-=======
-<div class="container mb-3 pt-3">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1><strong><%= trip.trail.name %></strong></h1>
-    <div id="add-trip" data-controller="display-form">
-      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center mx-2" data-action="click->display-form#display">
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex align-items-center">
-    <%= link_to trails_path, class: "text-decoration-none text-dark mx-2" do %>
-      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center">
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-    <% end %>
-    <a class="text-decoration-none text-dark" href="#">
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <i id="bookmark" class="fa-regular fa-bookmark"></i>
-      </div>
-    </a>
-    <a class="text-decoration-none text-dark" href="#">
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <i id="friends" class="fa-solid fa-users"></i>
-      </div>
-    </a>
+<div class="container">
+  <div class="d-flex mb-3">
+    <button class="trip-category-select active me-2"><h4 class="mb-1">Upcoming</h4></button>
+    <button class="trip-category-select"><h4 class="mb-1">Past</h4></button>
   </div>
 </div>
 
-<section class="container mb-4">
-  <div class="row mb-4">
-    <div class="col-12 col-lg-6">
-      <img class="img-fluid custom-img-rounded mb-3" src="https://www.roverista.com/img/article/27_1.jpg" alt="">
-      <p><%= trip.trail.description %></p>
-    </div>
-
-    <div class="col-12 col-lg-6 py-2">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-10 flex-column">
-          <div class="mb-4">
-            <h3 class="mb-3"><strong>Trail Information</strong></h3>
-            <div class="row">
-              <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></span>
-                <span><i class="fa-regular fa-clock"></i> <%= (trip.trail.duration / 60).round(1) %> hours</span>
-              </div>
-              <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-arrows-left-right"></i> <%= trip.trail.distance %> km</span>
-                <span><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <h3 class="mb-3"><strong>What You Will Need</strong></h3>
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Sunscreen</p>
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Water Bottle</p>
-              </div>
-              <div class="col-12 col-md-6">
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Mosquito Repellent</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
-            <div class="d-flex align-items-center mb-3">
-              <div class="d-flex me-2">
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-              </div>
-              <a class="text-muted text-decoration-underline" href="#"> 4.8 (32 reviews)</a>
-            </div>
-            <div class="d-flex flex-wrap">
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Beware Mosquitoes</span>
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Muddy Paths</span>
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Great Views</span>
-            </div>
-          </div>
+<div class="cards">
+  <% @trips.each do |trip| %>
+    <%= link_to trip_path(trip), class:"card my-card-link" do %>
+      <div class= "image-container">
+        <%= cl_image_tag trip.trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
+        <i class="fa-regular fa-bookmark"></i>
+      </div>
+      <div class ="card-body title-body d-flex align-items-start">
+        <div class="title-rating pt-2 mt-0">
+          <h5 class="card-title">
+            <%= trip.trail.name %>
+          </h5>
+        </div>
+        <div class="d-flex pt-2 align-items-center">
+          <p class="card-text mb-0">3.7</p>
+          <i class="fa-solid fa-star ms-1"></i>
         </div>
       </div>
+      <div class = "card-body">
+        <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
+      </div>
+      <div class="card-body d-flex justify-content-between">
+        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
+        <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+        <% hour = (trip.trail.duration / 60).to_i %>
+        <% minutes = (trip.trail.duration % 60).to_i %>
+        <% if hour == 00 %>
+          <%= minutes %>m
+        <% elsif minutes < 10 %>
+          <%= hour %>h 0<%= minutes %>m
+        <% else %>
+          <%= hour %>h <%= minutes %>m
+        <% end %>
+        </p>
 
-    </div>
-  </div>
-
-  <div class="row px-2">
-    <img class="img-fluid custom-img-rounded px-0" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
-  </div>
-</section>
-
+      </div>
+    <% end %>
+  <% end %>
+</div>

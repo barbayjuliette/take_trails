@@ -1,0 +1,15 @@
+.trip-category-select {
+  border: none;
+  color: #15623e9c;
+  background-color: white;
+}
+
+.trip-category-select:hover {
+  color: $traillightgreen;
+  border-bottom: 3px solid $traillightgreen
+}
+
+.trip-category-select.active {
+  color: $traillightgreen;
+  border-bottom: 3px solid $traillightgreen
+}
