@@ -23,8 +23,11 @@ export default class extends Controller {
                 <h4>${data.reviewer}</h4>
                 <p>${data.created_at}</p>
               </div>
+              <div class="rating">
+          <h4>${data.rating}<i class="fa-solid fa-star"></i> </h4>
+        </div>
             </div>
-            <div class="reviews">
+            <div class="reviews review-size">
               ${data.review}
             </div>
           </div>
@@ -32,7 +35,8 @@ export default class extends Controller {
 
         this.formTarget.innerHTML = `
           <div class=''>
-            Review Submitted
+          <br>
+            <h3 class="submitted">Thanks for submitting a review!</h3>
           </div>
         `
 

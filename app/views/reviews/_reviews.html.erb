@@ -1,6 +1,6 @@
   <h4 data-insert-in-list-target="blank">
     <% if @trip.reviews.blank? %>
-        Be the first to leave a review for <%= @trip.trail.name %>
+        No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>
     <% end %>
   </h4>
 
@@ -9,12 +9,15 @@
     <div class="review">
       <div class="user-info">
         <i class="fa-solid fa-circle-user avatar"></i>
-      <div>
-        <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
-        <p><%= review.user.created_at.to_s.split(" ").first %> </p>
+        <div>
+          <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+          <p><%= review.user.created_at.to_s.split(" ").first %> </p>
+        </div>
+        <div class="rating">
+          <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+        </div>
       </div>
-    </div>
-    <div class="reviews">
+    <div class="reviews review-size">
       <%= review.comment %>
     </div>
   </div>

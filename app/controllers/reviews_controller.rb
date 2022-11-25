@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  def index
-    @trip = Trip.find(params[:trip_id])
-    @reviews = Review.all
-  end
+  # def index
+  #   @trip = Trip.find(params[:trip_id])
+  #   @reviews = Review.all
+  # end
 
   def create
     @trip = Trip.find(params[:trip_id])
@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
           render json: {
             success: true,
             review: @review.comment,
-            review_tags: [],
+            # review_tags: [],
             rating: @review.rating,
             reviewer:  current_user.first_name + " " + current_user.last_name,
             created_at: @review.created_at.to_s.split(" ").first
@@ -33,15 +33,15 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def new
-    @trip = Trip.find(params[:trip_id])
-    @review = Review.new
-  end
+  # def new
+  #   @trip = Trip.find(params[:trip_id])
+  #   @review = Review.new
+  # end
 
-  def show
-    @trip = Trip.find(params[:trip_id])
-    @review = Review.new
-  end
+  # def show
+  #   @trip = Trip.find(params[:trip_id])
+  #   @review = Review.new
+  # end
 
   # private
 
