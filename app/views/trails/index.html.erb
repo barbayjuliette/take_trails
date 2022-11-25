@@ -99,6 +99,11 @@
   <%= link_to "Reset", root_path %>
 <% end %>
 
+<%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
+  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= link_to "Reset", root_path %>
+<% end %>
 
 <%# <%= f.input :some_field, :collection => Model::HASH_NAME.sort.map {|k,v| [v,k]} %>
 <%# <div class="field">
