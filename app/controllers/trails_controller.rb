@@ -1,5 +1,5 @@
 class TrailsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show toggle_favorite]
 
   # GET /
   def index
@@ -22,8 +22,11 @@ class TrailsController < ApplicationController
   end
 
   def toggle_favorite
-    @trail = Trail.find(params[:id])
-    current_user.favorited?(@trail) ? current_user.unfavorite(@trail) : current_user.favorite(@trail)
+    if user_signed_in?
+      @trail = Trail.find(params[:id])
+      current_user.favorited?(@trail) ? current_user.unfavorite(@trail) : current_user.favorite(@trail)
+    else
+      redirect_to new_user_session_path
+    end
   end
-
 end
