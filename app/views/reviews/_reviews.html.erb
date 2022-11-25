@@ -18,9 +18,12 @@
         </div>
       </div>
     <div class="reviews review-size">
-    <%= review.categories.name %>
-
+    <% review.categories.each do |category| %>
+      <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2"><%= category.name %></span >
+    <% end %>
+    <div class="mt-1">
       <%= review.comment %>
+    </div>
     </div>
   </div>
 <% end %>
