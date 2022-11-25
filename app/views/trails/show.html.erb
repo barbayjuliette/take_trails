@@ -131,7 +131,7 @@
             <% end %>
           </div>
           <a class="text-muted text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#allReviews">
-            <%= sprintf('%.1f', @trail.rating.round(1)) %> (<%= pluralize(@trail.reviews.count, 'review') %>)
+            <%= sprintf('%.1f', @trail.rating) %> (<%= pluralize(@trail.reviews.count, 'review') %>)
           <% end %>
         </a>
       </div>

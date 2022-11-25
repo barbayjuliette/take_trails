@@ -26,6 +26,6 @@ class Trail < ApplicationRecord
     self.reviews.each do |review|
       total_rating += review.rating
     end
-    total_rating / self.reviews.count
+    total_rating.fdiv(self.reviews.count)
   end
 end
