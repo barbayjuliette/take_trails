@@ -115,6 +115,7 @@
 <hr>
 <div class="cust-container">
   <div class="row py-2">
+    <%# overall rating, tags %>
     <div class="col-12 col-lg-3 mb-2">
       <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
       <div class="d-flex align-items-center mb-3">
@@ -133,8 +134,33 @@
         <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Great Views</span>
       </div>
     </div>
+    <%# reviews %>
     <div class="col-12 col-lg-9">
-      <p class="">To insert a few reviews</p>
+      <% if @trail.reviews.blank? %>
+        <p>No reviews for this trail yet.</p>
+      <% else %>
+        <% @trail.reviews.first(3).each do |review| %>
+          <div id="show-pg-review-card" class="review">
+            <div class="user-info">
+              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+              <div>
+                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
+              </div>
+              <div class="rating">
+                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+              </div>
+            </div>
+            <div class="reviews review-size">
+              <%= review.comment %>
+            </div>
+          </div>
+        <% end %>
+        <%# trigger modal to see all reviews (modal at bottom) %>
+        <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#allReviews">
+          See all reviews
+        </button>
+      <% end %>
     </div>
   </div>
 </div>
@@ -146,6 +172,38 @@
     </div>
     <div class="col-12 col-lg-9">
       <a id="map_directions"><iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+    </div>
+  </div>
+</div>
+
+<%# modal %>
+<div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable rounded-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2><strong data-insert-in-list-target="count"><%= pluralize(@trail.reviews.count, 'review') %></strong></h2>
+        <% @trail.reviews.each do |review| %>
+          <div id="show-pg-review-card" class="review">
+            <div class="user-info">
+              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+              <div>
+                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
+              </div>
+              <div class="rating">
+                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+              </div>
+            </div>
+            <div class="reviews review-size">
+              <%= review.comment %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
