@@ -79,6 +79,19 @@
   padding-bottom: 0px !important;
 }
 
+.card-wrapper {
+  position: relative;
+
+  i.fa-bookmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    font-size: 1.3rem;
+    color: white;
+  }
+}
+
 .card {
   border: 0px;
   border-radius: 10px;

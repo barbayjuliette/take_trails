@@ -1,18 +1,25 @@
 <div class="cards">
   <% @trails.each do |trail| %>
+
+  <div class="card-wrapper">
+    <%# Bookmark %>
+    <%= link_to toggle_favorite_trail_path(trail), remote: true, data:{turbo_method: :post} do %>
+      <% if user_signed_in? %>
+        <% if current_user.favorited?(trail) %>
+          <i class="fa-regular fa-bookmark fw-bold"></i>
+        <% else %>
+          <i class="fa-regular fa-bookmark"></i>
+        <% end %>
+      <% else %>
+        <i class="fa-regular fa-bookmark"></i>
+      <% end %>
+    <% end %>
+
+    <%# trail %>
     <%= link_to trail, class:"card my-card-link" do %>
       <div class= "image-container">
         <%= cl_image_tag trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
         <%# <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image"> %>
-          <% if user_signed_in? %>
-            <% if current_user.favorited?(trail) %>
-              <i class="fa-regular fa-bookmark fw-bold"></i>
-            <% else %>
-              <i class="fa-regular fa-bookmark"></i>
-            <% end %>
-          <% else %>
-            <i class="fa-regular fa-bookmark"></i>
-          <% end %>
       </div>
       <div class ="card-body title-body d-flex align-items-start">
         <div class="title-rating pt-2 mt-0">
@@ -46,6 +53,9 @@
         </p>
 
       </div>
+
     <% end %>
+  </div>
+
   <% end %>
 </div>
