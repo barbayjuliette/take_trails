@@ -112,7 +112,7 @@ puts "Creating Southern Ridges..."
 southern = Trail.create!(
   name: 'Southern Ridges',
   distance: 10,
-  difficulty: 'difficult',
+  difficulty: 'Difficult',
   description: "A seamless expanse of green open spaces, the Southern Ridges is a 10-km trail that offers a unique outdoor experience in the southwest of Singapore.\n\nFrom the many architecturally striking bridges and walkways, trekkers can enjoy a panoramic view of the verdant greenery in the three parks and one nature reserve that make up the Southern Ridges – the lush hilly parks of Mount Faber, Telok Blangah Hill and Kent Ridge, and the rich flora and fauna of Labrador Nature Reserve.",
   duration: 240,
   location: 'Marang Trail'
@@ -127,7 +127,7 @@ puts "Creating Labrador Nature and Coastal Walk..."
 labrador = Trail.create!(
   name: 'Labrador Nature and Coastal Walk',
   distance: 2.1,
-  difficulty: 'easy',
+  difficulty: 'Easy',
   description: "Just a stone’s throw away from homes, busy wharfs, offices and shopping centres, the Labrador Nature & Coastal Walk seamlessly connects the Southern Ridges to Labrador Nature Reserve and the Southern Waterfront. It runs along Alexandra Road from Depot Road to Telok Blangah Road, through the Berlayer Creek mangrove area and skirts the foothills of Bukit Chermin. Providing visitors with a wide variety of habitats to explore – mudflat, mangroves, coastal forest, rocky shore, parkland and Adinandra belukar (a type of secondary forest) – there is a myriad of experiences which will definitely thrill and enrich your senses as you embark on this connected loop.\n\nLocated within walking distance of Labrador Park MRT Station, the 2.1km Labrador Nature & Coastal Walk comprises three distinct segments – Alexandra Garden Trail, Berlayer Creek mangrove trail, and Bukit Chermin Boardwalk. Visitors can now enter mangrove and coastal areas which were previously inaccessible to pedestrians. These tranquil nature spots not only contain 40% of the endangered and vulnerable plant species in Singapore; they are also an oasis of calm for visitors amidst the hustle and bustle of the city.",
   duration: 45,
   location: 'Berlayer Creek'
@@ -140,7 +140,7 @@ puts "Creating Lower Peirce Reservoir Park..."
 lowerpeirce = Trail.create!(
   name: 'Lower Peirce Reservoir Park',
   distance: 0.9,
-  difficulty: ["easy", "intermediate", "difficult"].sample,
+  difficulty: ["Easy", "Intermediate", "Difficult"].sample,
   description: "This series of boardwalks through the Central Catchment Nature Reserve brings you through one of Singapore's last remaining mature secondary forests and along the edge of Lower Peirce Reservoir.\n\nYou can find rubber trees and oil palms within the Reserve as the plot of land adjacent to it was formerly a rubber plantation. This area is not only known for its former rubber plantations but the existing Old Upper Thomson Road used to be Singapore’s first race track for racing cars.",
   duration: 50,
   location: 'Lower Peirce Trail - Casuarina Entrance'
@@ -155,7 +155,7 @@ puts "Creating Tampines Eco Green..."
 tampines = Trail.create!(
   name: 'Tampines Eco Green',
   distance: 3,
-  difficulty: 'easy',
+  difficulty: 'Easy',
   description: "Tucked away in the Tampines heartland is Tampines Eco Green, a 36.5-hectare ecological park that resembles a savannah with marshlands, secondary forests and freshwater ponds. The green sanctuary is home to over 75 species of birds, 20 species of dragonflies, 35 species of butterflies and 32 species of spiders. To minimise disturbance to the sensitive wildlife in the park, the area is not lit at night.\n\nThis ecologically conscious park includes features like an eco-toilet, vegetated swales, bird hides and green roofs on all the shelters. Even the park furniture was made using recycled materials and environmentally friendly products.\n\nThe park offers three trails, namely Diversity Trail, Forest Trail and Marsh Trail, that weave through the secondary forests. Along those trails, nature lovers and wildlife photographers encounter nature at close proximity inside bird hides while visitors walk or exercise on the green, easy terrain.",
   duration: 105,
   location: 'Tampines Eco Green'
@@ -168,7 +168,7 @@ puts "Creating Bukit Batok Nature Park Walking Trail..."
 bukitbatok = Trail.create!(
   name: 'Bukit Batok Nature Park Walking Trail',
   distance: 3.2,
-  difficulty: 'intermediate',
+  difficulty: 'Intermediate',
   description: "This 36-hectare park offers a trail that meanders through a well-established secondary forest. As you walk through the forest, look out for interesting trees highlighted in this guide. This park holds some historical significance. It was once mined for granite; the quarry has since become a large reflecting pool. As you embark on the ascent to the top of the hill, stop at the lookout points that offer vantage views of the quarry pool. This trail also takes you to a war memorial at the top of the hill, and to the quarry pool at its foot.",
   duration: 90,
   location: 'Bukit Batok Nature Park Car Park'
@@ -181,7 +181,7 @@ puts "Creating Woodlands Waterfront Park..."
 woodlands = Trail.create!(
   name: 'Woodlands Waterfront Park',
   distance: 2,
-  difficulty: 'easy',
+  difficulty: 'Easy',
   description: "With an exceptional view of the sea from the north, Woodlands Waterfront Park is a favourite among residents and visitors young and old. A scenic and tranquil 11-hectare coastal park, it houses a large playground with a  wide range of equipment and a 1.5kmlong waterfront promenade. From high vantage points along the scenic trail, visitors are offered an unobstructed and panoramic view of the entire coastal park and the Straits of Johor. The undulating terrain of the park is furnished with rest shelters and dedicated jogging and cycling tracks, providing exercise enthusiasts with both adventurous and challenging trails.\n\nWoodlands Waterfront Park also forms part of the comprehensive network of parks and park connectors in the area, improving accessibility to the waterfront. It is also linked to the existing Admiralty Park via the 25-km Northern Explorer Loop.",
   duration: 90,
   location: 'Woodlands Waterfront Park'

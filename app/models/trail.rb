@@ -3,7 +3,7 @@ class Trail < ApplicationRecord
   has_many_attached :photos
   has_many :bookmarks, dependent: :destroy
 
-  enum :difficulty, { easy: 'easy', intermediate: 'intermediate', difficult: 'difficult' }
+  enum :difficulty, { Easy: 'Easy', Intermediate: 'Intermediate', Difficult: 'Difficult' }
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 5 }
