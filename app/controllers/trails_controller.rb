@@ -14,8 +14,17 @@ class TrailsController < ApplicationController
     end
 
     if params.dig(:search, :distance)
-      @trails = @trails.where("id > ?", x).where("id < ?", y)
+      @trails = @trails.where('id', x).where("id < ?", y)
+      # @trails = @trails.where('id', x).where("id < ?", y)
+
     end
+
+
+    # DISTANCE_MAP =
+    # { '0 km to 2 km': { min: 0, max: 2 },
+    #   '2 km to 5 km': { min: 2, max: 5 },
+    #   '6 km to 100 km': {min: 6, max: 100 }
+    # }
 
     # if params["search"].present?
     #   @filter = params["search"]["difficulties"].concat(params["search"]["duration"]).flatten.reject(&:blank?)
