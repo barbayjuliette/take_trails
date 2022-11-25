@@ -2,48 +2,93 @@
 
 <h1 class="margin-title-lg">My Trips</h1>
 
-<div class="container">
-  <div class="d-flex mb-3">
-    <button class="trip-category-select active me-2"><h4 class="mb-1">Upcoming</h4></button>
-    <button class="trip-category-select"><h4 class="mb-1">Past</h4></button>
+<div data-controller="switch-tabs">
+  <div class="cust-container">
+    <div class="d-flex mb-3">
+      <button class="trip-category-select active me-2" data-action="click->switch-tabs#upcoming" data-switch-tabs-target="upcomingbutton"><h4 class="mb-1">Upcoming</h4></button>
+      <button class="trip-category-select" data-action="click->switch-tabs#past" data-switch-tabs-target="pastbutton"><h4 class="mb-1">Past</h4></button>
+    </div>
   </div>
-</div>
 
-<div class="cards">
-  <% @trips.each do |trip| %>
-    <%= link_to trip_path(trip), class:"card my-card-link" do %>
-      <div class= "image-container">
-        <%= cl_image_tag trip.trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
-        <i class="fa-regular fa-bookmark"></i>
-      </div>
-      <div class ="card-body title-body d-flex align-items-start">
-        <div class="title-rating pt-2 mt-0">
-          <h5 class="card-title">
-            <%= trip.trail.name %>
-          </h5>
+
+  <div id="upcoming-trips" class="cards" data-switch-tabs-target="upcomingtrips">
+    <% @upcoming_trips.each do |trip| %>
+      <%= link_to trip_path(trip), class:"card my-card-link" do %>
+        <div class= "image-container">
+          <%= cl_image_tag trip.trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
+          <div class="trip-date py-1 px-2 rounded"><%= trip.date.strftime('%-d %b %Y') %></div>
+          <i class="fa-regular fa-bookmark"></i>
         </div>
-        <div class="d-flex pt-2 align-items-center">
-          <p class="card-text mb-0">3.7</p>
-          <i class="fa-solid fa-star ms-1"></i>
+        <div class ="card-body title-body d-flex align-items-start">
+          <div class="title-rating pt-2 mt-0">
+            <h5 class="card-title">
+              <%= trip.trail.name %>
+            </h5>
+          </div>
+          <div class="d-flex pt-2 align-items-center">
+            <p class="card-text mb-0">3.7</p>
+            <i class="fa-solid fa-star ms-1"></i>
+          </div>
         </div>
-      </div>
-      <div class = "card-body">
-        <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
-      </div>
-      <div class="card-body d-flex justify-content-between">
-        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
-        <p class="card-text"><i class="fa-regular fa-clock"></i></i>
-        <% hour = (trip.trail.duration / 60).to_i %>
-        <% minutes = (trip.trail.duration % 60).to_i %>
-        <% if hour == 00 %>
-          <%= minutes %>m
-        <% elsif minutes < 10 %>
-          <%= hour %>h 0<%= minutes %>m
-        <% else %>
-          <%= hour %>h <%= minutes %>m
-        <% end %>
-        </p>
-      </div>
+        <div class = "card-body">
+          <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
+        </div>
+        <div class="card-body d-flex justify-content-between">
+          <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
+          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+          <% hour = (trip.trail.duration / 60).to_i %>
+          <% minutes = (trip.trail.duration % 60).to_i %>
+          <% if hour == 00 %>
+            <%= minutes %>m
+          <% elsif minutes < 10 %>
+            <%= hour %>h 0<%= minutes %>m
+          <% else %>
+            <%= hour %>h <%= minutes %>m
+          <% end %>
+          </p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <div id="past-trips" class="cards d-none" data-switch-tabs-target="pasttrips">
+    <% @past_trips.each do |trip| %>
+      <%= link_to trip_path(trip), class:"card my-card-link" do %>
+        <div class= "image-container">
+          <%= cl_image_tag trip.trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
+          <div class="trip-date"><%= trip.date %></div>
+          <i class="fa-regular fa-bookmark"></i>
+        </div>
+        <div class ="card-body title-body d-flex align-items-start">
+          <div class="title-rating pt-2 mt-0">
+            <h5 class="card-title">
+              <%= trip.trail.name %>
+            </h5>
+          </div>
+          <div class="d-flex pt-2 align-items-center">
+            <p class="card-text mb-0">3.7</p>
+            <i class="fa-solid fa-star ms-1"></i>
+          </div>
+        </div>
+        <div class = "card-body">
+          <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
+        </div>
+        <div class="card-body d-flex justify-content-between">
+          <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %></p>
+          <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+          <% hour = (trip.trail.duration / 60).to_i %>
+          <% minutes = (trip.trail.duration % 60).to_i %>
+          <% if hour == 00 %>
+            <%= minutes %>m
+          <% elsif minutes < 10 %>
+            <%= hour %>h 0<%= minutes %>m
+          <% else %>
+            <%= hour %>h <%= minutes %>m
+          <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>

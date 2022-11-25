@@ -13,3 +13,12 @@
   color: $traillightgreen;
   border-bottom: 3px solid $traillightgreen
 }
+
+.trip-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background-color: $traillightgreen;
+  color: white;
+}
