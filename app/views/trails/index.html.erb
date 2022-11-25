@@ -88,8 +88,26 @@
   <%= link_to "Reset", root_path %>
 <% end %>
 
+<%# <%= form_tag(url: trails_path, method: :get) do %>
+    <%# <%= select_tag :distance, options_for_select(distance[range], { required: true, include_blank: false}) %>
+    <%# <%= submit_tag 'Filter' %>
+<%# <% end %>
+
+<%= simple_form_for @trail, url: trails_path, method: "GET" do |f| %>
+  <%= f.input :distance, :collection => TRAIL::DISTANCE_MAP.sort.map {|k,v| [v,k]} %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= link_to "Reset", root_path %>
+<% end %>
 
 
+<%# <%= f.input :some_field, :collection => Model::HASH_NAME.sort.map {|k,v| [v,k]} %>
+<%# <div class="field">
+<%= form_tag(url: trails_path, method: :get) do %>
+  <%# <%= label_tag :distance,  %>
+  <%# <%= select_tag :distance, Trail.difficulties.keys %>
+  <%# <%= submit_tag 'Filter' %>
+<%# <% end %>
+<%# </div> %>
 
 
 <%# <h1> Find your next hike ...</h1>

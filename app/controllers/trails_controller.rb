@@ -13,12 +13,9 @@ class TrailsController < ApplicationController
       @trails = @trails.search_by_name_description_location(params[:query])
     end
 
-    # if params[:difficulty].present?
-    #   @trails = Trail.where(params [:difficulty])
-    # else
-    #   @trails = Trail.all
-    # end
+    if params[:distance].present?
 
+    end
 
     # if params["search"].present?
     #   @filter = params["search"]["difficulties"].concat(params["search"]["duration"]).flatten.reject(&:blank?)
@@ -64,6 +61,25 @@ class TrailsController < ApplicationController
     # render locals: {bookmark: @bookmark}
   end
 
+  # private
+
+  # def distance_map(range)
+  #   distance =
+  #   { '0-2'  : { min : 0 , max : 2 },
+  #     '2-5'   : { min : 3 , max : 5 },
+  #     '5-100' : { min : 5 , max : 100 }
+  #   }
+  #   return distance[range]
+  # end
+
+  # def distance_map(range)
+  #   distance =
+  #   { '0-2': { min: 0, max: 2 },
+  #     '2-5': { min: 2, max: 5 }
+  #   }
+
+  #   return distance[range]
+  # end
 
   # def self.search(search)
   #   if search
