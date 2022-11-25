@@ -1,0 +1,92 @@
+.modal-header {
+  border-bottom:0 !important ;
+  padding-bottom: 5px !important;
+}
+
+.modal-content {
+  border-radius: 10px !important;
+  border:0px !important;
+}
+
+.modal-body {
+  padding-top: 0px !important;
+}
+
+.review {
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  line-height: 1.8em;
+  background-color: #f7faf7;
+  border-radius: 10px;
+  border: none !important;
+  color:rgb(41, 41, 41);
+}
+
+.review-size{
+  font-size: 14px;
+  letter-spacing: .2px;
+  font-family: 'GTWalsheimProLight';
+}
+
+.review-form {
+  margin: auto;
+}
+
+.review-label {
+  border:1px solid $trailgreen !important;
+  background-color: white !important;
+  border-radius: 5px !important;
+}
+
+.review-label:focus{
+  background-color: #f1f7f2 !important;
+  border: none !important;
+}
+
+
+.user-info {
+  width:98%;
+  margin: auto;
+  margin-bottom: 0px;
+  padding: 10px;
+  display:grid;
+  grid-template-columns: 60px 4fr 1fr;
+  align-items: center;
+
+  h4 {
+    margin: 0px !important;
+  }
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size:12px;
+    color:rgb(70, 70, 70);
+
+  }
+}
+
+.rating {
+  text-align: right;
+}
+
+.avatar {
+  font-size:50px;
+  color:$trailgreen;
+}
+
+.reviews {
+  margin: auto;
+  margin-top: 0px;
+  padding: 10px;
+  padding-top:5px;
+  line-height: 1.8em;
+  background-color: #f7faf7;
+  border-radius: 10px;
+  border: none !important;
+}
+
+.submitted {
+  color: rgb(11, 63, 11);
+}
