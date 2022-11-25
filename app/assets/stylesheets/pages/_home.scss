@@ -11,10 +11,6 @@
   min-height: 0
  }
 
- p {
-  line-height: 0.1;
- }
-
  .my-card-link {
     text-decoration: none !important;
     color: black;
@@ -43,7 +39,10 @@
 }
 
 .card-image {
-  height: 100%;
+  object-position: center;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  // height: 100%;
   width: 100%;
   min-width: 100%;
   opacity: 0.85;
