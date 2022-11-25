@@ -1,10 +1,8 @@
-
-<% if current_user  %>
-<%= render "shared/navbar2" %>
-<% else  %>
-<%= render "shared/navbar" %>
-<% end %>
-
+    <% if current_user  %>
+      <%= render "shared/navbar2" %>
+    <% else  %>
+      <%= render "shared/navbar" %>
+    <% end %>
 
 <%# search form %>
 <%= form_with url: trails_path, method: :get, class: "d-flex" do %>
