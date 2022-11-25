@@ -20,4 +20,10 @@ class TrailsController < ApplicationController
     # render locals: {trip: @trip}
     # render locals: {bookmark: @bookmark}
   end
+
+  def toggle_favorite
+    @trail = Trail.find(params[:id])
+    current_user.favorited?(@trail) ? current_user.unfavorite(@trail) : current_user.favorite(@trail)
+  end
+
 end
