@@ -28,7 +28,9 @@ export default class extends Controller {
         </div>
             </div>
             <div class="reviews review-size">
-            ${data.review_tags}
+            ${data.review_tags}.each do |category|
+            ${category.name}
+            end
               ${data.review}
             </div>
           </div>

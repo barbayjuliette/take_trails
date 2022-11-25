@@ -11,6 +11,7 @@ puts "Clearing old data..."
 Trail.destroy_all
 Trip.destroy_all
 User.destroy_all
+Category.destroy_all
 
 puts "Creating a user..."
 User.create!(
@@ -19,6 +20,20 @@ User.create!(
   first_name: 'Test',
   last_name: 'User'
 )
+
+puts "Creating categories..."
+Category.create!(name: 'Muddy')
+Category.create!(name: 'Lots of mosquitoes')
+Category.create!(name: 'Uneven path')
+Category.create!(name: 'Monkey sighting')
+Category.create!(name: 'Great views')
+
+# puts "Creating tags..."
+# Tag.create!(review: Review.first, category: Category.first)
+# Tag.create!(review: Review.first, category: Category.last)
+# Tag.create!(review: Review.last, category: Category.first)
+
+
 
 puts "Creating trails..."
 

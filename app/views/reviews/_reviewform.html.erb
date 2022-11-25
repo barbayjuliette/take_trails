@@ -9,8 +9,8 @@
                   label: false,
                   placeholder: "COMMENT",
                   input_html: { class: "review-label"} %>
-      <%= f.input :tag,
-                  collection: ["muddy", "lots of mosquitoes", "uneven path"], input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tag: true}}} %>
+      <%= f.association :categories,
+                  input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tag: true}}} %>
       <%= f.input :rating,
                   label: false,
                   collection: (1..5).to_a, input_html: {data: {controller: "star-rating"}} %>
