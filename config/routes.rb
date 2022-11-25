@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     #   get :mine
     # end
     member do
-      post 'toggle_favorite', to: "trail#toggle_favorite"
+      post 'toggle_favorite', to: "trails#toggle_favorite"
     end
   end
   resources :trips, only: %i[index show]
