@@ -3,27 +3,14 @@ class TrailsController < ApplicationController
 
   # GET /
   def index
-      # params[:search].present?
-      # pp params[:search]
-    # if pp params[:search][:difficulty_levels]
-    #   ..
-    # end
-#  or
-    if params.dig(:search, :difficulty_levels)
-      @trails = Trail.where(params[:search][:difficulty_levels])
-    else
-      @trails = Trail.all
+    @trails = Trail.all
+
+    if params.dig(:search, :difficulties)
+      @trails = @trails.where(difficulty: params[:search][:difficulties])
     end
 
-
-
-
-    @trails = Trail.all
-    # search bar query
     if params[:query].present?
-      @trails = Trail.search_by_name_description_location(params[:query])
-    else
-      @trails =Trail.all
+      @trails = @trails.search_by_name_description_location(params[:query])
     end
 
     # if params[:difficulty].present?

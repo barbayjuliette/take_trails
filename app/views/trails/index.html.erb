@@ -80,8 +80,10 @@
   <%# <%= link_to "Reset", root_path  %>
 <%# <% end %>
 
+
+
 <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%= f.input :difficulty_levels, label: "Difficult level", collection: Trail.difficulty_levels.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :check_boxes,  include_hidden: false %>
   <%= f.submit "Search", class: "btn btn-primary" %>
   <%= link_to "Reset", root_path %>
 <% end %>
@@ -89,8 +91,9 @@
 
 
 
-<h1> Find your next hike ...</h1>
-<h1 class="margin-title-lg"> Find your next hike ...</h1>
+
+<%# <h1> Find your next hike ...</h1>
+<h1 class="margin-title-lg"> Find your next hike ...</h1> %>
 
 
 <%# <%= form_with url: trial_path, method: :get, do %>
