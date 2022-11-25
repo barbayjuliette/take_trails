@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :trail
-  has_many :reviews, dependent: :destroy
+  has_one :review, dependent: :destroy
 
   validates :date, presence: true
   validate :must_be_after

@@ -16,10 +16,10 @@
 
         <br><br>
         <%# Review list %>
-          <% if @trip.reviews.blank? %>
+          <% if @trip.trail.reviews.blank? %>
             <h2><strong data-insert-in-list-target="count"></h2>
           <% else %>
-            <h2><strong data-insert-in-list-target="count"><%= @trip.reviews.count %> reviews</strong></h2>
+            <h2><strong data-insert-in-list-target="count"><%= @trip.trail.reviews.count %> reviews</strong></h2>
           <% end %>
         <div data-insert-in-list-target="items">
           <%= render "reviews/reviews" %>
