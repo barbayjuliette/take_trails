@@ -1,14 +1,20 @@
 class Trail < ApplicationRecord
   has_many :trips
+
+  has_many :reviews, through: :trips
+
   has_many_attached :photos
   has_many :bookmarks, dependent: :destroy
 
+<<<<<<< HEAD
   DISTANCE_MAP =
     { '0-2': { min: 0, max: 2 },
       '2-5': { min: 2, max: 5 }
     }
 
   enum :difficulty, { Easy: 'Easy', Intermediate: 'Intermediate', Difficult: 'Difficult' }
+=======
+>>>>>>> master
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 5 }
