@@ -1,8 +1,5 @@
 class Trail < ApplicationRecord
   has_many :trips
-
-  has_many :reviews, through: :trips
-
   has_many_attached :photos
   has_many :bookmarks, dependent: :destroy
 
@@ -15,7 +12,8 @@ class Trail < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 5 }
-  validates :distance, presence: true, numericality: true, inclusion: { in: DISTANCE_MAP }
+  validates :distance, presence: true, numericality: true
+  # inclusion: { in: DISTANCE_MAP }
   validates :duration, presence: true, numericality: true
   validates :location, presence: true
 

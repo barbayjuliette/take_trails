@@ -14,7 +14,7 @@ class TrailsController < ApplicationController
     end
 
     if params[:distance].present?
-
+      @trails = @trails.(params[Trail::DIFFICULTIES])
     end
 
     # if params["search"].present?
