@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
           render json: {
             success: true,
             review: @review.comment,
-            review_tags: @review.categories,
+            review_tags: @review.categories.map { |category| category.name },
             rating: @review.rating,
             reviewer:  current_user.first_name + " " + current_user.last_name,
             created_at: @review.created_at.to_s.split(" ").first

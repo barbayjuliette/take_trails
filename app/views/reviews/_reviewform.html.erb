@@ -9,8 +9,7 @@
                   label: false,
                   placeholder: "COMMENT",
                   input_html: { class: "review-label"} %>
-      <%= f.association :categories,
-                  input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tag: true}}} %>
+      <%= f.association :categories, label: false, input_html: { multiple: true, placeholder: 'Select tags', data: { controller: "tom-select", tom_select_options_value: {tags: true}}, class: "border-0 rounded-0 d-flex align-items-center" } %>
       <%= f.input :rating,
                   label: false,
                   collection: (1..5).to_a, input_html: {data: {controller: "star-rating"}} %>

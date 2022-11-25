@@ -28,9 +28,8 @@ export default class extends Controller {
         </div>
             </div>
             <div class="reviews review-size">
-            ${data.review_tags}.each do |category|
-            ${category.name}
-            end
+             ${data.review_tags.map((t)=>`<span class='tag bg-info rounded-pill px-2 py-1 me-2 mb-2'>${t}</span>`).join("")}
+
               ${data.review}
             </div>
           </div>
