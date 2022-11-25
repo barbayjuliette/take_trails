@@ -1,0 +1,15 @@
+
+<% @trip.reviews.reverse_each do |review| %>
+    <div class="review">
+      <div class="user-info">
+        <i class="fa-solid fa-circle-user avatar"></i>
+      <div>
+        <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+        <p><%= review.user.created_at.to_s.split(" ").first %> </p>
+      </div>
+    </div>
+    <div class="reviews">
+      <%= review.comment %>
+    </div>
+  </div>
+<% end %>

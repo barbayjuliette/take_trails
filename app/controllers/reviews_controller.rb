@@ -12,11 +12,11 @@ class ReviewsController < ApplicationController
     @review.trip = @trip
     respond_to do |format|
       if @review.save
-        format.html { redirect_to trip_path(@trip) }
-        format.json
+        format.html { redirect_to trail_path(@trail) }
+        format.json # Follow the classic Rails flow and look for a create.json view
       else
-        format.html { render "trips/show", status: :unprocessable_entity }
-        format.json
+        format.html { render "shared/leavereview", status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
       end
     end
   end
