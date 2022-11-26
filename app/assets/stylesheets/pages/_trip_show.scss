@@ -1,0 +1,10 @@
+#trip-show-map-container {
+  position: fixed;
+  height: 100vh;
+  width: 40%;
+  overflow: scroll;
+}
+
+#trip-show-map {
+  cursor: grab;
+}
