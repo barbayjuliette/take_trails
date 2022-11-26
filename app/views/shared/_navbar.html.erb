@@ -9,14 +9,53 @@
     </div>
     <div class="nav-user">
       <div class="p5"><%= link_to "SIGN UP", new_user_registration_path%></div>
-      <button class="user-login" lass="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-
-         <i class="fa-regular fa-user p-1"></i> <%= 'LOGIN' %>
-         </button>
-
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
       </div>
     </div>
   </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="form-container">
+  <h2 class="text-center">Welcome back</h2>
+  <h6 class="login-text">Enter your login details below.</h6>
+</div>
+
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+  <div class="form-inputs text-input-label form-floating">
+    <%= f.input :email,
+                required: false,
+                label: false,
+                autofocus: true,
+                placeholder: "EMAIL",
+                input_html: { autocomplete: "email", class: "border-0 rounded-0 label-style" }%>
+    <%= f.input :password,
+                required: false,
+                label: false,
+                placeholder: "PASSWORD",
+                input_html: { autocomplete: "current-password", class: "border-0 rounded-0 label-style" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?%>
+
+    <%= f.button :submit, "SIGN IN", class: "login-btn border-0" %>
+
+  </div>
+
+
+<% end %>
+
+<div class="text-input-label devise-links">
+   <%= render "devise/shared/links" %>
+</div>
+
+</div>
+</div>
+  </div>
+</div>
 
 
 <%# header image %>
