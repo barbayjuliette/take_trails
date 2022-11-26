@@ -41,15 +41,12 @@ gem "pg_search"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem "cloudinary"
-gem "dotenv-rails", groups: [:development, :test]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
-
-gem "devise"
 
 gem 'acts-as-taggable-on', '~> 9.0'
 
