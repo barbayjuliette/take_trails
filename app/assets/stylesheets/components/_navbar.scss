@@ -12,3 +12,101 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+
+
+
+//nav bar here
+.main-nav {
+  position: fixed;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr;
+  align-items: center;
+  overflow: hidden;
+  z-index: 4;
+  border-bottom: 1px solid rgb(197, 197, 197);
+  }
+
+  .nav-primary{
+    display: flex;
+  }
+
+  .p5 {
+    display: flex;
+    border-right: 1px solid rgb(197, 197, 197);
+    height:50px;
+    padding-left: 24px;
+    padding-right: 24px;
+    align-items: center;
+
+    a {
+      font-size: 13px;
+      align-items: center;
+      text-decoration: none;
+      letter-spacing: .1em;
+      background-image: linear-gradient($trailgreen,$trailgreen);
+      background-size: 0% 0.1em;
+      background-position-y: 100%;
+      background-position-x: 50%;
+      background-repeat: no-repeat;
+      transition: background-size 0.2s ease-in-out;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus,
+    a:active {
+      background-size: 100% 0.1em;
+      color: $trailgreen;
+    }
+  }
+
+
+
+
+  .nav-logo {
+    display: flex;
+    height:50px;
+    border-right: 1px solid rgb(197, 197, 197);
+    font-family: 'Jonesy';
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 10px 20px 20px;
+  }
+
+  .nav-user {
+    display: flex;
+    justify-content: flex-end;
+
+
+    .user-link {
+      display: flex;
+      border-right: 1px solid rgb(197, 197, 197);
+      height:50px;
+      font-size: 13px;
+      padding: 0 24px;
+      align-items: center;
+      text-decoration: none;
+      letter-spacing: .1em;
+      background-size:100% 200%;
+      background-image:linear-gradient(to top, $trailyellow 50%, rgb(255, 255, 255) 50%);
+      -webkit-transition:background-position .5s;
+      -moz-transition:background-position .5s;
+      transition:background-position .5s;
+    }
+
+    .user-link:hover {
+    background-position:0 -100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: white;
+    }
+  }
