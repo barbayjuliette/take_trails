@@ -4,8 +4,9 @@
       <%= render "shared/navbar" %>
     <% end %>
 
+<div id="trails">
 <%# search form %>
-<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+<%= form_with url: trails_path, method: :get, class: "d-flex search" do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -14,8 +15,10 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
+
+<h1 class="margin-title-lg"> Find your next hike ...</h1>
 <%= render 'shared/cards' %>
+</div>
 
 <%# <%= form_with url: trial_path, method: :get, do %>
   <%# <%= form.select :difficulty_level,
