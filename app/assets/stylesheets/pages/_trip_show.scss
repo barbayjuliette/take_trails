@@ -1,10 +1,42 @@
 #trip-show-map-container {
   position: fixed;
-  height: 100vh;
+  height: 90vh;
   width: 40%;
-  overflow: scroll;
+  overflow-x: auto;
 }
 
-#trip-show-map {
-  cursor: grab;
+.right-column {
+  width: 60%;
+  margin-left: auto;
+}
+
+#info-bar {
+  background-color: $trailpalegreen;
+  color: $traillightgreen;
+}
+
+.friend-avatar {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: $traillightgreen;
+  color: white;
+}
+
+.trip-pg-font-size {
+  font-size: 0.9rem;
+}
+
+#weather-icon {
+  font-size: 30px;
+}
+
+#trip-date {
+  font-size: 22px;
+}
+
+#trip_trail_img{
+  object-position: center;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
