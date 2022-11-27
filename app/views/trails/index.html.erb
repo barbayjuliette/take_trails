@@ -12,16 +12,16 @@
     <div class="col-lg-4">
       <%= f.input :query, label: "Search", :input_html => { :class => 'form-control', placeholder: "Find a trail" } %>
     </div>
-    <div class="col-lg-1 col-md-6">
+    <div class="col-lg-1">
       <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1 col-md-6">
+    <div class="col-lg-1">
       <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1 col-md-6">
+    <div class="col-lg-1">
       <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1 col-md-6">
+    <div class="col-lg-1">
       <%= f.submit "Search", class: "btn btn-primary" %>
       <%= link_to "Reset", root_path %>
     </div>
