@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tasks
+
   devise_for :users
   root to: "trails#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -21,10 +21,11 @@ Rails.application.routes.draw do
 
   resources :trips, only: %i[index show] do
     resources :reviews, only: %i[create]
-    resources :tasks, only: %i[create index new]
+    resources :tasks, only: %i[create]
   end
 
   resources :trips, only: %i[index show]
   resources :bookmarks, only: %i[index destroy]
+  resources :tasks, only: %i[index show destroy]
 
 end

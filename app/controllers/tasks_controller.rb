@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def index
+    @trip = Trip.find(params[:trip_id])
     @tasks = Task.all
   end
 
@@ -22,3 +23,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:description)
   end
+end
