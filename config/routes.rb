@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: %i[index show] do
     resources :reviews, only: %i[create]
-    resources :tasks, only: %i[create]
+    resources :tasks, only: :create
   end
 
   resources :trips, only: %i[index show]

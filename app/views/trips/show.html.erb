@@ -1,53 +1,13 @@
-<% if notice.present? %>
-  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
-    <%= notice %>
-  </p>
-<% end %>
+
 
 <h1 class="font-bold text-2xl">Task Manager</h1>
 
 
-</div>
-<div class="mt-4">
-  <%= simple_form_for([@trip, @task],
-  data: {
-    tasks_target: "form",
-    action: "submit->tasks#send"
-  }) do |f|
-%>
-    <%= f.input :description,
-                placeholder: "Add new task" %>
-    <%= f.submit "Save" %>
-<% end %>
-  </div>
 
-<div id="tasks" >
-  <h1 class="font-bold text-lg mb-7">Tasks</h1>
-    <% @trip.tasks.each do |task| %>
-  <div class="px-5" data-controller="tasks">
+
+<div data-controller="tasks">
   <div data-tasks-target="items">
-    <div class="block">
-  <%= form_with(model: task, class:"text-lg inline-block my-3 w-72") do |form| %>
-    <%= form.check_box :completed,
-                       data: {
-                        tasks_target: "form",
-                         id: task.id,
-                         action: "tasks#toggle"
-                       },
-                       class: "mr-2" %>
-    <%= task.description %>
-  <% end %>
-   <%= link_to "Edit", edit_task_path(task),
-              class: "btn bg-gray-100"
-  %>
-  <div class="inline-block ml-2">
-    <%= button_to "Delete", task_path(task),
-                  method: :delete,
-                  data: { action: "tasks#delete" },
-                  class: "btn bg-red-100" %>
+    <%= render "tasks/task" %>
   </div>
-</div>
-</div>
-  <% end  %>
-  </div>
+  <%= render "tasks/form" %>
 </div>

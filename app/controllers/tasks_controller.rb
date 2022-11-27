@@ -11,10 +11,11 @@ class TasksController < ApplicationController
     @task.trip = @trip
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url, notice: "Task was successfully created" }
+        format.html { redirect_to tasks_url}
         format.json
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.json
       end
     end
   end
@@ -34,7 +35,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
+        format.html { redirect_to tasks_url }
         format.json
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -46,7 +47,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_url, notice: "Post was successfully deleted."
+    redirect_to tasks_url
   end
 
   private
