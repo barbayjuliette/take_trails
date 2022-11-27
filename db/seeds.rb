@@ -12,13 +12,13 @@ require "open-uri"
 # Trip.destroy_all
 # User.destroy_all
 
-puts "Creating a user..."
-User.create!(
-  email: 'test_user@email.com',
-  password: '123123',
-  first_name: 'Test',
-  last_name: 'User'
-)
+# puts "Creating a user..."
+# User.create!(
+#   email: 'test_user@email.com',
+#   password: '123123',
+#   first_name: 'Test',
+#   last_name: 'User'
+# )
 
 # puts "Creating trails..."
 
@@ -78,78 +78,78 @@ User.create!(
 # prunus.photos.attach(io: file6, filename: "prunus1.jpg", content_type: "image/jpg")
 # prunus.save
 
-# puts "Creating Coney Island Park..."
-# coney = Trail.create!(
-#   name: 'Coney Island Park',
-#   distance: 3.6,
-#   difficulty: 'Easy',
-#   description: "Discover the rustic charms of Coney Island Park, home to a wide variety of habitats and a diverse range of fauna and flora, including several nationally threatened species. Accessible from Punggol Promenade Punggol Point Walk, this 50-hectare ecologically sustainable park is favoured by more than 80 species of birds, offering visitors an ideal location for birdwatching.\n\nExplore the forest and mangrove habitats on foot or by bicycle. Be charmed by five differently themed beach areas and a variety of habitats which support beautiful free-flowering plants and critically endangered species.",
-#   duration: 120,
-#   location: 'Coney Island (West Entrance)'
-# )
-# file7 = URI.open("https://www.sassymamasg.com/wp-content/uploads/2017/05/coney-island-park-singapore-trail.jpg")
-# coney.photos.attach(io: file7, filename: "coney1.jpg", content_type: "image/jpg")
-# file8 = URI.open("https://www.asiaone.com/sites/default/files/original_images/Oct2015/20151011_coneyislandpark_st.jpg")
-# coney.photos.attach(io: file8, filename: "coney2.jpg", content_type: "image/jpg")
-# coney.save
+puts "Creating Coney Island Park..."
+coney = Trail.create!(
+  name: 'Coney Island Park',
+  distance: 3.6,
+  difficulty: 'Easy',
+  description: "Discover the rustic charms of Coney Island Park, home to a wide variety of habitats and a diverse range of fauna and flora, including several nationally threatened species. Accessible from Punggol Promenade Punggol Point Walk, this 50-hectare ecologically sustainable park is favoured by more than 80 species of birds, offering visitors an ideal location for birdwatching.\n\nExplore the forest and mangrove habitats on foot or by bicycle. Be charmed by five differently themed beach areas and a variety of habitats which support beautiful free-flowering plants and critically endangered species.",
+  duration: 120,
+  location: 'Coney Island (West Entrance)'
+)
+file7 = URI.open("https://www.sassymamasg.com/wp-content/uploads/2017/05/coney-island-park-singapore-trail.jpg")
+coney.photos.attach(io: file7, filename: "coney1.jpg", content_type: "image/jpg")
+file8 = URI.open("https://www.asiaone.com/sites/default/files/original_images/Oct2015/20151011_coneyislandpark_st.jpg")
+coney.photos.attach(io: file8, filename: "coney2.jpg", content_type: "image/jpg")
+coney.save
 
-# puts "Creating Wallace Trail..."
-# wallace = Trail.create!(
-#   name: 'Wallace Trail',
-#   distance: 1,
-#   difficulty: 'Intermediate',
-#   description: "Set in a rustic environment with trails for hiking and mountain biking, the 63-hectare Dairy Farm Nature Park was developed in 2009 by National Parks Board (NParks) to provide an alternative recreational venue to Bukit Timah Nature Reserve. As an important green buffer, it reduces visitorship pressure on the Reserve. The park features special amenities such as the Wallace Education Centre, which houses Wallace Environmental Learning Lab, Singapore’s first field study centre for schools and an interpretative centre; a nature trail where visitors can learn about the flora and fauna of the park through the eyes of English naturalist Alfred Russel Wallace; and a former quarry (now known as Singapore Quarry) which has been transformed into a wetland habitat with a viewing platform for visitors to appreciate Singapore’s freshwater flora and fauna.",
-#   duration: 40,
-#   location: 'Wallace Trail'
-# )
-# file9 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/dairy-farm/df-new-wec-,-a-,-map-dec2020/dfnp_rustic-trail.ashx")
-# wallace.photos.attach(io: file9, filename: "wallace1.jpg", content_type: "image/jpg")
-# file10 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/dairy-farm/df-new-wec-,-a-,-map-dec2020/dfnp_look-out-pt.ashx")
-# wallace.photos.attach(io: file10, filename: "wallace2.jpg", content_type: "image/jpg")
-# wallace.save
+puts "Creating Wallace Trail..."
+wallace = Trail.create!(
+  name: 'Wallace Trail',
+  distance: 1,
+  difficulty: 'Intermediate',
+  description: "Set in a rustic environment with trails for hiking and mountain biking, the 63-hectare Dairy Farm Nature Park was developed in 2009 by National Parks Board (NParks) to provide an alternative recreational venue to Bukit Timah Nature Reserve. As an important green buffer, it reduces visitorship pressure on the Reserve. The park features special amenities such as the Wallace Education Centre, which houses Wallace Environmental Learning Lab, Singapore’s first field study centre for schools and an interpretative centre; a nature trail where visitors can learn about the flora and fauna of the park through the eyes of English naturalist Alfred Russel Wallace; and a former quarry (now known as Singapore Quarry) which has been transformed into a wetland habitat with a viewing platform for visitors to appreciate Singapore’s freshwater flora and fauna.",
+  duration: 40,
+  location: 'Wallace Trail'
+)
+file9 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/dairy-farm/df-new-wec-,-a-,-map-dec2020/dfnp_rustic-trail.ashx")
+wallace.photos.attach(io: file9, filename: "wallace1.jpg", content_type: "image/jpg")
+file10 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/dairy-farm/df-new-wec-,-a-,-map-dec2020/dfnp_look-out-pt.ashx")
+wallace.photos.attach(io: file10, filename: "wallace2.jpg", content_type: "image/jpg")
+wallace.save
 
-# puts "Creating Southern Ridges..."
-# southern = Trail.create!(
-#   name: 'Southern Ridges',
-#   distance: 10,
-#   difficulty: 'Difficult',
-#   description: "A seamless expanse of green open spaces, the Southern Ridges is a 10-km trail that offers a unique outdoor experience in the southwest of Singapore.\n\nFrom the many architecturally striking bridges and walkways, trekkers can enjoy a panoramic view of the verdant greenery in the three parks and one nature reserve that make up the Southern Ridges – the lush hilly parks of Mount Faber, Telok Blangah Hill and Kent Ridge, and the rich flora and fauna of Labrador Nature Reserve.",
-#   duration: 240,
-#   location: 'Marang Trail'
-# )
-# file11 = URI.open("https://upload.wikimedia.org/wikipedia/commons/2/2c/Forest_Walk%2C_Southern_Ridges.jpg")
-# southern.photos.attach(io: file11, filename: "southern1.jpg", content_type: "image/jpg")
-# file12 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/the-southern-ridges/p6265706.ashx")
-# southern.photos.attach(io: file12, filename: "southern2.jpg", content_type: "image/jpg")
-# southern.save
+puts "Creating Southern Ridges..."
+southern = Trail.create!(
+  name: 'Southern Ridges',
+  distance: 10,
+  difficulty: 'Difficult',
+  description: "A seamless expanse of green open spaces, the Southern Ridges is a 10-km trail that offers a unique outdoor experience in the southwest of Singapore.\n\nFrom the many architecturally striking bridges and walkways, trekkers can enjoy a panoramic view of the verdant greenery in the three parks and one nature reserve that make up the Southern Ridges – the lush hilly parks of Mount Faber, Telok Blangah Hill and Kent Ridge, and the rich flora and fauna of Labrador Nature Reserve.",
+  duration: 240,
+  location: 'Marang Trail'
+)
+file11 = URI.open("https://upload.wikimedia.org/wikipedia/commons/2/2c/Forest_Walk%2C_Southern_Ridges.jpg")
+southern.photos.attach(io: file11, filename: "southern1.jpg", content_type: "image/jpg")
+file12 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/the-southern-ridges/p6265706.ashx")
+southern.photos.attach(io: file12, filename: "southern2.jpg", content_type: "image/jpg")
+southern.save
 
-# puts "Creating Labrador Nature and Coastal Walk..."
-# labrador = Trail.create!(
-#   name: 'Labrador Nature and Coastal Walk',
-#   distance: 2.1,
-#   difficulty: 'Easy',
-#   description: "Just a stone’s throw away from homes, busy wharfs, offices and shopping centres, the Labrador Nature & Coastal Walk seamlessly connects the Southern Ridges to Labrador Nature Reserve and the Southern Waterfront. It runs along Alexandra Road from Depot Road to Telok Blangah Road, through the Berlayer Creek mangrove area and skirts the foothills of Bukit Chermin. Providing visitors with a wide variety of habitats to explore – mudflat, mangroves, coastal forest, rocky shore, parkland and Adinandra belukar (a type of secondary forest) – there is a myriad of experiences which will definitely thrill and enrich your senses as you embark on this connected loop.\n\nLocated within walking distance of Labrador Park MRT Station, the 2.1km Labrador Nature & Coastal Walk comprises three distinct segments – Alexandra Garden Trail, Berlayer Creek mangrove trail, and Bukit Chermin Boardwalk. Visitors can now enter mangrove and coastal areas which were previously inaccessible to pedestrians. These tranquil nature spots not only contain 40% of the endangered and vulnerable plant species in Singapore; they are also an oasis of calm for visitors amidst the hustle and bustle of the city.",
-#   duration: 45,
-#   location: 'Berlayer Creek'
-# )
-# file13 = URI.open("http://www.nparks.gov.sg/-/media/mgs/images/issue-34-vol-3-2017/wanderlust-bukit-chermin.ashx")
-# labrador.photos.attach(io: file13, filename: "labrador2.jpg", content_type: "image/jpg")
-# labrador.save
+puts "Creating Labrador Nature and Coastal Walk..."
+labrador = Trail.create!(
+  name: 'Labrador Nature and Coastal Walk',
+  distance: 2.1,
+  difficulty: 'Easy',
+  description: "Just a stone’s throw away from homes, busy wharfs, offices and shopping centres, the Labrador Nature & Coastal Walk seamlessly connects the Southern Ridges to Labrador Nature Reserve and the Southern Waterfront. It runs along Alexandra Road from Depot Road to Telok Blangah Road, through the Berlayer Creek mangrove area and skirts the foothills of Bukit Chermin. Providing visitors with a wide variety of habitats to explore – mudflat, mangroves, coastal forest, rocky shore, parkland and Adinandra belukar (a type of secondary forest) – there is a myriad of experiences which will definitely thrill and enrich your senses as you embark on this connected loop.\n\nLocated within walking distance of Labrador Park MRT Station, the 2.1km Labrador Nature & Coastal Walk comprises three distinct segments – Alexandra Garden Trail, Berlayer Creek mangrove trail, and Bukit Chermin Boardwalk. Visitors can now enter mangrove and coastal areas which were previously inaccessible to pedestrians. These tranquil nature spots not only contain 40% of the endangered and vulnerable plant species in Singapore; they are also an oasis of calm for visitors amidst the hustle and bustle of the city.",
+  duration: 45,
+  location: 'Berlayer Creek'
+)
+file13 = URI.open("http://www.nparks.gov.sg/-/media/mgs/images/issue-34-vol-3-2017/wanderlust-bukit-chermin.ashx")
+labrador.photos.attach(io: file13, filename: "labrador2.jpg", content_type: "image/jpg")
+labrador.save
 
-# puts "Creating Lower Peirce Reservoir Park..."
-# lowerpeirce = Trail.create!(
-#   name: 'Lower Peirce Reservoir Park',
-#   distance: 0.9,
-#   difficulty: ["Easy", "Intermediate", "Difficult"].sample,
-#   description: "This series of boardwalks through the Central Catchment Nature Reserve brings you through one of Singapore's last remaining mature secondary forests and along the edge of Lower Peirce Reservoir.\n\nYou can find rubber trees and oil palms within the Reserve as the plot of land adjacent to it was formerly a rubber plantation. This area is not only known for its former rubber plantations but the existing Old Upper Thomson Road used to be Singapore’s first race track for racing cars.",
-#   duration: 50,
-#   location: 'Lower Peirce Trail - Casuarina Entrance'
-# )
-# file14 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/lower-peirce/p1030804.ashx")
-# lowerpeirce.photos.attach(io: file14, filename: "lowerpeirce1.jpg", content_type: "image/jpg")
-# file15 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/lower-peirce/p1030833.ashx")
-# lowerpeirce.photos.attach(io: file15, filename: "lowerpeirce2.jpg", content_type: "image/jpg")
-# lowerpeirce.save
+puts "Creating Lower Peirce Reservoir Park..."
+lowerpeirce = Trail.create!(
+  name: 'Lower Peirce Reservoir Park',
+  distance: 0.9,
+  difficulty: ["Easy", "Intermediate", "Difficult"].sample,
+  description: "This series of boardwalks through the Central Catchment Nature Reserve brings you through one of Singapore's last remaining mature secondary forests and along the edge of Lower Peirce Reservoir.\n\nYou can find rubber trees and oil palms within the Reserve as the plot of land adjacent to it was formerly a rubber plantation. This area is not only known for its former rubber plantations but the existing Old Upper Thomson Road used to be Singapore’s first race track for racing cars.",
+  duration: 50,
+  location: 'Lower Peirce Trail - Casuarina Entrance'
+)
+file14 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/lower-peirce/p1030804.ashx")
+lowerpeirce.photos.attach(io: file14, filename: "lowerpeirce1.jpg", content_type: "image/jpg")
+file15 = URI.open("https://www.nparks.gov.sg/-/media/nparks-real-content/gardens-parks-and-nature/parks-and-nature-reserve/lower-peirce/p1030833.ashx")
+lowerpeirce.photos.attach(io: file15, filename: "lowerpeirce2.jpg", content_type: "image/jpg")
+lowerpeirce.save
 
 # puts "Creating Tampines Eco Green..."
 # tampines = Trail.create!(
