@@ -20,6 +20,12 @@ class TrailsController < ApplicationController
                        .where("distance <= ?", distance_hash[:max])
     end
 
+    if params.dig(:search, :duration).present?
+      duration = params.dig(:search, :duration)
+      duration_hash = Trail::DURATION_MAP[params.dig(:search, :duration)]
+      @trails = @trails.where('duration >= ?', duration_hash[:min])
+                       .where("duration <= ?", duration_hash[:max])
+    end
 
       # end
       # @trails = @trails.where(distance: params("Trail::DISTANCE_MAP.values <", Trail::DISTANCE_MAP.keys)))
