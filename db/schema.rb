@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_132411) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_27_141607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_132411) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -69,6 +75,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_132411) do
     t.bigint "user_id"
     t.index ["trip_id"], name: "index_reviews_on_trip_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tags_on_category_id"
+    t.index ["review_id"], name: "index_tags_on_review_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "description", limit: 200, null: false
+    t.boolean "completed"
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_tasks_on_trip_id"
   end
 
   create_table "trails", force: :cascade do |t|
@@ -112,6 +136,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_132411) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "reviews", "trips"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tags", "categories"
+  add_foreign_key "tags", "reviews"
+  add_foreign_key "tasks", "trips"
   add_foreign_key "trips", "trails"
   add_foreign_key "trips", "users"
 end
