@@ -25,16 +25,16 @@
       </div>
       <div class="card-body d-flex justify-content-between">
         <p class="card-text"><i class="fa-solid fa-person-hiking"> </i> <%= trail.difficulty %></p>
-        <p class="card-text"><i class="fa-solid fa-map-pin"></i> <%= trail.distance %></p>
+        <p class="card-text"><i class="fa-solid fa-map-pin"></i> <%= trail.distance %>km</p>
         <p class="card-text"><i class="fa-regular fa-clock"></i></i>
         <% hour = (trail.duration / 60).to_i %>
         <% minutes = (trail.duration % 60).to_i %>
         <% if hour == 00 %>
-          <%= minutes %>m
+          <%= minutes %>min
         <% elsif minutes < 10 %>
-          <%= hour %>h 0<%= minutes %>m
+          <%= hour %>h 0<%= minutes %>min
         <% else %>
-          <%= hour %>h <%= minutes %>m
+          <%= hour %>h <%= minutes %>min
         <% end %>
         </p>
 
