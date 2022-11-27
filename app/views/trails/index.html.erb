@@ -5,18 +5,18 @@
 <%= render "shared/navbar" %>
 <% end %>
 
-<h1 id="scrollspycontent"> Find your next hike ...</h1>
-
-
 <%# search form %>
-<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a trail"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="search-bar d-flex pb-3">
+  <%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a trail"
+    %>
+
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 
 <%# <%= form_with url: trial_path, method: :get, do %>
@@ -88,13 +88,9 @@
   <%= link_to "Reset", root_path %>
 <% end %>
 
-<%# <%= form_tag(url: trails_path, method: :get) do %>
-    <%# <%= select_tag :distance, options_for_select(distance[range], { required: true, include_blank: false}) %>
-    <%# <%= submit_tag 'Filter' %>
-<%# <% end %>
 
 <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :check_boxes, include_hidden: false %>
   <%= f.submit "Search", class: "btn btn-primary" %>
   <%= link_to "Reset", root_path %>
 <% end %>
@@ -104,6 +100,8 @@
   <%= f.submit "Search", class: "btn btn-primary" %>
   <%= link_to "Reset", root_path %>
 <% end %>
+
+
 
 <%# <%= f.input :some_field, :collection => Model::HASH_NAME.sort.map {|k,v| [v,k]} %>
 <%# <div class="field">

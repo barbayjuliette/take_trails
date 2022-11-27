@@ -5,19 +5,26 @@ class TrailsController < ApplicationController
   def index
     @trails = Trail.all
 
+    if params[:query].present?
+      @trails = Trail.where(title: params[:query])
+    else
+      @trails = Trail.all
+    end
+
     if params.dig(:search, :difficulties)
       @trails = @trails.where(difficulty: params[:search][:difficulties])
     end
 
-    if params[:query].present?
-      @trails = @trails.search_by_name_description_location(params[:query])
-    end
-
     if params.dig(:search, :distance)
-      @trails = @trails.where('id', x).where("id < ?", y)
-      # @trails = @trails.where('id', x).where("id < ?", y)
-
+      if Trail::DISTANCE_MAP.keys[0]
+        @trails = @trails.where(id: 1)
+      end
     end
+
+      # end
+      # @trails = @trails.where(distance: params("Trail::DISTANCE_MAP.values <", Trail::DISTANCE_MAP.keys)))
+      # @trails = @trails.where('id', x).where("id < ?", y)
+      # @trails = @trails.where('id', x).where("id < ?", y)
 
 
     # DISTANCE_MAP =
