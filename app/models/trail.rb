@@ -4,8 +4,8 @@ class Trail < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   DISTANCE_MAP =
-    { '0 km to 3 km' => { min: 0, max: 3},
-      '3.1 km to 5 km' => { min: 3.1, max: 5 },
+    { '0 km to 2 km' => { min: 0, max: 2 },
+      '2 km to 5 km' => { min: 2, max: 5 },
       '6 km to 100 km' => {min: 6, max: 100 }
     }
 

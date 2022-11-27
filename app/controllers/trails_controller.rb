@@ -5,18 +5,12 @@ class TrailsController < ApplicationController
   def index
     @trails = Trail.all
 
-    if params[:query].present?
-      @trails = @trails.search_by_name_description_location(params[:query])
+    if params.dig(:search, :query).present?
+      @trails = @trails.search_by_name_description_location(params.dig(:search, :query))
     end
 
-    if params.dig(:search, :difficulties)
+    if params.dig(:search, :difficulties).present?
       @trails = @trails.where(difficulty: params[:search][:difficulties])
-    end
-
-    if params.dig(:search, :distance)
-      if Trail::DISTANCE_MAP.keys[0]
-        @trails = @trails.where(id: 1)
-      end
     end
 
       # end
