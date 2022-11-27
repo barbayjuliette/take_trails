@@ -115,7 +115,7 @@
     align-items: center;
 
     .user-login{
-      width:150px;
+      width:200px;
       margin-left:20px;
       display: flex;
       justify-content: center;
@@ -130,8 +130,12 @@
       -moz-transition:background-position .5s;
       transition:background-position .5s;
       color: white;
-    }
 
+
+    }
+    a {
+      text-decoration: none;
+    }
     .user-login:hover {
     background-position:0 -100%;
     color: black;

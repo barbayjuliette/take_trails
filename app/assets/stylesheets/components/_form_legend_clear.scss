@@ -60,6 +60,7 @@ legend ~ div.form-check:first-of-type {
 }
 
 .devise-label {
+
   width: 85%;
   height: 55px;
   margin: auto;
@@ -213,6 +214,43 @@ legend ~ div.form-check:first-of-type {
     margin: auto;
 }
 
-.form-input{
+.form-inputs{
   margin: auto;
+  .form-control {
+    background-color: #f3f6ef !important;
+    border:0px !important;
+  }
+}
+
+
+
+
+
+
+
+
+.userlogin {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  margin-bottom: 20px;
+  margin-top:0px;
+
+  .link {
+    margin-top:20px;
+    width:100%;
+  }
+}
+
+.log-in {
+  width: 100%;
+}
+
+.form-text {
+  width:85%;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom:30px;
 }
