@@ -28,20 +28,9 @@ class Trail < ApplicationRecord
   pg_search_scope :search_by_name_description_location,
     against: [ :name, :description, :location ],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 
-
-
-
-  # acts_as_taggable_on :distances
-  # acts_as_taggable_on :difficulties
-
-  # enum :distance_groups: {
-
-  # }
-
-  # $duration = ["320.0", "268.0", "385.0"]
   def rating
     total_rating = 0
     self.reviews.each do |review|
@@ -50,5 +39,3 @@ class Trail < ApplicationRecord
     total_rating.fdiv(self.reviews.count)
   end
 end
-
-# Trail::DIFFICULTIES

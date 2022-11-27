@@ -36,10 +36,11 @@ class TrailsController < ApplicationController
     if trip.save
       redirect_to trips_path, notice: "Trip created!"
     end
+  # GET /trips
   end
 
   def show
-    @trail = Trail.includes(:reviews).find(params[:id])
+    @trail = Trail.find(params[:id])
     @trip = Trip.new
     @bookmark = Bookmark.new
     # render locals: {trip: @trip}
