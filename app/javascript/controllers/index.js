@@ -18,3 +18,6 @@ application.register("insert-in-list", InsertInListController)
 
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
+
+import TasksController from "./tasks_controller"
+application.register("tasks", TasksController)

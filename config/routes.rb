@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: %i[index show]
   resources :bookmarks, only: %i[index destroy]
-  resources :tasks, only: %i[index show destroy]
+  resources :tasks, only: %i[index show destroy edit update]
 
+  post "tasks/:id/toggle", to: "tasks#toggle"
 end
