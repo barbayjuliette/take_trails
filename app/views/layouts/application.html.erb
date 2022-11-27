@@ -12,19 +12,17 @@
   </head>
 
   <body>
+    <%= render "shared/flashes" %>
 <div class="flex-wrapper">
   <div>
-    <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
-
     <%= yield %>
     <%= render 'shared/password' %>
   </div>
   <div>
     <%= render 'shared/footer' %>
-    <%= render 'shared/checklist' %>
-
   </div>
 </div>
+    <%= render 'shared/checklist' %>
   </body>
 </html>
