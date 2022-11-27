@@ -1,6 +1,6 @@
 
   <div class="nav-bar main-nav" data-spy="affix" data-offset-top="0">
-    <div class="nav-logo">Take Trails</div>
+    <div class="nav-logo"></div>
     <div class="nav-primary">
       <div class="p5"><a href="#">ABOUT US</a></div>
       <div class="p5"> <%= link_to "ALL TRAILS", trails_path%></div>
@@ -16,7 +16,7 @@
 
 
       <div class="nav-user">
-        <div><%= current_user.first_name %> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> </div>
+        <div class="avatar-text">Welcome, <%= current_user.first_name %>  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> </div>
         <div class="user-login"><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
       </div>
     <% else %>

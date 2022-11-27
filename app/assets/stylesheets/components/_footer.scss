@@ -1,7 +1,7 @@
 
 .flex-wrapper {
   display: flex;
-  min-height: 100vh;
+  min-height: 94vh;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -68,7 +68,7 @@ input:focus {
 
 .submit {
   /* Just a little styling to make it pretty */
-  border:0px solid blue;
+  border:0px;
   background:white;
   color:black;
 }
