@@ -1,0 +1,68 @@
+.footer {
+  background-color: $trailgreen;
+  height: 120px;
+  margin-top: 60px;
+  color: white;
+}
+
+.footer-container {
+
+  display: flex;
+  width:85%;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 700px;
+  margin-top: 30px;
+
+  h6 {
+    margin-bottom: 0px;
+  }
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-form {
+  /* This bit sets up the horizontal layout */
+  display:flex;
+  flex-direction:row;
+  border-radius: 5px !important;
+  border: 1px solid white !important;
+  background-color: white;
+  margin-left: 20px;
+}
+
+.input-footer {
+  /* Tell the input to use all the available space */
+  flex-grow:2;
+  padding-left: 10px;
+  /* And hide the input's outline, so the form looks like the outline */
+  width: 200px;
+  height: 40px;
+  border: 0px !important;
+
+}
+
+input:focus {
+  /* removing the input focus blue box. Put this on the form if you like. */
+  outline: none;
+}
+
+.submit {
+  /* Just a little styling to make it pretty */
+  border:0px solid blue;
+  background:white;
+  color:black;
+}
+
+.footer-logo {
+margin-top: 40px;
+}

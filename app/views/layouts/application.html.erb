@@ -14,8 +14,11 @@
   <body>
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
+    <%= render 'devise/sessions/login' %>
+    <%= render 'devise/registrations/signup' %>
     <%= yield %>
     <%= render 'shared/checklist' %>
+
 
   </body>
 </html>
