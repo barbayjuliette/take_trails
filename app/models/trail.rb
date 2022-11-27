@@ -5,8 +5,8 @@ class Trail < ApplicationRecord
 
   DISTANCE_MAP =
     { '0 km to 2 km' => { min: 0, max: 2 },
-      '2 km to 5 km' => { min: 2, max: 5 },
-      '6 km to 100 km' => {min: 6, max: 100 }
+      '2 km to 5 km' => { min: 2.1, max: 5 },
+      'More than 5km' => {min: 5.1, max: 100 }
     }
 
   DURATION_MAP =
