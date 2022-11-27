@@ -16,13 +16,14 @@
   <div>
     <%= render "shared/flashes" %>
     <%= render "shared/navbar" %>
-    <%= render 'devise/sessions/login' %>
-    <%= render 'devise/registrations/signup' %>
+
     <%= yield %>
+    <%= render 'shared/password' %>
   </div>
   <div>
     <%= render 'shared/footer' %>
     <%= render 'shared/checklist' %>
+
   </div>
 </div>
   </body>
