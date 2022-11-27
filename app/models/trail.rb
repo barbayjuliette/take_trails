@@ -1,8 +1,12 @@
 class Trail < ApplicationRecord
   has_many :trips
+
+  has_many :reviews, through: :trips
+
   has_many_attached :photos
   has_many :bookmarks, dependent: :destroy
   acts_as_favoritable
+
 
   validates :name, presence: true, uniqueness: true
   validates :difficulty, presence: true, inclusion: { in: %w(Easy Intermediate Difficult)}
@@ -17,4 +21,12 @@ class Trail < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+  def rating
+    total_rating = 0
+    self.reviews.each do |review|
+      total_rating += review.rating
+    end
+    total_rating.fdiv(self.reviews.count)
+  end
 end

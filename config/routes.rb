@@ -8,10 +8,23 @@ Rails.application.routes.draw do
 
   resources :trails, only: %i[index show] do
     resources :trips, only: :create
+
     member do
       post 'toggle_favorite', to: "trails#toggle_favorite"
     end
+
+    # collection do
+    #   get :mine
+    # end
+
   end
+
+   
+
+  resources :trips, only: %i[index show] do
+    resources :reviews, only: %i[create]
+  end
+
   resources :trips, only: %i[index show]
   get '/bookmarks', to: 'favorites#index', as: 'bookmarks'
 end
