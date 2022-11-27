@@ -1,0 +1,41 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+
+    <button type="button" class="close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="offcanvas-body">
+
+<div class="form-container">
+  <h2 class="text-center">Welcome back</h2>
+  <h6 class="login-text">Enter your login details below.</h6>
+</div>
+
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+  <div class="form-inputs form-floating">
+    <%= f.input :email,
+                required: false,
+                label: false,
+                autofocus: true,
+                placeholder: "Email",
+                input_html: { autocomplete: "email", class: "devise-label d-flex" }%>
+    <%= f.input :password,
+                required: false,
+                label: false,
+                placeholder: "Password",
+                input_html: { autocomplete: "current-password", class: "devise-label" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?%>
+
+    <%= f.button :submit, "SIGN IN ", class: "arrow-button arrow" %>
+
+  </div>
+
+
+<% end %>
+
+<div class="text-input-label devise-links">
+   <%= render "devise/shared/links" %>
+</div>
+
+  </div>
+</div>

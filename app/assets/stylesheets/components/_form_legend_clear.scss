@@ -29,23 +29,44 @@ legend ~ div.form-check:first-of-type {
   margin: auto;
 }
 
-@media only screen and (min-width: 481px) {
-  .text-input-label {
-    width: 80%;
-  }
- }
+// @media only screen and (min-width: 481px) {
+//   .text-input-label {
+//     width: 80%;
+//   }
+//  }
 
- @media only screen and (min-width: 640px) {
-  .text-input-label {
-    width: 50%;
-  }
- }
+//  @media only screen and (min-width: 640px) {
+//   .text-input-label {
+//     width: 50%;
+//   }
+//  }
 
- @media only screen and (min-width: 981px) {
-  .text-input-label {
-    width: 35%;
-  }
-  }
+//  @media only screen and (min-width: 981px) {
+//   .text-input-label {
+//     width: 35%;
+//   }
+//   }
+
+.offcanvas-header {
+  position:relative;
+}
+
+.offcanvas {
+  background-color: #fdfdfb;
+}
+.offcanvas-backdrop.show {
+  background-color: black;
+  opacity: .7;
+}
+
+.devise-label {
+  width: 85%;
+  height: 55px;
+  margin: auto;
+  border-radius: 0px;
+  letter-spacing: .1em;
+}
+
 
 .input-color {
   background-color: black;
@@ -63,26 +84,40 @@ legend ~ div.form-check:first-of-type {
   transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
 }
 
+.close {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: $trailyellow;
+  position: absolute;
+  top: 30px;
+  border: 0px !important;
+  right: 372px;
+
+  .fa-solid {
+    color: black;
+    font-size: 1.5em;
+  }
+}
+
 .login-text {
-  width: 35%;
   margin: auto;
   text-align: center;
   font-size: 15px;
-  font-family: 'Lekton', sans-serif;
   letter-spacing: .3px;
   line-height: 1.5em;
   font-weight: light;
   padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   color: $trailgreen;
 }
 
 .label-style{
   background-color:none !important;
+  width:300px;
+  margin: auto;
   height:60px;
   padding-left:0px;
-  border-bottom: 1px solid black !important;
-  font-family: 'Lekton', sans-serif;
   border-radius: 0px;
 }
 
@@ -98,17 +133,21 @@ legend ~ div.form-check:first-of-type {
 
 }
 
-.login-btn {
-  margin-top:10px;
+.arrow-button {
+  display: flex;
+  justify-content: center;
+  margin:auto;
+  margin-top:40px;
   background-color: $trailgreen;
-  width: 100%;
+  width:85%;
   height:60px;
-  border-radius: 5px;
+  border-radius: 10px;
   color:$trailyellow;
   transition: all .15s ease-out;
+  letter-spacing: .1em;
 }
 
-.login-btn:hover {
+.trail-btn:hover {
   background-color: $trailgreen;
   box-shadow: .1px .1px 5px rgb(192, 191, 191);
   transition: all .15s ease-out;
@@ -150,6 +189,12 @@ legend ~ div.form-check:first-of-type {
 }
 
 // get rid of default blue border when focus
+
+.form-control {
+  background-color: white !important;
+  border:1px solid #e2e0d8;
+}
+
 .form-control:focus{
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -163,29 +208,56 @@ legend ~ div.form-check:first-of-type {
   border:none;
 }
 
-.btn-accept {
-  background-color: #77DD77;
+  .form-check {
+    width: 85%;
+    margin: auto;
 }
 
-.btn-accept:hover {
-  background-color: #77DD77;
-  color:black;
+.form-input{
+  margin: auto;
 }
 
-.btn-reject {
-  background-color: #ff6961;
+
+
+
+
+.arrow-button > .arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #C2FFE9;
+  border-bottom: 1px solid #C2FFE9;
+  position: relative;
+  transform: rotate(-45deg);
+  margin: 0 6px;
+  transition: all .3s ease;
 }
 
-.btn-reject:hover {
-  background-color: #ff6961;
-  color:black;
+.arrow-button > .arrow::before {
+  display: block;
+  background-color: currentColor;
+  width: 3px;
+  transform-origin: bottom right;
+  height: 1px;
+  position: absolute;
+  opacity: 0;
+  bottom: calc(-1px / 2);
+  transform: rotate(45deg);
+  transition: all .3s ease;
+  content: "";
+  right: 0;
 }
 
-.btn-completed {
-  background-color: #61c0ff;
+.arrow-button:hover > .arrow {
+  transform: rotate(-45deg) translate(4px, 4px);
+  border-color: text-hover-color;
 }
 
-.btn-completed:hover {
-  background-color: #61c0ff;
-  color:black;
+.arrow-button:hover > .arrow::before {
+  opacity: 1;
+  width: 18px;
+}
+
+.arrow-button:hover {
+  background-color: #017A4F;
+  color: #fff;
 }
