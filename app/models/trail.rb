@@ -4,15 +4,15 @@ class Trail < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   DISTANCE_MAP =
-    { '0 km to 2 km' => { min: 0, max: 2 },
-      '2 km to 5 km' => { min: 2.1, max: 5 },
-      'More than 5km' => {min: 5.1, max: 100 }
+    { '≤ 2 km' => { min: 0, max: 2 },
+      '2 km to 5 km' => { min: 2, max: 5 },
+      '> 5km' => {min: 5.1, max: 100 }
     }
 
   DURATION_MAP =
-  { 'Less than 45 min' => { min: 0, max: 45 },
-    '45 mins to 90 mins' => { min: 46, max: 90 },
-    'More than 90 mins' => {min: 91, max: 500 }
+  { '≤ 45 min' => { min: 0, max: 45 },
+    '45 mins to 90 mins' => { min: 45, max: 90 },
+    '> 90 mins' => {min: 91, max: 500 }
   }
 
 
