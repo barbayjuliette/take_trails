@@ -7,11 +7,11 @@
 
 <%# forms %>
 <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%= f.input :query, label: "Search", :input_html => { :class => 'form-control' } %>
+  <%= f.input :query, label: "Search", :input_html => { :class => 'form-control', placeholder: "Find a trail" } %>
 
-  <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false %>
-  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false %>
-  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false %>
+  <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false, prompt: 'Select Difficulty Level' %>
+  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false, prompt: 'Select Distance' %>
+  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false, prompt: 'Select Duration' %>
   <%= f.submit "Search", class: "btn btn-primary" %>
   <%= link_to "Reset", root_path %>
 <% end %>
