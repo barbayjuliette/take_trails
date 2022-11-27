@@ -76,7 +76,7 @@ class TrailsController < ApplicationController
   end
 
   def show
-    @trail = Trail.find(params[:id])
+    @trail = Trail.includes(:reviews).find(params[:id])
     @trip = Trip.new
     @bookmark = Bookmark.new
     # render locals: {trip: @trip}

@@ -42,6 +42,13 @@ class Trail < ApplicationRecord
   # }
 
   # $duration = ["320.0", "268.0", "385.0"]
+  def rating
+    total_rating = 0
+    self.reviews.each do |review|
+      total_rating += review.rating
+    end
+    total_rating.fdiv(self.reviews.count)
+  end
 end
 
 # Trail::DIFFICULTIES
