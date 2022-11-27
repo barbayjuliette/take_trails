@@ -9,21 +9,22 @@
 <div class="simpleform-container mt-4">
 <form class="row gy-2 gx-3 align-items-center justify-content-center">
   <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-    <div class="col-lg-4">
+    <div class="col-lg-2">
       <%= f.input :query, label: "Search", :input_html => { :class => 'form-control', placeholder: "Find a trail" } %>
     </div>
-    <div class="col-lg-1">
+    <div class="col-lg-2">
       <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1">
+    <div class="col-lg-2">
       <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1">
+    <div class="col-lg-2">
       <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false, prompt: 'All' %>
     </div>
-    <div class="col-lg-1">
-      <%= f.submit "Search", class: "btn btn-primary" %>
-      <%= link_to "Reset", root_path %>
+    <div class="col-lg-2">
+      <%= f.submit "Search", class: "btn search-btn" %>
+      <%# <%= link_to "Reset", root_path %>
+      <%= link_to "Clear filters", trails_path, class: "btn search-btn" %>
     </div>
   <% end %>
 </div>

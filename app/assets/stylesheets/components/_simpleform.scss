@@ -1,0 +1,17 @@
+#search-btn {
+  width: 150px;
+  margin-top:10px;
+  background-color: $trailgreen;
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  color: $trailyellow;
+  font-size: 0.9rem;
+}
+
+#search-btn:hover {
+  background-color: $trailgreen;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  color: $trailyellow;
+  opacity: .8;
+}

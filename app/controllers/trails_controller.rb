@@ -46,4 +46,5 @@ class TrailsController < ApplicationController
     # render locals: {trip: @trip}
     # render locals: {bookmark: @bookmark}
   end
+
 end
