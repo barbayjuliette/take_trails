@@ -11,7 +11,7 @@
 
   <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false %>
   <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false %>
-  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false %>
   <%= f.submit "Search", class: "btn btn-primary" %>
   <%= link_to "Reset", root_path %>
 <% end %>
