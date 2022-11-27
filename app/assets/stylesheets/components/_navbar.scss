@@ -73,6 +73,28 @@
     }
   }
 
+  .p5-sign{
+    font-size: 13px;
+      align-items: center;
+      text-decoration: none;
+      letter-spacing: .1em;
+      background-image: linear-gradient($trailgreen,$trailgreen);
+      background-size: 0% 0.1em;
+      background-position-y: 100%;
+      background-position-x: 50%;
+      background-repeat: no-repeat;
+      transition: background-size 0.2s ease-in-out;
+      text-decoration: none;
+  }
+  .p5-sign:hover,
+  .p5-sign:focus,
+  .p5-sign:active {
+      background-size: 100% 0.1em;
+      color: $trailgreen;
+    }
+
+
+
   .nav-logo {
     display: flex;
     height:50px;
