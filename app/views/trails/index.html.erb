@@ -5,7 +5,16 @@
 <%= render "shared/navbar" %>
 <% end %>
 
-<%# search form %>
+<%# forms %>
+<%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
+  <%= f.input :query, label: "Search", :input_html => { :class => 'form-control' } %>
+
+  <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select,  include_hidden: false %>
+  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :check_boxes,  include_hidden: false %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= link_to "Reset", root_path %>
+<% end %>
 
 
 
@@ -86,15 +95,6 @@
   <%# <%= f.submit "Search", class: "btn btn-primary" %>
   <%# <%= link_to "Reset", root_path %>
 <%# <% end %>
-
-<%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%= f.input :query, label: "Search", :input_html => { :class => 'form-control' } %>
-  <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :check_boxes,  include_hidden: false %>
-  <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :check_boxes,  include_hidden: false %>
-  <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :check_boxes,  include_hidden: false %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-  <%= link_to "Reset", root_path %>
-<% end %>
 
 <%# <%= f.input :some_field, :collection => Model::HASH_NAME.sort.map {|k,v| [v,k]} %>
 <%# <div class="field">
