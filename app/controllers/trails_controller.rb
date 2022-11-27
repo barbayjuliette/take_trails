@@ -12,7 +12,6 @@ class TrailsController < ApplicationController
     if params.dig(:search, :difficulties).present?
       @trails = @trails.where(difficulty: params[:search][:difficulties])
     end
-
       # end
       # @trails = @trails.where(distance: params("Trail::DISTANCE_MAP.values <", Trail::DISTANCE_MAP.keys)))
       # @trails = @trails.where('id', x).where("id < ?", y)
