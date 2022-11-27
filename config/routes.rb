@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   end
   resources :trips, only: %i[index show]
   get '/bookmarks', to: 'favorites#index', as: 'bookmarks'
-
 end
