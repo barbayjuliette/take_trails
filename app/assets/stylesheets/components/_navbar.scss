@@ -96,7 +96,7 @@
 
 
   .nav-logo {
-    background-image: url("https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669534225/taketrailsg_futfhs.svg");
+    background-image: url("https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png");
     background-repeat: no-repeat;
     background-size: 140px;
     background-position: center;
@@ -125,7 +125,7 @@
       text-decoration: none;
       letter-spacing: .1em;
       background-size:100% 200%;
-      background-image:linear-gradient(to bottom, $trailgreen 50%, white 50%);
+      background-image:linear-gradient(to bottom, $trailgreen 50%, $trailyellow 50%);
       -webkit-transition:background-position .5s;
       -moz-transition:background-position .5s;
       transition:background-position .5s;
