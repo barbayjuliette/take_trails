@@ -17,17 +17,44 @@
 @import "components/review";
 @import "pages/trail_show";
 @import "pages/index";
+
+@import "components/review";
+@import "components/checklist";
+@import "components/footer";
+@import "components/password";
+
 @import "pages/trip_index";
 @import "components/simpleform";
+@import "pages/trip_show";
+
 
 
 @import "star-rating.js/dist/star-rating.css";
+@import 'components/searchbtns';
 @import 'tom-select/src/scss/tom-select.scss';
 
 // Our font
 //@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Josefin+Sans:wght@600&family=Jost:wght@600&family=Lexend:wght@100;200;300;400;500;600;700&family=Roboto+Flex:wght@300&family=Source+Code+Pro&display=swap');
 
 // Variables
+
+
+html {
+  scroll-behavior: auto !important;
+}
+
+
+
+  body {
+    padding-top: 50px;
+
+  }
+
+  @media (max-width: 979px) {
+    body {
+      padding-top: 0px;
+    }
+  }
 
 a {
   color: black;

@@ -4,40 +4,39 @@
   <h2 class="text-center">Make an account</h2>
   <h6 class="login-text">Create account to plan your trail</h6>
 </div>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs text-input-label">
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                label: false,
-                placeholder: "FIRST NAME*",
-                input_html: { autocomplete: "first-name", class: "border-0 label-style"} %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                label: false,
-                placeholder: "LAST NAME*",
-                input_html: { autocomplete: "last-name", class: "border-0 label-style" } %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: false,
-                placeholder: "EMAIL*",
-                input_html: { autocomplete: "email", class: "border-0 label-style" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                label: false,
-                placeholder: "PASSWORD*",
-                input_html: { autocomplete: "new-password", class: "border-0 label-style" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                label: false,
-                placeholder: "PASSWORD*",
-                input_html: { autocomplete: "new-password", class: "border-0 label-style" } %>
-  <div class="form-actions">
-    <%= f.button :submit, "Create account", class: "login-btn" %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+      <div class="form-inputs form-floating">
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "First name*",
+                    input_html: { autocomplete: "first-name", class: "devise-label d-flex"} %>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "Last name*",
+                    input_html: { autocomplete: "last-name", class: "devise-label" } %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "Email*",
+                    input_html: { autocomplete: "email", class: "devise-label" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    label: false,
+                    placeholder: "Password*",
+                    input_html: { autocomplete: "new-password", class: "devise-label" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    label: false,
+                    placeholder: "Confirm password*",
+                    input_html: { autocomplete: "new-password", class: "devise-label" } %>
+
+        <%= f.button :submit, "CREATE ACCOUNT ", class: "trail-btn" %>
   </div>
   </div>
 <% end %>

@@ -11,13 +11,14 @@ $font-serif      : 'Playfair Display', serif;
 }
 
 .hero {
+  scroll-behavior: smooth !important;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
   // needed to prevent janky scrolling in Safari
   backface-visibility: hidden;
   //100% height of the viewport
-	height: 100vh;
+	height: 95vh;
 	overflow: hidden;
 	position: relative;
 	width: 100%;
@@ -183,4 +184,13 @@ $font-serif      : 'Playfair Display', serif;
 
 .delay-800 {
   animation-delay: 0.8s;
+}
+
+#trails {
+  position: relative;
+}
+
+
+ .smooth-scroll {
+  scroll-behavior: smooth !important;
 }
