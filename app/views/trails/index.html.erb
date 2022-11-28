@@ -1,14 +1,32 @@
-    <% if current_user  %>
-      <%= render "shared/navbar2" %>
-    <% else  %>
-      <%= render "shared/navbar" %>
-    <% end %>
+
+
+
+ <% if user_signed_in? %>
+  <% else %>
+<%# header image %>
+<nav data-spy="scroll" data-target="#jump" data-offset="50">
+  <section class="hero image-as-background container-fluid" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
+    <div class="hero-container">
+      <div class="hero-title animate fadeInLeft delay-600 d-flex">
+        Find a new adventure
+      </div>
+      <div class="d-flex justify-content-center" id="jump">
+        <a href="#trails" class="hero-button animate fadeInLeft delay-800" title="Click to see more">EXPLORE</a>
+      </div>
+    </div>
+  </section>
+</nav>
+<% end %>
+
+
+<div id="trails">
 
 
 <h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
 <%# search form %>
 <div class="search-bar d-flex mb-4 justify-content-center">
 <%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+
 
   <%= text_field_tag :query,
     params[:query],
@@ -20,8 +38,11 @@
   <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
 <% end %>
 
-</div>
+
 <%= render 'shared/cards' %>
+</div>
+
+
 
 
 <%# <%= form_with url: trial_path, method: :get, do %>

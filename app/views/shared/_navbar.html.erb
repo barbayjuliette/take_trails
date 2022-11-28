@@ -1,55 +1,35 @@
-<section class="hero image-as-background" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
-  <div class="hero-container">
 
-    <div class="hero-title animate fadeInLeft delay-600 d-flex">Find a new adventure</div>
-    <div class="d-flex justify-content-center"><a href="#scrollspycontent" class="hero-button animate fadeInLeft delay-800" title="Click to see more">EXPLORE</a></div>
-  </div>
-</section>
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
-  <div class="container-fluid">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "All Trails", trails_path, class: "nav-link" %>
-      </li>
+  <div class="nav-bar main-nav">
+    <%= link_to "/trails#trails" do %><div class="nav-logo"></div><% end %>
+    <div class="nav-primary">
+      <div class="p5"><a href="#">ABOUT US</a></div>
+      <div class="p5"> <%= link_to "ALL TRAILS", "/trails#trails"%></div>
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "My Trips", trips_path, class: "nav-link" %>
-        </li>
+      <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path%></div>
+      <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
+      <% else %>
       <% end %>
-    </ul>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item d-flex align-items-center p-2">
-            <%= current_user.first_name %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
     </div>
+
+    <%# user-related links %>
+    <% if user_signed_in? %>
+
+
+      <div class="nav-user">
+        <div class="avatar-text">Welcome, <%= current_user.first_name %>  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> </div>
+        <div class="user-login"><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
+      </div>
+    <% else %>
+
+
+
+    <div class="nav-user">
+      <%# <div class="p5-sign" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvassignup" aria-controls="offcanvasRight">
+      <span class="">SIGN UP</span></div> %>
+      <%= link_to new_user_session_path do %>
+      <div class="user-login"><i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP</div>
+      <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
-</div>
