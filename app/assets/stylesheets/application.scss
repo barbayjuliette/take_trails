@@ -13,9 +13,10 @@
 @import "components/buttons";
 @import "components/tags";
 @import "components/image";
+@import "components/cards";
+@import "components/review";
 @import "pages/trail_show";
 @import "pages/index";
-@import "components/review";
 @import "pages/trip_index";
 
 
@@ -32,9 +33,13 @@ a {
 }
 
 .fa-star {
-  color: #fdc500 !important;
+  color: $trailyellow !important;
+}
+
+.fa-bookmark {
+  color: $trailyellow;
 }
 
 .fa-star-half {
-  color: #fdc500 !important;
+  color: $trailyellow !important;
 }
