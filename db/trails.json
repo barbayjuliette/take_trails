@@ -110,12 +110,4 @@
   "duration": 70,
   "location": "Rail Corridor (Rifle Range)",
   "photos": ["https://www.littledayout.com/wp-content/uploads/07-rail-corridor.jpg", "http://api.stateofbuildings.sg/uploads/8bda3038-0e64-4797-990e-632799a80136.jpg"]
-}, {
-  "name": "Clementi Forest and Jurong Railway Loop",
-  "distance": 2.1,
-  "difficulty": "Easy",
-  "description": "Clementi Forest, a hidden gem that's about 85 hectares of wilderness at the heart of residential areas in the West. The hiking trail is as wild as it gets in Singapore, with overgrown trees towering over you and muddy paths that will definitely get your hiking shoes mucky.\n\nClementi Forest isn't as popular as places like Bukit Timah Nature Reserve or Macritchie. But it is just as, if not more significant. According to the Nature Society Singapore (NSS), it is the most important and largest unprotected patch of forest/woodland in the Green Corridor.",
-  "duration": 35,
-  "location": "Clementi Forest",
-  "photos": ["https://sgmagazine.com/sites/default/files/u143735/clementi_forest_4.jpg"]
 }]
