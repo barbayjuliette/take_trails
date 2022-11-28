@@ -121,3 +121,35 @@
 
   </div>
 </div>
+
+<%# modal %>
+<div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable rounded-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2><strong data-insert-in-list-target="count"><%= pluralize(@trip.trail.reviews.count, 'review') %></strong></h2>
+        <% @trip.trail.reviews.each do |review| %>
+          <div id="show-pg-review-card" class="review">
+            <div class="user-info">
+              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+              <div>
+                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
+              </div>
+              <div class="rating">
+                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+              </div>
+            </div>
+            <div class="reviews review-size">
+              <%= review.comment %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
