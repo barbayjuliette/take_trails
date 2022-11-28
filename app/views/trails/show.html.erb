@@ -49,21 +49,31 @@
             <i class="fa-solid fa-chevron-left"></i>
           </div>
         <% end %>
+
+        <%# Bookmark icon %>
         <span class="text-decoration-none text-dark">
           <div class="d-flex justify-content-center align-items-center mx-2">
-            <%= simple_form_for [@trail, @bookmark],  html: { method: :post } do |f| %>
-              <%= f.button :button do %>
-                <i id="bookmark" class="fa-regular fa-bookmark"></i>
+            <%= link_to toggle_favorite_trail_path(@trail), remote: true, data:{turbo_method: :post} do %>
+              <% if user_signed_in? %>
+                <% if current_user.favorited?(@trail) %>
+                  <i class="fa-regular fa-bookmark fw-bold bookmark-show"></i>
+                <% else %>
+                  <i class="fa-regular fa-bookmark bookmark-show"></i>
+                <% end %>
+              <% else %>
+                <i class="fa-regular fa-bookmark bookmark-show"></i>
               <% end %>
             <% end %>
           </div>
         </span>
+
         <a class="text-decoration-none text-dark" href="#">
           <div class="d-flex justify-content-center align-items-center mx-2">
             <i id="friends" class="fa-solid fa-users"></i>
           </div>
         </a>
       </div>
+
       <%# create trip %>
       <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
         <button id="create-trip-btn" class="btn mb-3" data-action="click->display-form#display">Create Trip</button>
@@ -77,10 +87,11 @@
                 <% end %>
             </ul>
           <% end %>
-          <%= f.button :submit, class: "btn btn-primary mt-2" %>
+          <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
         <% end %>
       </div>
     </div>
+
     <%# main body %>
     <div class="col-12 col-lg-9">
       <%# trail name %>
@@ -178,7 +189,7 @@
       <h3 class="mb-3"><strong>Getting There</strong></h3>
     </div>
     <div class="col-12 col-lg-9">
-      <a id="map_directions"><iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+      <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
     </div>
   </div>
 </div>
