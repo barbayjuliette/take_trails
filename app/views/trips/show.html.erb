@@ -1,14 +1,19 @@
-<table>
-  <% @todos.each do |todo| %>
-    <tr data-controller="todo"
-          data-todo-update-url="<%= todo_path(todo) %>">
-      <td>
-        <input type="checkbox"
-                    data-action="todo#toggle"
-                    data-target="todo.completed"
-                    <% if todo.completed %> checked <% end %> >
-        <%= todo.title %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<% if notice.present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+    <%= notice %>
+  </p>
+<% end %>
+
+<h1 class="font-bold text-2xl">Task Manager</h1>
+
+<div class="mt-4">
+  <%= render "tasks/form", task: @task %>
+</div>
+
+<div id="tasks">
+  <h1 class="font-bold text-lg mb-7">Tasks</h1>
+
+  <div class="px-5" data-controller="tasks">
+    <%= render @trip.tasks %>
+  </div>
+</div>

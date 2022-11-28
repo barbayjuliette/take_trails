@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @tasks = Task.all
+    @task = Task.new
   end
 
   def create
@@ -11,11 +12,10 @@ class TasksController < ApplicationController
     @task.trip = @trip
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url}
-        format.json
+        format.turbo_stream
+        format.html { redirect_to tasks_url, notice: "Task was successfully created" }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json
       end
     end
   end
@@ -33,13 +33,12 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_url }
-        format.json
+        format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json
       end
     end
   end
@@ -48,6 +47,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     redirect_to tasks_url
+  end
+
+  def toggle
+    @task = Task.find(params[:id])
+    @task.update(completed: params[:completed])
+
+    render json: { message: "Success" }
   end
 
   private

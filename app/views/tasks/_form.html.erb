@@ -1,10 +1,6 @@
+<%= simple_form_for [@trip, @task] do |f| %>
 
-<%= simple_form_for([@trip, @task],
-  data: {
-    tasks_target: "form",
-    action: "submit->tasks#send"
-  }) do |f| %>
-    <%= f.input :description,
-                placeholder: "Add new task" %>
-    <%= f.submit "Add" %>
+    <%= f.input :description %>
+     <%= f.button :submit, "SUBMIT REVIEW", class: "login-btn" %>
+
 <% end %>

@@ -1,26 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["items", "form"]
-  connect() {
-    console.log(this.element)
-    console.log(this.itemsTarget)
-    console.log(this.formTarget)
-    }
-
-    send(event) {
-      event.preventDefault()
-      // console.log('testing')
-
-      fetch(this.formTarget.action, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(this.formTarget)
-      })
-        .then(response => response.json())
-        .then((data) => {
-          console.log(data)
-        })
+    connect() {
+        console.log(this.element)
     }
 
     toggle(e) {
@@ -38,9 +20,9 @@ export default class extends Controller {
             },
             body: JSON.stringify({ completed: e.target.checked }) // body data type must match "Content-Type" header
         })
-          .then(response => response.json())
-          .then(data => {
-             alert(data.message)
-           })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message)
+            })
     }
 }
