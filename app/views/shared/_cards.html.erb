@@ -1,4 +1,8 @@
 <div class="cards">
+  <% if @trails.empty? %>
+    <h1><div class="searchmsg"><%= empty_message %></div></h1>
+  <% end %>
+
   <% @trails.each do |trail| %>
 
   <div class="card-wrapper">

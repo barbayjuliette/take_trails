@@ -5,36 +5,8 @@
 <%= render "shared/navbar" %>
 <% end %>
 
-<div class="simpleform-container mt-4">
-<form class="row gy-2 gx-3 align-items-center justify-content-center">
-
-  <%= form_for :search, url: trails_path, method: "GET" do |f| %>
-    <div class="col-lg-2">
-      <%= f.label :search %>
-      <%= f.text_field :query, :input_html => { :class => 'form-control' }, placeholder: "Find a trail" %>
-    </div>
-    <div class="col-lg-2">
-      <%= f.label :distance %>
-      <%= f.select :distance, Trail::DISTANCE_MAP.keys,
-        { disabled: '1', selected: '1' } %>
-    </div>
-    <div class="col-lg-2">
-      <%= f.label :duration %>
-      <%= f.select :duration, Trail::DURATION_MAP.keys, placeholder: 'All' %>
-    </div>
-    <div class="col-lg-1">
-      <%= f.submit "Search", class: "btn searchbtn" %>
-      <%# <%= link_to "Reset", root_path %>
-    </div>
-    <div class="col-lg-1">
-      <%= link_to "Clear filters", trails_path, class: "btn searchbtn text" %>
-    </div>
-  <% end %>
-</div>
-
-
 <%# forms %>
-<div class="simpleform-container mt-4">
+<div class="simpleform-container mt-4 style="display:none;">
 <form class="row gy-2 gx-3 align-items-center justify-content-center">
 
   <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
@@ -61,4 +33,5 @@
 </div>
 
 <h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
-<%= render 'shared/cards' %>
+
+<%= render 'shared/cards', empty_message: "No trails found!" %>
