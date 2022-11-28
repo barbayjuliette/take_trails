@@ -14,16 +14,30 @@
   background-color: #568B57;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 5px;
+
+  .fa-solid {
+    font-size: 1.8em !important;
+    margin-left: 9px;
+    text-align:center;
+    padding-top: 5px
+  }
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  width: 100%;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  position: absolute;
+  padding: 0px;
   text-decoration: none;
   font-size: 25px;
-  color: white;
+  color: black;
   display: block;
   transition: 0.3s;
+
 }
 
 .sidenav a:hover {
@@ -32,10 +46,11 @@
 
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
+  font-size: 32px;
   margin-left: 50px;
+  position: absolute;
+  top: 70px;
+  right: 280px;
 }
 
 #main {
@@ -67,17 +82,17 @@
 
 
 /* dashed border */
-background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669443056/borderbottom_t2ynhv.svg');
-  background-size: 80%;
-  background-repeat: no-repeat;
-  background-position: bottom center, 0%, 50%;
+// background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669443056/borderbottom_t2ynhv.svg');
+//   background-size: 80%;
+//   background-repeat: no-repeat;
+//   background-position: bottom center, 50%, 50%;
 }
 
 .top-border {
   background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669442879/border_1_vi8ecb.svg');
   background-size: 80%;
   background-repeat: no-repeat;
-  background-position: top center, 0%, 50%;
+  background-position: top center, 40%, 50%;
 
 }
 
@@ -106,9 +121,8 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
   margin-top:10px !important;
   margin-bottom: 30px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 120%;
-  text-transform: uppercase;
   letter-spacing: .06em;
   padding: 16px 0;
   text-align: left;
@@ -182,8 +196,8 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
 }
 
 .form-check-input:checked {
-  background-color: $trailgreen !important;
-  border-color: $trailgreen !important;
+  background-color: #568B57 !important;
+  border-color: #568B57 !important;
 }
 
 .form-check-input:checked {
@@ -198,9 +212,9 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
 
 
   .checklist-forms {
-    width:85% !important;
+    width:90% !important;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 30px;
     align-items: center;
   }
@@ -219,10 +233,22 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
     padding-right: 10px !important;
     height: 50px;
     box-sizing: border-box;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-color: #568B57;
+
+    .form-control:focus {
+      border-color: #568B57 !important;
+    }
+
+  }
+
+  .custom-add-input::placeholder {
+    opacity: .5;
   }
 
   .custom-add-button {
+    background-color: white !important;
+    font-size: 14px;
     display: flex;
     height: 30px;
     width: 30px;
@@ -230,4 +256,5 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
     line-height: 1 !important;
     z-index: 4;
     border: none;
+    padding: 0px;
   }
