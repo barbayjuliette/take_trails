@@ -1,109 +1,155 @@
 <%= render "shared/navbar2" %>
 
-<div class="container mb-3 pt-3">
+<div class="d-flex">
+  <%# map (left column) %>
+  <div id="trip-show-map-container">
+    <img class="h-100" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
+  </div>
+  <%# right column %>
+  <div class="right-column py-3 px-4">
+    <%# info bar %>
+    <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
+      <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y') %></div>
+      <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
+        <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
+        30° / 26° C
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">XL</div>
+        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">XF</div>
+        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">RJ</div>
+        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">JB</div>
+        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
+    </div>
 
+    <%# image carousel %>
+    <div class="w-auto mb-3">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators mb-0">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <% if @trip.trail.photos.size > 1 %>
+            <% (@trip.trail.photos.size - 1).times do |i| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i + 1 %>" aria-label="Slide <%= i + 2 %>"></button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @trip.trail.photos.first.key, class: "d-block w-100", id: :trip_trail_img %>
+          </div>
+          <% @trip.trail.photos[1..].each do |photo| %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class: "d-block w-100", id: :trip_trail_img %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
 
-  <div class="d-flex align-items-center">
-    <%= link_to trails_path, class: "text-decoration-none text-dark mx-2" do %>
-      <div class="custom-btn-circle border border-2 border-dark d-flex justify-content-center align-items-center">
-        <i class="fa-solid fa-chevron-left"></i>
+    <div class="border-bottom divider mb-3">
+      <h1><strong><%= @trip.trail.name %></strong></h1>
+      <%# basic trail info %>
+      <div class="mb-2">
+        <span class="me-1 show-pg-font-size"><i class="fa-solid fa-location-pin"></i> <a href="#map_directions"><%= @trip.trail.location %></a></span>
       </div>
-    <% end %>
-    <a class="text-decoration-none text-dark" href="#">
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <i id="bookmark" class="fa-regular fa-bookmark"></i>
+      <div class="d-flex mb-3">
+        <span class="me-5 show-pg-font-size">
+          <i class="fa-regular fa-clock me-1"></i>
+          <% hour = (@trip.trail.duration / 60).to_i %>
+          <% minutes = (@trip.trail.duration % 60).to_i %>
+          <% if minutes == 0 %>
+            <%= pluralize(hour, "hour") %>
+          <% elsif hour == 0 %>
+            <%= pluralize(minutes, "minute") %>
+          <% elsif minutes < 10 %>
+            <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
+          <% else %>
+            <%= pluralize(hour, "hour") %> <%= minutes %> minutes
+          <% end %>
+        </span>
+        <span class="me-5 show-pg-font-size"><i class="fa-solid fa-arrows-left-right me-1"></i> <%= @trip.trail.distance %> km</span>
+        <span class="show-pg-font-size"><i class="fa-solid fa-person-hiking me-1"></i> <%= @trip.trail.difficulty %></span>
       </div>
-    </a>
-    <a class="text-decoration-none text-dark" href="#">
-      <div class="d-flex justify-content-center align-items-center mx-2">
-        <i id="friends" class="fa-solid fa-users"></i>
+      <%# description %>
+      <p style="white-space: pre-line;" class="trip-pg-font-size"><%= @trip.trail.description %></p>
+    </div>
+
+    <%# ratings & reviews %>
+    <div class="border-bottom divider mb-3">
+      <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
+      <div class="d-flex align-items-center mb-3">
+        <% if @trip.trail.reviews.empty? %>
+          <p class="trip-pg-font-size mb-0">No reviews for this trail yet.</p>
+        <% else %>
+          <div class="d-flex me-2">
+            <% @trip.trail.rating.floor.times do %>
+              <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
+            <% end %>
+            <% if (@trip.trail.rating - @trip.trail.rating.floor) >= 0.3 && (@trip.trail.rating - @trip.trail.rating.floor) < 0.8 %>
+              <i style="color: yellow" class="fa-solid fa-star-half me-1 trip-pg-star-size"></i>
+            <% elsif (@trip.trail.rating - @trip.trail.rating.floor) >= 0.8 %>
+              <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
+            <% end %>
+          </div>
+          <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#allReviews">
+            <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
+          </a>
+        <% end %>
       </div>
-    </a>
+      <%# button to trigger modal %>
+      <% if @trip.date < Time.now %>
+        <button type="button" class="btn text-muted text-decoration-underline px-0 mb-2" data-bs-toggle="modal" data-bs-target="#leavereview">
+          Leave a review
+        </button>
+      <% end %>
+      <%= render "shared/leavereview" %>
+    </div>
+
+    <h3 class="mb-3"><strong>Getting There</strong></h3>
+    <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+
   </div>
 </div>
 
-<section class="container mb-4">
-  <div class="row mb-4">
-    <div class="col-12 col-lg-6">
-      <img class="img-fluid custom-img-rounded mb-3" src="https://www.roverista.com/img/article/27_1.jpg" alt="">
-      <p><%= @trip.trail.description %></p>
-    </div>
-
-    <div class="col-12 col-lg-6 py-2">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-10 flex-column">
-          <div class="mb-4">
-            <h3 class="mb-3"><strong>Trail Information</strong></h3>
-            <div class="row">
-              <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-location-pin mb-2"></i> <%= @trip.trail.location %></span>
-                <span><i class="fa-regular fa-clock"></i>
-                  <% hour = (@trip.trail.duration / 60).to_i %>
-                  <% minutes = (@trip.trail.duration % 60).to_i %>
-                  <% if minutes == 0 %>
-                    <%= pluralize(hour, "hour") %>
-                  <% elsif minutes < 10 %>
-                    <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
-                  <% else %>
-                    <%= pluralize(hour, "hour") %> <%= minutes %> minutes
-                  <% end %>
-                </span>
-              </div>
-              <div class="col-12 col-md-6 d-flex flex-column">
-                <span><i class="fa-solid fa-arrows-left-right"></i> <%= @trip.trail.distance %> km</span>
-                <span><i class="fa-solid fa-person-hiking"></i> <%= @trip.trail.difficulty %></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <h3 class="mb-3"><strong>What You Will Need</strong></h3>
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Sunscreen</p>
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Water Bottle</p>
-              </div>
-              <div class="col-12 col-md-6">
-                <p class="mb-0"><i class="fa-regular fa-square"></i> Mosquito Repellent</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
-            <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#leavereview">
-Leave a review
-</button>
-            <div class="d-flex align-items-center mb-3">
-              <div class="d-flex me-2">
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-              </div>
-              <!-- Button trigger modal -->
-<button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  4.8 (<span id="main_review_count"><%= @trip.trail.reviews.count %> reviews</span>)
-</button>
-              <%# <a class="text-muted text-decoration-underline" href="#"> 4.8 (32 reviews)</a> %>
-            </div>
-            <div class="d-flex flex-wrap">
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Beware Mosquitoes</span>
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Muddy Paths</span>
-              <span class="tag bg-info rounded-pill px-2 py-1 me-2 mb-2">Great Views</span>
-            </div>
-          </div>
-        </div>
+<%# modal %>
+<div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable rounded-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
+      <div class="modal-body">
+        <h2><strong data-insert-in-list-target="count"><%= pluralize(@trip.trail.reviews.count, 'review') %></strong></h2>
+        <% @trip.trail.reviews.each do |review| %>
+          <div id="show-pg-review-card" class="review">
+            <div class="user-info">
+              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+              <div>
+                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
+              </div>
+              <div class="rating">
+                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+              </div>
+            </div>
+            <div class="reviews review-size">
+              <%= review.comment %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="row px-2">
-    <img class="img-fluid custom-img-rounded px-0" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
-  </div>
-
-</section>
-<%# <%= render "shared/review" %>
-<%= render "shared/leavereview" %>
+</div>
