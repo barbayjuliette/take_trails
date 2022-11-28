@@ -25,12 +25,13 @@ class TrailsController < ApplicationController
       duration_hash = Trail::DURATION_MAP[params.dig(:search, :duration)]
       @trails = @trails.where('duration >= ?', duration_hash[:min])
                        .where("duration <= ?", duration_hash[:max])
-    # search bar query
-    if params[:query].present?
-      @trails = Trail.search_by_name_description_location(params[:query])
-    else
-      @trails = Trail.all
     end
+    # search bar query
+  #   if params[:query].present?
+  #     @trails = Trail.search_by_name_description_location(params[:query])
+  #   else
+  #     @trails = Trail.all
+  #   end
   end
 
 

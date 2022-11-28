@@ -2,6 +2,7 @@ class Trail < ApplicationRecord
   has_many :trips
   has_many_attached :photos
   has_many :bookmarks, dependent: :destroy
+  has_many :reviews, through: :trips
   acts_as_favoritable
 
   DISTANCE_MAP =
