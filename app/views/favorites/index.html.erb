@@ -1,3 +1,6 @@
 
 <h1 class="margin-title-lg"> My Bookmarks </h1>
+<% if @trails = [] %>
+<p class="no-bookmarks"> You don't have any bookmarks yet.</p>
+<% end %>
 <%= render 'shared/cards' %>

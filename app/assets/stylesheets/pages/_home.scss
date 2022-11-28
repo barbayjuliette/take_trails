@@ -19,6 +19,13 @@
 .margin-title-lg {
   padding-bottom: 30px;
   padding-top: 30px;
+  // margin-top: 30px;
   margin-left: 200px;
   color: $traillightgreen;
+}
+
+.no-bookmarks {
+  font-size: $p-font-size;
+  color: $trailbrown;
+  margin-left: 200px;
 }
