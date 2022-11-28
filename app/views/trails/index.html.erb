@@ -1,39 +1,11 @@
 
-<% if current_user  %>
-<%= render "shared/navbar2" %>
-<% else  %>
-<%= render "shared/navbar" %>
-<% end %>
+<%# <% if current_user  %>
+<%# <%= render "shared/navbar2" %>
+<%# <% else  %>
+<%# <%= render "shared/navbar" %>
+<%# <% end %>
 
-<%# forms %>
-<div class="simpleform-container mt-4">
-<form class="row gy-2 gx-3 align-items-center justify-content-center">
-
-  <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-    <div class="col-lg-2">
-      <%= f.input :query, label: "Search", :input_html => { :class => 'form-control', placeholder: "Find a trail" } %>
-    </div>
-    <div class="col-lg-2">
-      <%= f.input :difficulties, label: "Difficult level", collection: Trail.difficulties.keys, as: :select,  include_hidden: false, prompt: 'All' %>
-    </div>
-    <div class="col-lg-2">
-      <%= f.input :distance, collection: Trail::DISTANCE_MAP.keys, as: :select, include_hidden: false, prompt: 'All' %>
-    </div>
-    <div class="col-lg-2">
-      <%= f.input :duration, collection: Trail::DURATION_MAP.keys, as: :select,  include_hidden: false, prompt: 'All' %>
-    </div>
-    <div class="col-lg-1">
-      <%= f.submit "Search", class: "btn searchbtn" %>
-      <%# <%= link_to "Reset", root_path %>
-    </div>
-    <div class="col-lg-1">
-      <%= link_to "Clear filters", trails_path, class: "btn searchbtn text" %>
-    </div>
-  <% end %>
-</div>
-
-
- <% if user_signed_in? %>
+<% if user_signed_in? %>
   <% else %>
 <%# header image %>
 <nav data-spy="scroll" data-target="#jump" data-offset="50">
@@ -56,22 +28,64 @@
 
 <h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
 <%# search form %>
-<div class="search-bar d-flex mb-4 justify-content-center">
+<%# <div class="search-bar d-flex mb-4 justify-content-center">
 <%= form_with url: trails_path, method: :get, class: "d-flex" do %>
 
 
-  <%= text_field_tag :query,
+  <%# <%= text_field_tag :query,
     params[:query],
     class: "form-control fs-5 searchbar",
     placeholder: "Find a trail"
   %>
-
+<%#
   <%= submit_tag "Search", class: "btn searchbtn" %>
-  <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
-<% end %>
+  <%# <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
+<%# <% end %>
+<%# </div> %>
+
+<%# forms %>
+<div class="simpleform-container">
+<form class="row align-items-center justify-content-center">
+  <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
+    <div class="col-lg-2">
+      <%= f.input :difficulties, label: "Difficulty level", :label_html => { :class => 'type filterlabel' }, collection: Trail.difficulties.keys, selected: params.dig(:search, :difficulties), include_hidden: false, prompt: 'All' %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.input :distance, label: "Distance", :label_html => { :class => 'type filterlabel' }, collection: Trail::DISTANCE_MAP.keys, selected: params.dig(:search, :distance), include_hidden: false, prompt: 'All' %>
+    </div>
+    <div class="col-lg-2">
+      <%= f.input :duration, label: "Duration", :label_html => { :class => 'type filterlabel' }, collection: Trail::DURATION_MAP.keys, selected: params.dig(:search, :duration),  include_hidden: false, prompt: 'All' %>
+    </div>
+    <div class="row justify-content-center align-items-center mb-4">
+      <div class="col-lg-5">
+        <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail" } %>
+      </div>
+      <div class="col-lg-1">
+        <%= f.submit "Search", class: "btn searchbtn" %>
+        <%# <%= link_to "Reset", root_path %>
+      </div>
+      <div class="col-lg-1">
+        <%= link_to "Clear filters", trails_path, class: "btn clearbtn" %>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+
+
 <div id="trails">
-<%= render 'shared/cards' %>
+
+<%# <% if params[:category].present? %>
+        <%# <%= params[:category].join(', ') %>
+      <%# <% else %>
+        <%# Any
+      <% end %>
+      <%# params(:search, :query).present? || params.dig(:search, :difficulties).present? || params.dig(:search, :distance).present? || params.dig(:search, :duration).present? %>
+
+
+
+<%# <%= render 'shared/cards' %>
+<%= render 'shared/cards', empty_message: "No trails found!" %>
 </div>
 
 
@@ -103,8 +117,3 @@
 <%# </tr>
 <% end %>
 <%# </table> %>
-
-
-<h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
-
-<%= render 'shared/cards', empty_message: "No trails found!" %>

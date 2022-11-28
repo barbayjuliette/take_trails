@@ -1,6 +1,6 @@
 <div class="cards">
-  <% if @trails.empty? %>
-    <h1><div class="searchmsg"><%= empty_message %></div></h1>
+ <% if @trails.empty? %>
+    <h1><div class="msgempty"><%= empty_message %></div></h1>
   <% end %>
 
   <% @trails.each do |trail| %>
