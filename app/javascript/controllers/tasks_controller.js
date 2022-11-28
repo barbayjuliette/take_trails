@@ -5,6 +5,10 @@ export default class extends Controller {
         console.log(this.element)
     }
 
+    show() {
+      alert("Hey from Stimulus");
+  }
+
     toggle(e) {
         const id = e.target.dataset.id
         const csrfToken = document.querySelector("[name='csrf-token']").content
@@ -25,4 +29,6 @@ export default class extends Controller {
                 alert(data.message)
             })
     }
+
+
 }

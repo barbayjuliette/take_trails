@@ -6,74 +6,35 @@
     <i class="fa-solid fa-xmark"></i></a>
   <div id="list">
     <div class="wrapper ">
-
       <p class="checklist-head top-border ">My checklist!</p>
-
       <div class="checklist-body">
       <%# Checklist %>
-        <div class="check-list">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label checklist-label" for="defaultCheck1">
-            Bug spray
-          </label>
-        </div>
-        <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label checklist-label" for="defaultCheck1">
-            Sunscreen
-          </label>
-        </div>
-        <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label checklist-label" for="defaultCheck1">
-            6 bottles of water
-          </label>
-        </div>
-                <div class="check-list">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label checklist-label" for="defaultCheck1">
-            Bug spray
-          </label>
-        </div>
-        <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label checklist-label" for="defaultCheck1">
-            Sunscreen
-          </label>
-        </div>
-        <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label checklist-label" for="defaultCheck1">
-            6 bottles of water
-          </label>
-        </div>
-         <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label checklist-label" for="defaultCheck1">
-            6 bottles of water
-          </label>
-        </div>
-         <div class="check-list">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label checklist-label" for="defaultCheck1">
-            6 bottles of water 6 bottles of water
-          </label>
-        </div>
+        <%# <div class="check-list"> %>
+        <%# <% if notice.present? %>
+        <%# <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+        <%= notice %>
+        <%# </p>
+        <% end %>
 
+        <div id="tasks">
+          <div class="" data-controller="tasks">
+              <%= render @trip.tasks %>
+            </div>
 
-        <button type="button" class="btn add-checklist" data-bs-toggle="modal" data-bs-target="#allReviews">
-          <i class="fa-solid fa-plus"></i> ADD TO LIST
-        </button>
+        </div>
       </div>
-
-    </div>
-
-
-    <div class="d-flex">
+    <div class="col">
+    <%= render "tasks/form", task: @task %>
+        <%# <button type="button" class="btn add-checklist" data-bs-toggle="modal" data-bs-target="#allReviews">
+          <i class="fa-solid fa-plus"></i> ADD TO LIST
+        </button> %>
         <button type="button" class="btn save-checklist" data-bs-toggle="modal" data-bs-target="#allReviews">
               SAVE CHECKLIST
             </button>
      </div>
+    </div>
+
+
 
   </div>
 </div>
