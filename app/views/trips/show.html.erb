@@ -1,13 +1,14 @@
-
-
-<h1 class="font-bold text-2xl">Task Manager</h1>
-
-
-
-
-<div data-controller="tasks">
-  <div data-tasks-target="items">
-    <%= render "tasks/task" %>
-  </div>
-  <%= render "tasks/form" %>
-</div>
+<table>
+  <% @todos.each do |todo| %>
+    <tr data-controller="todo"
+          data-todo-update-url="<%= todo_path(todo) %>">
+      <td>
+        <input type="checkbox"
+                    data-action="todo#toggle"
+                    data-target="todo.completed"
+                    <% if todo.completed %> checked <% end %> >
+        <%= todo.title %>
+      </td>
+    </tr>
+  <% end %>
+</table>
