@@ -1,12 +1,13 @@
 .searchbtn {
-    margin-top: 10px;
+    // margin-top: 10px;
     background-color: #012e19;
-    width: 100%;
+    width: 100px;
     height: 45px;
     border-radius: 5px;
     color: #fdd719;
     transition: all .15s ease-out;
     font-size: 0.9rem;
+    margin-top: -20px;
 }
 
 .searchbtn:hover {
@@ -19,6 +20,30 @@
 
 .searchbar {
   margin: 10px;
-  width: 200px;
+  margin-top: -20px;
+  width: 300px;
   height: 45px
+}
+
+.clearbtn {
+  // margin-top: 10px;
+  background-color: #012e19;
+  width: 120px;
+  height: 45px;
+  border-radius: 5px;
+  color: #fdd719;
+  transition: all .15s ease-out;
+  font-size: 0.9rem;
+  margin-top: -20px;
+  margin-left: 5px;
+  padding: 11px;
+
+}
+
+.clearbtn:hover {
+background-color: $trailgreen;
+box-shadow: .1px .1px 5px rgb(192, 191, 191);
+transition: all .15s ease-out;
+color: $trailyellow;
+opacity: .8;
 }
