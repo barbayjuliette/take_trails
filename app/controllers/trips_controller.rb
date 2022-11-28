@@ -1,8 +1,8 @@
 class TripsController < ApplicationController
   # GET /trips
   def index
-    @upcoming_trips = Trip.where(user: current_user).where('date > ?', Time.now)
-    @past_trips = Trip.where(user: current_user).where('date < ?', Time.now)
+    @upcoming_trips = Trip.where(user: current_user).where('date > ?', Time.now).order('date ASC')
+    @past_trips = Trip.where(user: current_user).where('date < ?', Time.now).order('date DESC')
   end
 
   # POST /trails/:trail_id/trips
