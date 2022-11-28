@@ -12,9 +12,10 @@
       <div class="modal-body">
         <h2><strong>Leave a review</strong></h2>
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
-          <%= render "reviews/reviewform" %>
-
-          <br><br>
+          <% if @trip.date < Time.now %>
+            <%= render "reviews/reviewform" %>
+            <br><br>
+          <% end %>
           <%# Review list %>
           <% if @trip.trail.reviews.blank? %>
             <h2><strong data-insert-in-list-target="count"></h2>
