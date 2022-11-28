@@ -4,18 +4,25 @@
       <%= render "shared/navbar" %>
     <% end %>
 
-<%# search form %>
-<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a trail"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
 
 <h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
+<%# search form %>
+<div class="search-bar d-flex mb-4 justify-content-center">
+<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control fs-5 searchbar",
+    placeholder: "Find a trail"
+  %>
+
+  <%= submit_tag "Search", class: "btn searchbtn" %>
+  <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
+<% end %>
+
+</div>
 <%= render 'shared/cards' %>
+
 
 <%# <%= form_with url: trial_path, method: :get, do %>
   <%# <%= form.select :difficulty_level,
