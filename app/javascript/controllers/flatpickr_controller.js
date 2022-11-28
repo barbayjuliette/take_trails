@@ -10,7 +10,8 @@ export default class extends Controller {
       altInput: true,
       enableTime: true,
       inline: true,
-      minDate: new Date()
+      minDate: new Date(),
+      minuteIncrement: 5
     })
   }
 }
