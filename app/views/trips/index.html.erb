@@ -63,7 +63,7 @@
         <%= link_to trip_path(trip), class:"card my-card-link" do %>
           <div class= "image-container">
             <%= cl_image_tag trip.trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
-            <div class="trip-date"><%= trip.date %></div>
+            <div class="trip-date py-1 px-2 rounded"><%= trip.date.strftime('%-d %b %Y') %></div>
             <i class="fa-regular fa-bookmark"></i>
           </div>
           <div class ="card-body title-body d-flex align-items-start">
