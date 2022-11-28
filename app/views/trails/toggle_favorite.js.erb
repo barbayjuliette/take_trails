@@ -1,0 +1,8 @@
+let trailId = '<%= @trail.id %>'
+
+function toggleLikeButton(trailId, innerHTML) {
+  let likeButton = document.querySelector(".fa-bookmark")
+  likeButton.classList.toggle('fw-bold');
+}
+
+toggleLikeButton(trailId);
