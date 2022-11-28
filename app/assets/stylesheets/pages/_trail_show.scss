@@ -4,7 +4,7 @@
 
 #date_card {
   position: absolute;
-  top: 75px;
+  top: 60px;
   // width: 20rem;
   z-index: 1;
 }
@@ -13,6 +13,17 @@
   object-position: center;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+}
+
+
+.bookmark-show {
+  color: black;
+  font-size: 23px;
+}
+
+.bookmark-show {
+  color: black;
+  font-size: 23px;
 }
 
 #create-trip-btn {
@@ -47,6 +58,21 @@
   padding-top: 0;
 }
 
+#submit_date_btn {
+  background-color: $trailgreen;
+  border-radius: 5px;
+  color: $trailyellow;
+  transition: all .15s ease-out;
+}
+
+#submit_date_btn:hover {
+  background-color: $trailgreen;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}
+
 .divider {
   border-color: rgb(83, 83, 83);
 }
@@ -60,6 +86,21 @@
   margin-right: 200px;
  }
 
+@media(max-width: 1200px) {
+  .cust-container {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media(max-width: 992px) {
+  .cust-container {
+    margin-left: 30px;
+    margin-right: 30px;
+
+  }
+}
+
 @media(max-width: 768px) {
   .cust-container {
     margin-left: 30px;
@@ -72,4 +113,5 @@
     margin-left: 20px;
     margin-right: 20px;
   }
+
 }
