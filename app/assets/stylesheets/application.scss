@@ -13,13 +13,15 @@
 @import "components/buttons";
 @import "components/tags";
 @import "components/image";
+@import "components/cards";
+@import "components/review";
 @import "pages/trail_show";
 @import "pages/index";
-@import "components/review";
-@import "components/simpleform";
+@import "pages/trip_index";
+
 
 @import "star-rating.js/dist/star-rating.css";
-@import 'tom-select/dist/css/tom-select.css';
+@import 'tom-select/src/scss/tom-select.scss';
 
 // Our font
 //@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Josefin+Sans:wght@600&family=Jost:wght@600&family=Lexend:wght@100;200;300;400;500;600;700&family=Roboto+Flex:wght@300&family=Source+Code+Pro&display=swap');
@@ -31,9 +33,13 @@ a {
 }
 
 .fa-star {
-  color: #fdc500 !important;
+  color: $trailyellow !important;
+}
+
+.fa-bookmark {
+  color: $trailyellow;
 }
 
 .fa-star-half {
-  color: #fdc500 !important;
+  color: $trailyellow !important;
 }
