@@ -1,7 +1,19 @@
-<%= simple_form_for [@trip, @task] do |f| %>
-<div>
-    <%= f.input :description %>
-    </div>
-     <%= f.button :submit, "SUBMIT REVIEW", class: "btn add-checklist" %>
+<div class= "checklist-forms row">
+    <div class="col-10">
+  <%= simple_form_for [@trip, @task] do |f| %>
+          <%= f.input :description,
+                      label: false,
+                      placeholder: "ADD TO CHECKLIST",
+                      input_html: { class: "custom-add-input"} %>
 
-<% end %>
+        <%# <%= f.button :submit do, "ADD TO CHECKLIST", class: "submit" %>
+
+    </div>
+    <div class="col-2">
+
+    <%= button_tag type: 'submit', class:"custom-add-button" do %>
+        <i class="fas fa-search fa-2x"></i>
+    <% end %>
+    </div>
+  <% end %>
+</div>

@@ -104,6 +104,7 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
   width:80%;
   margin: auto;
   margin-top:10px !important;
+  margin-bottom: 30px;
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
@@ -148,7 +149,7 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
   letter-spacing: .1em;
   background-color: none;
   border: 1px solid $trailgreen !important;
-  margin-top: 100px;
+  margin-top: 0px;
   margin-bottom: 20px;
 }
 
@@ -193,3 +194,40 @@ background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v166944
   box-shadow: none !important;
   border: 1px solid rgba(0, 0, 0, 0.25) !important;
 }
+
+
+
+  .checklist-forms {
+    width:85% !important;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .checklist-add {
+    height:70px !important;
+    border-radius: 20px;
+    background-color: $trailgreen !important;
+  }
+
+
+
+  .custom-add-input {
+    display: flex;
+    width: 100%;
+    padding-right: 10px !important;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  .custom-add-button {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    bottom: 3px;
+    line-height: 1 !important;
+    z-index: 4;
+    border: none;
+  }
