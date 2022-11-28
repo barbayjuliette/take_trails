@@ -7,6 +7,9 @@ import { application } from "./application"
 import DisplayFormController from "./display_form_controller"
 application.register("display-form", DisplayFormController)
 
+import FavouriteController from "./favourite_controller"
+application.register("favourite", FavouriteController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
