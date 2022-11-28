@@ -15,8 +15,8 @@
 @import "components/image";
 @import "pages/trail_show";
 @import "pages/index";
+@import "components/cards";
 @import "components/review";
-
 @import "star-rating.js/dist/star-rating.css";
 @import 'tom-select/dist/css/tom-select.css';
 
@@ -30,7 +30,11 @@ a {
 }
 
 .fa-star {
-  color: #fdc500 !important;
+  color: $trailyellow !important;
+}
+
+.fa-bookmark {
+  color: $trailyellow;
 }
 
 .fa-star-half {

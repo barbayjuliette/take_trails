@@ -1,10 +1,25 @@
 <div class="cards">
   <% @trails.each do |trail| %>
+
+  <div class="card-wrapper">
+    <%# Bookmark %>
+    <%= link_to toggle_favorite_trail_path(trail), remote: true, data:{turbo_method: :post} do %>
+      <% if user_signed_in? %>
+        <% if current_user.favorited?(trail) %>
+          <i class="fa-regular fa-bookmark fw-bold"></i>
+        <% else %>
+          <i class="fa-regular fa-bookmark"></i>
+        <% end %>
+      <% else %>
+        <i class="fa-regular fa-bookmark"></i>
+      <% end %>
+    <% end %>
+
+    <%# trail %>
     <%= link_to trail, class:"card my-card-link" do %>
       <div class= "image-container">
         <%= cl_image_tag trail.photos.first.key, class: "rounded-3 card-image", alt: "trail picture" %>
         <%# <img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg" alt="trail picture" class="rounded-3 card-image"> %>
-        <i class="fa-regular fa-bookmark"></i>
       </div>
       <div class ="card-body title-body d-flex align-items-start">
         <div class="title-rating pt-2 mt-0">
@@ -18,14 +33,13 @@
         </div>
       </div>
 
-      <%# <div style="height: 200px; width: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://lonelyplanetimages.imgix.net/a/g/hi/t/a2aa48e66952bf8816898991072e32f5-macritchie-reservoir.jpg')">
-      </div> %>
       <div class = "card-body">
         <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trail.location %></p>
       </div>
-      <div class="card-body d-flex justify-content-between">
-        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %></p>
-        <p class="card-text"><i class="fa-regular fa-clock"></i></i>
+      <div class="card-body">
+        <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trail.difficulty %>&nbsp;&nbsp;&nbsp;
+        <i class="fa-solid fa-arrows-left-right"></i> <%= trail.distance %> km&nbsp;&nbsp;&nbsp;
+        <i class="fa-regular fa-clock"></i></i>
         <% hour = (trail.duration / 60).to_i %>
         <% minutes = (trail.duration % 60).to_i %>
         <% if hour == 00 %>
@@ -38,6 +52,9 @@
         </p>
 
       </div>
+
     <% end %>
+  </div>
+
   <% end %>
 </div>
