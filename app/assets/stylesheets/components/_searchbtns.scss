@@ -1,0 +1,24 @@
+.searchbtn {
+    margin-top: 10px;
+    background-color: #012e19;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    color: #fdd719;
+    transition: all .15s ease-out;
+    font-size: 0.9rem;
+}
+
+.searchbtn:hover {
+  background-color: $trailgreen;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}
+
+.searchbar {
+  margin: 10px;
+  width: 200px;
+  height: 45px
+}
