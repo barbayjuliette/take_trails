@@ -24,7 +24,10 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @restaurant.update(trip_params_add_photos)
+    @trip.photos.attach(photo_params[:photos])
+    @trip.save!
+
+    redirect_to trip_path(@trip)
   end
 
   private
@@ -33,8 +36,7 @@ class TripsController < ApplicationController
     params.require(:trip).permit(:date)
   end
 
-  def trip_params_add_photos
+  def photo_params
     params.require(:trip).permit(photos: [])
   end
-
 end

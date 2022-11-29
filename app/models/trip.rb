@@ -5,9 +5,9 @@ class Trip < ApplicationRecord
   has_many_attached :photos
 
   validates :date, presence: true
-  validate :must_be_after
+  validate :date_must_be_in_the_future, on: :create
 
-  def must_be_after
+  def date_must_be_in_the_future
     return if date > Time.now
 
     errors.add(:date, "must be in the future!")
