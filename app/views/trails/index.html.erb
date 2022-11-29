@@ -1,5 +1,6 @@
 
 
+
  <% if user_signed_in? %>
   <% else %>
 <%# header image %>
@@ -18,21 +19,29 @@
 <% end %>
 
 
-<div id="trails">
+
+
+
+<h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
 <%# search form %>
-<%= form_with url: trails_path, method: :get, class: "d-flex search" do %>
+<div class="search-bar d-flex mb-4 justify-content-center">
+<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+
+
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control fs-5 searchbar",
     placeholder: "Find a trail"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+
+  <%= submit_tag "Search", class: "btn searchbtn" %>
+  <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
 <% end %>
-
-
-<h1 class="margin-title-lg"> Find your next hike ...</h1>
+</div>
+<div id="trails">
 <%= render 'shared/cards' %>
 </div>
+
 
 
 
