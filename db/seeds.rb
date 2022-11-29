@@ -54,14 +54,14 @@ User.all.each do |user|
     new_trip = Trip.new(
       user:,
       trail: Trail.all.sample,
-      date: DateTime.parse("2022-11-#{rand(24..30)}T#{rand(6..17)}:00+08:00")
+      date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00")
     )
     new_trip.save(validate: false)
   end
 end
 
 puts "Creating reviews..."
-Trip.all.each do |trip|
+Trip.where('date < ?', Time.now).each do |trip|
   Review.create!(
     user: trip.user,
     trip:,
