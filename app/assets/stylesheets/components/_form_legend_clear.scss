@@ -85,21 +85,6 @@ legend ~ div.form-check:first-of-type {
   transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
 }
 
-.close {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: $trailyellow;
-  position: absolute;
-
-  border: 0px !important;
-
-
-  .fa-solid {
-    color: black;
-    font-size: 1.5em;
-  }
-}
 
 .login-text {
   margin: auto;
