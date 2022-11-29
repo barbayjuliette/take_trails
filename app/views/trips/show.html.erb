@@ -120,6 +120,12 @@
       <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
     <% else %>
       <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
+      <%= simple_form_for(@trip) do |f| %>
+        <div class="d-flex p-2 justify-content-start align-items-baseline">
+          <%= f.input :photo,  as: :file, input_html: { multiple: true }, label: false, class: "form-pictures" %>
+          <%= f.submit 'Add pictures', class: "add-photos-btn" %>
+        </div>
+      <% end %>
     <% end %>
 
   </div>

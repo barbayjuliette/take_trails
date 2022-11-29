@@ -22,9 +22,19 @@ class TripsController < ApplicationController
     @review = Review.new
   end
 
+  def update
+    @trip = Trip.find(params[:id])
+    @restaurant.update(trip_params_add_photos)
+  end
+
   private
 
   def trip_params
     params.require(:trip).permit(:date)
   end
+
+  def trip_params_add_photos
+    params.require(:trip).permit(photos: [])
+  end
+
 end

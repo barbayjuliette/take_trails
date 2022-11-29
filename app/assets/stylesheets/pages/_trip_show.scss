@@ -44,3 +44,30 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+.add-photos-btn {
+  margin-top:10px;
+  background-color: $trailgreen;
+  width: 25%;
+  height: 45px;
+  border-radius: 5px;
+  color: $trailyellow;
+  transition: all .15s ease-out;
+  font-size: 0.9rem;
+  margin-left: 50px;
+  height: 2rem;
+  border: none;
+}
+
+.add-photos-btn:hover {
+  background-color: $trailgreen;
+  // box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}
+
+#trip_photo {
+  width: 100% !important;
+  height: 2.1rem;
+}
