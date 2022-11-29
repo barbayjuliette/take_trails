@@ -10,9 +10,7 @@
     <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
     <% else %>
         <% end %>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+        <button class="btn icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#dropdown" aria-controls="offcanvasWithBothOptions"><i class="fa fa-bars"></i></button>
   </div>
 
      <%# user-related links %>
@@ -35,4 +33,23 @@
     <% end  %>
   </div>
   <% end  %>
+</div>
+
+
+<%# when minimized %>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="dropdown" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png" width="150px"></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body dropdown">
+     <div class="dropdownbody"><a href="#" class="nav-primary">ABOUT US</a></div>
+    <div class="p5"><%= link_to "ALL TRAILS", "/trails#trails"%></div>
+    <% if user_signed_in? %>
+    <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path%></div>
+    <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
+    <% else %>
+        <% end %>
+  </div>
 </div>
