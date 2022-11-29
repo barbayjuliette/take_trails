@@ -1,51 +1,19 @@
-
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
-  <div class="container-fluid">
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "All Trails", trails_path, class: "nav-link" %>
-      </li>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "My Trips", trips_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My Bookmarks", bookmarks_path, class: "nav-link" %>
-        </li>
+<div class="topnav" id="myTopnav">
+  <%= link_to "/trails#trails" do %>
+    <img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png" width="150px">
+  <% end %>
+  <a href="#" class="nav-primary">ABOUT US</a>
+  <%= link_to "ALL TRAILS", "/trails#trails"%>
+  <% if user_signed_in? %>
+  <%= link_to "MY BOOKMARKS", bookmarks_path%>
+  <%= link_to "MY TRIPS", trips_path%>
+  <% else %>
       <% end %>
-    </ul>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item d-flex align-items-center p-2">
-            <%= current_user.first_name %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <%= link_to new_user_session_path do %>
+      <div class="user-login"><i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP</div>
+<% end  %>
 </div>
