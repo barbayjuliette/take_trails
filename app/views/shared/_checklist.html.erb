@@ -1,7 +1,28 @@
+<div class="chat-popup" id="myForm">
+  <div class="check-container">
+    <p class="checklist-head top-border ">My checklist!</p>
+      <div id="tasks">
+        <div class="" data-controller="tasks">
+          <%= render @trip.tasks %>
+        </div>
+      </div>
+  </div>
+    <%= render "tasks/form", task: @task %>
+    <button type="button" class="closebtn close fa-solid fa-xmark" onclick="closeForm()"></button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
     <!-- this is your page content -->
 
 
-<div id="mySidenav" class="sidenav">
+<%# <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn close fa-solid fa-xmark" onclick="closeNav()">
     </a>
   <div id="list">
@@ -16,10 +37,10 @@
         <%# </p>
         <% end %>
 
-        <div id="tasks">
+        <%# <div id="tasks">
           <div class="" data-controller="tasks">
               <%= render @trip.tasks %>
-            </div>
+            <%# </div>
 
         </div>
       </div>
@@ -29,10 +50,10 @@
           <i class="fa-solid fa-plus"></i> ADD TO LIST
         </button> %>
 
-    </div>
+    <%# </div> %>
 
 
 
 
-  </div>
-</div>
+  <%# </div>
+</div> %>
