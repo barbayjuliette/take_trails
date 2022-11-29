@@ -1,8 +1,8 @@
 
 <div class="d-flex">
   <%# map (left column) %>
-  <div id="map" style="position: fixed; height: calc(100% - 50px); width: 40%;"></div>
-  <script>
+  <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" style="position: fixed; height: calc(100% - 50px); width: 40%;"></div>
+  <%# <script>
 	// TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
 	// https://account.mapbox.com
@@ -63,7 +63,7 @@
         }
       });
     });
-  </script>
+  </script> %>
 
   <%# <div id="trip-show-map-container">
     <img class="h-100" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
