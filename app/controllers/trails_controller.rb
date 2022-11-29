@@ -28,12 +28,12 @@ class TrailsController < ApplicationController
 
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: current_user.favorited?(@trail).to_json }
+        format.json { render json: { favourited: current_user.favorited?(@trail), redirect: nil } }
       end
     else
       respond_to do |format|
         format.html { redirect_to new_user_session_path }
-        format.json { "json response" }
+        format.json { render json: { favourited: nil, redirect: new_user_session_path } }
       end
     end
     # @trails = Trail.all

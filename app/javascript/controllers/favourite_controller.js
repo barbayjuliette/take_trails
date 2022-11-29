@@ -19,9 +19,13 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        link.innerHTML = data
-        ? `<i class="fa-regular fa-bookmark fw-bold"></i>`
-        : `<i class="fa-regular fa-bookmark"></i>`
+        if (data.redirect) {
+          window.location = data.redirect
+        } else {
+          link.innerHTML = data
+          ? `<i class="fa-regular fa-bookmark fw-bold"></i>`
+          : `<i class="fa-regular fa-bookmark"></i>`
+        }
       })
   }
 
