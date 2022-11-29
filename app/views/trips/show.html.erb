@@ -126,10 +126,14 @@
           <%= f.submit 'Add pictures', class: "add-photos-btn" %>
         </div>
       <% end %>
-      <% @trip.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% if @trip.photos.attached? %>
+        <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
+        <div class="trips-pictures">
+          <% @trip.photos.each do |photo| %>
+           <%= cl_image_tag photo.key, crop: :fit, class: "trip-picture" %>
+          <% end %>
+        </div>
       <% end %>
-      <%= @trip.photos.attached? %>
     <% end %>
 
   </div>
