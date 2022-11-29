@@ -1,6 +1,6 @@
 <div class="cards">
 <% if @trails.empty? %>
-    <p><div class="msgempty"><%= empty_message %></div></p>
+    <p class="msgempty"><%= empty_message %></p>
   <% end %>
  <% @trails.each do |trail| %>
 <div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>" data-favourites-target= "toggleBookmarkIcon" >
