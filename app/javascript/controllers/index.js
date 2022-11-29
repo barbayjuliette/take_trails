@@ -7,6 +7,9 @@ import { application } from "./application"
 import DisplayFormController from "./display_form_controller"
 application.register("display-form", DisplayFormController)
 
+import FavouriteController from "./favourite_controller"
+application.register("favourite", FavouriteController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
@@ -21,3 +24,6 @@ application.register("star-rating", StarRatingController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
+
+import SwitchTabsController from "./switch_tabs_controller"
+application.register("switch-tabs", SwitchTabsController)
