@@ -1,5 +1,5 @@
-
-.topnav {
+.navcontainer {
+  display: flex;
   position: fixed;
   background-color: white;
   height: 50px;
@@ -10,27 +10,34 @@
   overflow: hidden;
   z-index: 4;
   border-bottom: 1px solid rgb(197, 197, 197);
+  justify-content: space-between
 
- a {
-  align-items: center;
-  height:50px;
-  border-right: 1px solid rgb(197, 197, 197);
-  float: left;
-  display: block;
-  color: $trailgreen;
-  text-align: center;
-  padding: 16px 16px;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: .1em;
-  background-image: linear-gradient($trailgreen,$trailgreen);
-  background-size: 0% 0.1em;
-      background-position-y: 100%;
-      background-position-x: 50%;
-      background-repeat: no-repeat;
-      transition: background-size 0.2s ease-in-out;
-      text-decoration: none;
 }
+.topnav {
+
+  display: flex;
+
+
+//  a {
+//   align-items: center;
+//   height:50px;
+//   border-right: 1px solid rgb(197, 197, 197);
+//   float: left;
+//   display: block;
+//   color: $trailgreen;
+//   text-align: center;
+//   padding: 16px 16px;
+//   text-decoration: none;
+//   font-size: 13px;
+//   letter-spacing: .1em;
+//   background-image: linear-gradient($trailgreen,$trailgreen);
+//   background-size: 0% 0.1em;
+//       background-position-y: 100%;
+//       background-position-x: 50%;
+//       background-repeat: no-repeat;
+//       transition: background-size 0.2s ease-in-out;
+//       text-decoration: none;
+// }
 }
 .topnav a:hover,
 .topnav a:focus,
@@ -48,15 +55,16 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
+@media screen and (max-width: 1000px) {
+  .topnav .p5 {display: none;}
+  .nav-user .user-login  {display: none;}
   .topnav a.icon {
     float: left;
     display: block;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
