@@ -1,0 +1,15 @@
+<div id="show-pg-review-card" class="review mb-2">
+  <div class="user-info">
+    <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+    <div>
+      <h4>Your review</h4>
+      <p class="mt-0"><%= review.created_at.strftime('%-d %b %Y') %> </p>
+    </div>
+    <div class="rating">
+      <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+    </div>
+  </div>
+  <div class="reviews review-size">
+    <%= review.comment %>
+  </div>
+</div>

@@ -90,3 +90,25 @@
 .submitted {
   color: rgb(11, 63, 11);
 }
+
+.submit-review-btn {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-top:20px;
+  background-color: $trailgreen;
+  width: 140px;
+  height: 40px;
+  border-radius: 10px;
+  color:$trailyellow;
+  transition: all .15s ease-out;
+  letter-spacing: .1em;
+}
+
+.submit-review-btn:hover {
+  background-color: $trailgreen;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}

@@ -85,12 +85,12 @@
     </div>
 
     <%# ratings & reviews %>
-    <div class="border-bottom divider mb-3">
+    <div class="border-bottom divider mb-3" data-controller="insert-in-list">
       <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
-      <div class="d-flex align-items-center mb-3">
-        <% if @trip.trail.reviews.empty? %>
-          <p class="trip-pg-font-size mb-0">No reviews for this trail yet.</p>
-        <% else %>
+      <% if @trip.trail.reviews.empty? %>
+        <p class="trip-pg-font-size mb-0">No reviews for this trail yet.</p>
+      <% else %>
+        <div class="d-flex align-items-center mb-3">
           <div class="d-flex me-2">
             <% @trip.trail.rating.floor.times do %>
               <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
@@ -101,54 +101,76 @@
               <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
             <% end %>
           </div>
-          <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#allReviews">
+          <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#leavereview">
             <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
           </a>
-        <% end %>
-      </div>
-      <%# button to trigger modal %>
-      <% if @trip.date < Time.now %>
-        <button type="button" class="btn text-muted text-decoration-underline px-0 mb-2" data-bs-toggle="modal" data-bs-target="#leavereview">
-          Leave a review
-        </button>
+        </div>
       <% end %>
-      <%= render "shared/leavereview" %>
+      <% if @trip.review.present? %>
+        <div id="show-pg-review-card" class="review mb-2">
+          <div class="user-info">
+            <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+            <div>
+              <h4>Your review</h4>
+              <p class="mt-0"><%= @trip.review.created_at.strftime('%-d %b %Y') %> </p>
+            </div>
+            <div class="rating">
+              <h5><%= @trip.review.rating %><i class="fa-solid fa-star"></i> </h5>
+            </div>
+          </div>
+          <div class="reviews review-size">
+            <%= @trip.review.comment %>
+          </div>
+        </div>
+      <% end %>
+      <% if @trip.review.blank? && @trip.date < Time.now %>
+        <div class="d-flex align-items-center mb-2">
+          <div data-insert-in-list-target="userreview" class="flex-grow-1">
+            <div id="no-review">
+              <p class="mb-0">You have not left a review yet.</p>
+              <%# button to trigger modal %>
+              <button type="button" class="btn text-muted text-decoration-underline px-0" data-bs-toggle="modal" data-bs-target="#leavereview">
+                Leave a review
+              </button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# Modal %>
+        <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable rounded-2">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title " id="staticBackdropLabel"></h1>
+                <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <% if @trip.review.blank? && @trip.date < Time.now %>
+                  <h2><strong>Leave a review</strong></h2>
+                  <div data-insert-in-list-position-value="afterbegin">
+                    <%= render "reviews/reviewform" %>
+                    <br><br>
+                  </div>
+                <% end %>
+                <%# Review list %>
+                <% if @trip.trail.reviews.blank? %>
+                  <h2><strong data-insert-in-list-target="count"></h2>
+                <% else %>
+                  <h2><strong data-insert-in-list-target="count"><%= @trip.trail.reviews.count %> reviews</strong></h2>
+                <% end %>
+                <div data-insert-in-list-target="items">
+                  <%= render "reviews/reviews" %>
+                </div>
+                <%# end of reivew list %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%# end of modal %>
     </div>
 
     <h3 class="mb-3"><strong>Getting There</strong></h3>
     <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
 
-  </div>
-</div>
-
-<%# modal %>
-<div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable rounded-2">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title " id="staticBackdropLabel"></h1>
-        <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h2><strong data-insert-in-list-target="count"><%= pluralize(@trip.trail.reviews.count, 'review') %></strong></h2>
-        <% @trip.trail.reviews.each do |review| %>
-          <div id="show-pg-review-card" class="review">
-            <div class="user-info">
-              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
-              <div>
-                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
-                <p class="mt-0"><%= review.created_at.strftime('%-d %b %Y') %> </p>
-              </div>
-              <div class="rating">
-                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
-              </div>
-            </div>
-            <div class="reviews review-size">
-              <%= review.comment %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
   </div>
 </div>

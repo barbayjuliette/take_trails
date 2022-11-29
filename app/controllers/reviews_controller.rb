@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
             # review_tags: [],
             rating: @review.rating,
             reviewer:  current_user.first_name + " " + current_user.last_name,
-            created_at: @review.created_at.to_s.split(" ").first
+            created_at: @review.created_at.strftime('%-d %b %Y')
           }
         end
       else
