@@ -7,13 +7,13 @@ export default class extends Controller {
   connect() {
   }
 
-  bookmarked(event) {
+  toggleBookmarkIcon(event) {
     event.preventDefault();
     const link = event.currentTarget
 
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 
-    fetch(event.currentTarget.href, {
+    fetch(link.href, {
       method: "POST",
       headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
     })
@@ -24,4 +24,19 @@ export default class extends Controller {
         : `<i class="fa-regular fa-bookmark"></i>`
       })
   }
+
+  deleteBookmark(event) {
+    event.preventDefault();
+    const link = event.currentTarget
+
+    this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+    fetch(link.href, {
+      method: "POST",
+      headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
+    })
+      .then(response => response.json())
+      .then((data) => { link.parentElement.remove() });
+  }
+
 }
