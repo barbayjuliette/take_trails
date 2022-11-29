@@ -7,7 +7,7 @@ class Trail < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   acts_as_favoritable
 
-
+  serialize :coordinates, Array
   validates :name, presence: true, uniqueness: true
   validates :difficulty, presence: true, inclusion: { in: %w(Easy Intermediate Difficult)}
   validates :description, presence: true, length: { minimum: 5 }
