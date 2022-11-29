@@ -26,6 +26,7 @@ class TrailsController < ApplicationController
       @trails = @trails.where('duration >= ?', duration_hash[:min])
                        .where("duration <= ?", duration_hash[:max])
     end
+
   end
 
 

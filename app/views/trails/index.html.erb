@@ -47,13 +47,13 @@
         <%= f.submit "Search", class: "btn searchbtn" %>
       </div>
       <div class ='col-lg-1 gx-2' >
-        <%= link_to "Clear filters", trails_path, class: "btn clearbtncol" %>
+        <%= link_to "Reset", trails_path, class: "btn clearbtncol" %>
       </div>
     </div>
   <% end %>
 </div>
 
-
 <div id="trails">
 <%= render 'shared/cards', empty_message: "No trails found!" %>
+
 </div>
