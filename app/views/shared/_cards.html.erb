@@ -49,7 +49,9 @@
         <% hour = (trail.duration / 60).to_i %>
         <% minutes = (trail.duration % 60).to_i %>
         <% if hour == 00 %>
-          <%= minutes %>min
+          <%= minutes %>m
+        <% elsif minutes == 0 %>
+          <%= hour %>h
         <% elsif minutes < 10 %>
           <%= hour %>h 0<%= minutes %>min
         <% else %>
