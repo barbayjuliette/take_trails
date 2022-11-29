@@ -115,8 +115,12 @@
       <%= render "shared/leavereview" %>
     </div>
 
-    <h3 class="mb-3"><strong>Getting There</strong></h3>
-    <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+    <% if @trip.date > Time.now %>
+      <h3 class="mb-3"><strong>Getting There</strong></h3>
+      <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+    <% else %>
+      <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
+    <% end %>
 
   </div>
 </div>
