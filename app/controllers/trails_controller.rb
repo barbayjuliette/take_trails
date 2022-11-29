@@ -48,8 +48,18 @@ class TrailsController < ApplicationController
     if user_signed_in?
       @trail = Trail.find(params[:id])
       current_user.favorited?(@trail) ? current_user.unfavorite(@trail) : current_user.favorite(@trail)
+
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: current_user.favorited?(@trail).to_json }
+      end
     else
-      redirect_to new_user_session_path
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path }
+        format.json { "json response" }
+      end
     end
+    # @trails = Trail.all
+    # render :index
   end
 end

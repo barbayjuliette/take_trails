@@ -4,10 +4,9 @@
   <% end %>
 
   <% @trails.each do |trail| %>
-
-  <div class="card-wrapper">
+  <div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>">
     <%# Bookmark %>
-    <%= link_to toggle_favorite_trail_path(trail), remote: true, data:{turbo_method: :post} do %>
+    <%= link_to toggle_favorite_trail_path(trail), data:{turbo_method: :post, action: "click->favourite#bookmarked" } do %>
       <% if user_signed_in? %>
         <% if current_user.favorited?(trail) %>
           <i class="fa-regular fa-bookmark fw-bold"></i>
