@@ -11,7 +11,7 @@
         <i class="fa-solid fa-circle-user avatar"></i>
         <div>
           <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
-          <p><%= review.user.created_at.to_s.split(" ").first %> </p>
+          <p><%= review.created_at.strftime('%-d %b %Y') %></p>
         </div>
         <div class="rating">
           <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
