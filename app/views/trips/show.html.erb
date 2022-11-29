@@ -130,7 +130,7 @@
         <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
         <div class="trips-pictures">
           <% @trip.photos.each do |photo| %>
-           <%= cl_image_tag photo.key, crop: :fit, class: "trip-picture" %>
+           <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %>
           <% end %>
         </div>
       <% end %>
