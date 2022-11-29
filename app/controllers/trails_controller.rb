@@ -26,12 +26,6 @@ class TrailsController < ApplicationController
       @trails = @trails.where('duration >= ?', duration_hash[:min])
                        .where("duration <= ?", duration_hash[:max])
     end
-    # search bar query
-  #   if params[:query].present?
-  #     @trails = Trail.search_by_name_description_location(params[:query])
-  #   else
-  #     @trails = Trail.all
-  #   end
   end
 
 
@@ -48,9 +42,6 @@ class TrailsController < ApplicationController
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
-    # @bookmark = Bookmark.new
-    # render locals: {trip: @trip}
-    # render locals: {bookmark: @bookmark}
   end
 
   def toggle_favorite
