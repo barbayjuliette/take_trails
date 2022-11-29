@@ -21,7 +21,7 @@
         <div class="avatar-text">
           Welcome, <%= current_user.first_name %>
         </div>
-        <div class="user-login"><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
+        <div class=""><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
       </div>
     <% else %>
 
@@ -39,9 +39,10 @@
 <%# when minimized %>
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="dropdown" aria-labelledby="offcanvasWithBothOptionsLabel">
+ <button type="button" class="closedropdown closedrop fa-solid fa-xmark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   <div class="offcanvas-logo">
     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png" width="150px"></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
   </div>
   <div class="offcanvas-body dropdown">
     <div class="dropdownbody">
@@ -73,7 +74,7 @@
           <div class="nav-user dropdown-login">
             <i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP
           </div>
-        <% end  %>
+        <% end %>
       </div>
   <% end  %>
 </div>

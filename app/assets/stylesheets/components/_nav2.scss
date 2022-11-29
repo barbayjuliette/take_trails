@@ -14,30 +14,7 @@
 
 }
 .topnav {
-
   display: flex;
-
-
-//  a {
-//   align-items: center;
-//   height:50px;
-//   border-right: 1px solid rgb(197, 197, 197);
-//   float: left;
-//   display: block;
-//   color: $trailgreen;
-//   text-align: center;
-//   padding: 16px 16px;
-//   text-decoration: none;
-//   font-size: 13px;
-//   letter-spacing: .1em;
-//   background-image: linear-gradient($trailgreen,$trailgreen);
-//   background-size: 0% 0.1em;
-//       background-position-y: 100%;
-//       background-position-x: 50%;
-//       background-repeat: no-repeat;
-//       transition: background-size 0.2s ease-in-out;
-//       text-decoration: none;
-// }
 }
 .topnav a:hover,
 .topnav a:focus,
@@ -82,7 +59,7 @@
 
 // nav bar dropdown
 #dropdown {
- width:250px;
+ width:280px;
 }
 .dropdown {
   padding:0px !important;
@@ -118,7 +95,7 @@ justify-content: center;
 height:50px;
 font-size: 13px;
 align-items: center;
-text-decoration: none;
+text-decoration: none !important;
 letter-spacing: .1em;
 background-size:100% 200%;
 background-image:linear-gradient(to bottom, $trailgreen 50%, $trailyellow 50%);
@@ -127,15 +104,16 @@ background-image:linear-gradient(to bottom, $trailgreen 50%, $trailyellow 50%);
 transition:background-position .5s;
 color: white;
 
-a {
-  text-decoration: none;
-}
+  a {
+    text-decoration: none !important;
+    color: white;
+  }
 
 }
 
 .dropdown-login:hover {
   background-position:0 -100%;
-  color: black;
+  color: black !important;
   }
 
 
@@ -145,4 +123,21 @@ justify-content: center;
 margin-top:40px;
 padding-bottom:40px;
 border-bottom: 1px solid  rgb(228, 228, 228);
+}
+
+.closedropdown {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $trailyellow;
+  position: absolute;
+  top: 30px;
+  left: 260px;
+  border: 0px !important;
+
+
+  .fa-solid {
+    color: black;
+    font-size: 2em;
+  }
 }
