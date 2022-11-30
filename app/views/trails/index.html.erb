@@ -22,7 +22,7 @@
 
 
 
-<h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
+<h1 class="margin-title-lg" id="trails"> Find your next hike ...</h1>
 <%# search form %>
 <div class="search-bar d-flex mb-4 justify-content-center">
 <%= form_with url: trails_path, method: :get, class: "d-flex" do %>
@@ -38,9 +38,9 @@
   <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
 <% end %>
 </div>
-<div id="trails">
+
 <%= render 'shared/cards' %>
-</div>
+
 
 
 
