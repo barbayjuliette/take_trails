@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-pictures"
 export default class extends Controller {
-  static targets = ["grid", "picture", "uploaded"]
+  static targets = ["grid", "picture", "uploaded", "trail"]
 
   connect() {
     // console.log(this.element)
@@ -31,10 +31,8 @@ export default class extends Controller {
         if(data.inserted_item) {
           this.pictureTarget.querySelector("input[type='file']").value = ""
           this.gridTarget.innerHTML = data.inserted_item
-          // this.gridTarget.insertAdjacentHTML('beforebegin','<p>  Thanks for uploading your pictures!</p>')
           this.uploadedTarget.innerHTML = "Picture successfully uploaded"
           this.element.insertAdjacentHTML("afterend",data.popup)
-
         }
       })
   }
