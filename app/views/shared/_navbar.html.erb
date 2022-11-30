@@ -1,35 +1,83 @@
+<div id="myTopnav" class="navcontainer">
+  <div class="topnav">
+    <%= link_to "/trails#trails" do %>
+      <div class="traillogo "><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png" width="150px">
+    <% end %></div>
+    <div class="p5"><a href="#" class="nav-primary">ABOUT US</a></div>
+    <div class="p5"><%= link_to "ALL TRAILS", "/trails#trails"%></div>
+    <% if user_signed_in? %>
+    <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path%></div>
+    <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
+    <% else %>
+        <% end %>
+        <button class="btn icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#dropdown" aria-controls="offcanvasWithBothOptions"><i class="fa fa-bars"></i></button>
+  </div>
 
-  <div class="nav-bar main-nav">
-    <%= link_to "/trails#trails" do %><div class="nav-logo"></div><% end %>
-    <div class="nav-primary">
-      <div class="p5"><a href="#">ABOUT US</a></div>
-      <div class="p5"> <%= link_to "ALL TRAILS", "/trails#trails"%></div>
-      <% if user_signed_in? %>
-      <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path%></div>
-      <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
-      <% else %>
-      <% end %>
-    </div>
 
-    <%# user-related links %>
+     <%# user-related links %>
+
     <% if user_signed_in? %>
 
 
       <div class="nav-user">
-        <div class="avatar-text">Welcome, <%= current_user.first_name %>  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> </div>
-        <div class="user-login"><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
+        <div class="avatar-text">
+          Welcome, <%= current_user.first_name %>
+        </div>
+        <div class=""><%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "user-login" %></div>
       </div>
     <% else %>
 
-
-
-    <div class="nav-user">
-      <%# <div class="p5-sign" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvassignup" aria-controls="offcanvasRight">
-      <span class="">SIGN UP</span></div> %>
-      <%= link_to new_user_session_path do %>
-      <div class="user-login"><i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP</div>
-      <% end %>
+  <div class="nav-user ">
+    <%= link_to new_user_session_path do %>
+      <div class="nav-user user-login">
+        <i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP
       </div>
+    <% end  %>
+  </div>
+  <% end  %>
+</div>
+
+
+<%# when minimized %>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="dropdown" aria-labelledby="offcanvasWithBothOptionsLabel">
+ <button type="button" class="closedropdown closedrop fa-solid fa-xmark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <div class="offcanvas-logo">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669529625/taketrails_%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9C%E3%83%BC%E3%83%89_1_1_ui5jmp.png" width="150px"></h5>
+
+  </div>
+  <div class="offcanvas-body dropdown">
+    <div class="dropdownbody">
+      <a href="#" class="dropdown-link ">ABOUT US</a>
     </div>
+    <div class="dropdownbody">
+      <%= link_to "ALL TRAILS", "/trails#trails"%>
+    </div>
+    <% if user_signed_in? %>
+    <div class="dropdownbody">
+      <%= link_to "MY BOOKMARKS", bookmarks_path%>
+    </div>
+    <div class="dropdownbody">
+      <%= link_to "MY TRIPS", trips_path%>
+    </div>
+    <% else %>
+        <% end %>
+
+      <%# user-related links %>
+    <% if user_signed_in? %>
+      <div class="dropdown-login">
+        <%= link_to "LOG OUT", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-login" %>
+      </div>
+
+    <% else %>
+
+      <div class="dropdown-login">
+        <%= link_to new_user_session_path do %>
+          <div class="nav-user dropdown-login">
+            <i class="fa-regular fa-user"></i> &nbsp;LOG IN/SIGN UP
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
+</div>

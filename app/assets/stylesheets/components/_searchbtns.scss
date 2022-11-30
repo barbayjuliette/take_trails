@@ -1,13 +1,21 @@
+abbr {
+  display: none;
+}
+
+.simpleform-container {
+  justify-content: center;
+}
+
 .searchbtn {
-    // margin-top: 10px;
+    margin-top: 10px;
     background-color: #012e19;
-    width: 100px;
-    height: 45px;
+    width: 100%;
+    height: 40px;
     border-radius: 5px;
     color: #fdd719;
     transition: all .15s ease-out;
     font-size: 0.9rem;
-    margin-top: -20px;
+    // margin-left: 15px;
 }
 
 .searchbtn:hover {
@@ -19,31 +27,43 @@
 }
 
 .searchbar {
-  margin: 10px;
+  justify-content: center;
+  align-items: center;
   margin-top: -20px;
-  width: 300px;
-  height: 45px
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
 }
 
-.clearbtn {
-  // margin-top: 10px;
-  background-color: #012e19;
-  width: 120px;
-  height: 45px;
+.filterlabel {
+  width: 210px;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.msgempty {
+  text-align: left;
+}
+
+.clearbtncol {
+  margin-top: 10px;
+  background-color: transparent;
+  width: 100%;
+  height: 40px;
   border-radius: 5px;
-  color: #fdd719;
+  border: 1px solid #012e19 !important;
+  color: #012e19;
   transition: all .15s ease-out;
   font-size: 0.9rem;
-  margin-top: -20px;
-  margin-left: 5px;
-  padding: 11px;
-
+  padding-top: 9px;
 }
 
-.clearbtn:hover {
-background-color: $trailgreen;
-box-shadow: .1px .1px 5px rgb(192, 191, 191);
-transition: all .15s ease-out;
-color: $trailyellow;
-opacity: .8;
-}
+.clearbtncol:hover {
+  background-color: transparent;
+  border: 1px solid #04bb65 !important;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: #04bb65;
+  opacity: .8;
+  }

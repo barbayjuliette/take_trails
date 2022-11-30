@@ -13,6 +13,7 @@ puts "Clearing old data..."
 Trail.destroy_all
 Trip.destroy_all
 User.destroy_all
+Category.destroy_all
 
 puts "Creating users..."
 users_filepath = "db/users.json"
@@ -27,6 +28,20 @@ users.each do |user|
   )
 end
 
+puts "Creating categories..."
+Category.create!(name: 'Muddy')
+Category.create!(name: 'Lots of mosquitoes')
+Category.create!(name: 'Uneven path')
+Category.create!(name: 'Monkey sighting')
+Category.create!(name: 'Great views')
+
+# puts "Creating tags..."
+# Tag.create!(review: Review.first, category: Category.first)
+# Tag.create!(review: Review.first, category: Category.last)
+# Tag.create!(review: Review.last, category: Category.first)
+
+
+
 puts "Creating trails..."
 trails_filepath = "db/trails.json"
 serialized_trails = File.read(trails_filepath)
@@ -39,7 +54,8 @@ trails.each do |trail|
     difficulty: trail["difficulty"],
     description: trail["description"],
     duration: trail["duration"],
-    location: trail["location"]
+    location: trail["location"],
+    coordinates: trail["coordinates"]
   )
   trail["photos"].each_with_index do |photo_url, i|
     file = URI.open(photo_url)
@@ -54,14 +70,14 @@ User.all.each do |user|
     new_trip = Trip.new(
       user:,
       trail: Trail.all.sample,
-      date: DateTime.parse("2022-11-#{rand(24..30)}T#{rand(6..17)}:00+08:00")
+      date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00")
     )
     new_trip.save(validate: false)
   end
 end
 
 puts "Creating reviews..."
-Trip.all.each do |trip|
+Trip.where('date < ?', Time.now).each do |trip|
   Review.create!(
     user: trip.user,
     trip:,

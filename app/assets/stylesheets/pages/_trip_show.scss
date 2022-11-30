@@ -5,9 +5,19 @@
   overflow-x: auto;
 }
 
-.right-column {
+#right-column {
   width: 60%;
   margin-left: auto;
+}
+
+#left-column {
+  width: 40%;
+}
+
+#map {
+  position: sticky;
+  top: 50px; height: calc(100vh - 50px);
+  width: 100%;
 }
 
 #info-bar {

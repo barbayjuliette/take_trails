@@ -52,8 +52,8 @@
 
         <%# Bookmark icon %>
         <span class="text-decoration-none text-dark">
-          <div class="d-flex justify-content-center align-items-center mx-2">
-            <%= link_to toggle_favorite_trail_path(@trail), remote: true, data:{turbo_method: :post} do %>
+          <div class="d-flex justify-content-center align-items-center mx-2" data-controller="favourite" data-favourite-trail-value="<%= @trail.id %>">
+            <%= link_to toggle_favorite_trail_path(@trail), data:{ turbo_method: :post, action: "click->favourite#toggleBookmarkIcon" }, class: "bookmark-show" do %>
               <% if user_signed_in? %>
                 <% if current_user.favorited?(@trail) %>
                   <i class="fa-regular fa-bookmark fw-bold bookmark-show"></i>
@@ -158,21 +158,7 @@
         <p>No reviews for this trail yet.</p>
       <% else %>
         <% @trail.reviews.first(3).each do |review| %>
-          <div id="show-pg-review-card" class="review">
-            <div class="user-info">
-              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
-              <div>
-                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
-                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
-              </div>
-              <div class="rating">
-                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
-              </div>
-            </div>
-            <div class="reviews review-size">
-              <%= review.comment %>
-            </div>
-          </div>
+          <%= render "reviews/reviewcard", review: review %>
         <% end %>
         <%# trigger modal to see all reviews (modal at bottom) %>
         <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#allReviews">
@@ -205,21 +191,7 @@
       <div class="modal-body">
         <h2><strong data-insert-in-list-target="count"><%= pluralize(@trail.reviews.count, 'review') %></strong></h2>
         <% @trail.reviews.each do |review| %>
-          <div id="show-pg-review-card" class="review">
-            <div class="user-info">
-              <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
-              <div>
-                <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
-                <p class="mt-0"><%= review.user.created_at.to_s.split(" ").first %> </p>
-              </div>
-              <div class="rating">
-                <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
-              </div>
-            </div>
-            <div class="reviews review-size">
-              <%= review.comment %>
-            </div>
-          </div>
+          <%= render "reviews/reviewcard", review: review %>
         <% end %>
       </div>
     </div>
