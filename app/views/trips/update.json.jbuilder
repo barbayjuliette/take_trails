@@ -6,6 +6,7 @@ if @trip.persisted?
   # json.my_form render(partial: 'trips/form', formats: :html, locals: { trip: @trip} )
   # I want to render the created picture (insert it inside the grid)
   json.inserted_item render(partial: 'trips/photos', formats: :html, locals: {trip: @trip})
+  json.popup render(partial: 'trips/popup', formats: :html, locals: {photo: @trip.photos.last})
 
 # If not saved
 else

@@ -2,5 +2,8 @@
 
 <% @trip.photos.each do |photo| %>
   <%# <%= render 'trips/photos', photo: photo %>
-  <div class="image-container"><%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %></div>
+  <% idp = photo.blob_id %>
+  <a class="image-container" type="button" data-bs-toggle="modal" data-bs-target='#showpictures<%= idp %>'>
+    <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %>
+  </a>
 <% end %>

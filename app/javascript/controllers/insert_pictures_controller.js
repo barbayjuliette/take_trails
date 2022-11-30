@@ -27,13 +27,13 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log(data)
         if(data.inserted_item) {
-          console.log(this.pictureTarget.querySelector("input[type='file']") );
           this.pictureTarget.querySelector("input[type='file']").value = ""
-          console.log(data.inserted_item)
           this.gridTarget.innerHTML = data.inserted_item
           // this.gridTarget.insertAdjacentHTML('beforebegin','<p>  Thanks for uploading your pictures!</p>')
           this.uploadedTarget.innerHTML = "Picture successfully uploaded"
+          this.element.insertAdjacentHTML("afterend",data.popup)
 
         }
       })

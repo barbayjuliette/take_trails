@@ -123,15 +123,35 @@
         <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
         <%= render "trips/form"  %>
         <p id="upload-sucess" data-insert-pictures-target="uploaded"></p>
-        <% if @trip.photos.attached? %>
           <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
           <div class="trips-pictures" data-insert-pictures-target="grid" >
+        <% if @trip.photos.attached? %>
             <%= render 'trips/photos' %>
-          </div>
+        <% else %>
+            <p>Upload some pics</p>
         <% end %>
+          </div>
       <% end %>
     </div>
 
+  <% @trip.photos.each do |photo| %>
+      <% idp = photo.blob_id %>
+      <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <%# <h5 class="modal-title" id="showpicturesLabel">Modal title</h5> %>
+            </div>
+            <div class="modal-body">
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
