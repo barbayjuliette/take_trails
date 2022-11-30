@@ -22,7 +22,8 @@
 </nav>
 <% end %>
 
-<h1 class="margin-title-lg" id="scrollspycontent"> Find your next hike ...</h1>
+
+<h1 class="margin-title-lg" id="trails"> Find your next hike ...</h1>
 
 <div class="simpleform-container">
 <form class="row align-items-center justify-content-center">
@@ -43,6 +44,7 @@
       </div>
 
 
+
       <div class ='col-lg-1 gx-2'>
         <%= f.submit "Search", class: "btn searchbtn" %>
       </div>
@@ -53,7 +55,6 @@
   <% end %>
 </div>
 
-<div id="trails">
-<%= render 'shared/cards', empty_message: "No trails found!" %>
 
+  <%= render 'shared/cards', action: "click->favourite#toggleBookmarkIcon", empty_message: "No trails found!"  %>
 </div>

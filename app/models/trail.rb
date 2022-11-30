@@ -5,6 +5,8 @@ class Trail < ApplicationRecord
   has_many :reviews, through: :trips
   acts_as_favoritable
 
+  serialize :coordinates, Array
+
   DISTANCE_MAP =
     { '≤ 2 km' => { min: 0, max: 2 },
       '2 km to 5 km' => { min: 2, max: 5 },
