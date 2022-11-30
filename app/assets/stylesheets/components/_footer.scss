@@ -10,7 +10,7 @@
 .footer {
   background-color: $trailgreen;
   margin:auto;
-  height: 100px;
+  min-height: 100px;
   color: white;
   margin-top:60px;
 }
@@ -18,17 +18,39 @@
 .footer-container {
 
   display: flex;
+
   width:85%;
   margin: auto;
   justify-content: space-around;
 }
 
+@media screen and (max-width: 900px) {
+  .footer-container {
+    flex-wrap: wrap;
+  }
+  .newsletter {
+    justify-content: center;
+    margin-top: 25px !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .newsletter h6 {
+    margin-bottom: 15px !important;
+  }
+
+    .input-footer {
+      width: 300px !important;
+    }
+}
+
 .newsletter {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   width: 700px;
-  margin-top: 30px;
+  margin-top: 15px;
 
   h6 {
     margin-bottom: 0px;
@@ -48,6 +70,7 @@
   border: 1px solid white !important;
   background-color: white;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .input-footer {
@@ -75,4 +98,5 @@ input:focus {
 
 .footer-logo {
 margin-top: 40px;
+margin-bottom: 30px;
 }
