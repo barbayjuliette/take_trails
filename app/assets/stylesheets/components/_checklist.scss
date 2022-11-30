@@ -201,16 +201,18 @@
   .custom-add-input {
     display: flex;
     width: 200px;
-    padding-right: 10px !important;
+    padding-left: 10px;
     height: 50px;
     box-sizing: border-box;
     border-radius: 10px;
-    border-color: #568B57;
 
     .form-control:focus {
       border-color: #568B57 !important;
     }
+  }
 
+  input#task_description {
+    border: 1px solid #568B57;
   }
 
   .custom-add-input::placeholder {
@@ -221,7 +223,6 @@
     background-color: white !important;
     font-size: 14px;
     color: $trailgreen;
-    display: flex;
     height: 30px;
     width: 30px;
     bottom: 3px;

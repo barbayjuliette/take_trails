@@ -2,13 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
     connect() {
-      console.log("Zonghan")
         console.log(this.element)
     }
 
   //   show() {
   //     alert("Hey from Stimulus");
   // }
+    onSubmit() {
+      console.log(this.element)
+    event.preventDefault(); //prevents page refresh on submit
+
+    const description = document.getElementById('testing'); //get the input field
+    description.value = ''; //clear the input field
+
+    }
+
 
     toggle(e) {
         const id = e.target.dataset.id
@@ -16,9 +24,6 @@ export default class extends Controller {
 
         fetch(`/tasks/${id}/toggle`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            // mode: 'cors', // no-cors, *cors, same-origin
-            // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            // credentials: 'same-origin', // include, *same-origin, omit
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-Token': csrfToken

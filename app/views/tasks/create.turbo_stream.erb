@@ -1,1 +1,5 @@
-<%= turbo_stream.append "tasks", @task %>
+ <%= turbo_stream.append "tasks", @task %>
+
+<%= turbo_stream.replace "myform" do %>
+  <%= render "form", task: Task.new %>
+<% end %>
