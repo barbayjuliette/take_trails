@@ -54,6 +54,5 @@
 </div>
 
 <div id="trails">
-<%= render 'shared/cards', empty_message: "No trails found!" %>
-
+  <%= render 'shared/cards', action: "click->favourite#toggleBookmarkIcon", empty_message: "No trails found!"  %>
 </div>

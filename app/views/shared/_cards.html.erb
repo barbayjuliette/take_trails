@@ -1,11 +1,11 @@
 <div class="cards">
 <% if @trails.empty? %>
-    <h3><div class="msgempty"><%= empty_message %></div></h3>
+    <p class="msgempty"><%= empty_message %></p>
   <% end %>
  <% @trails.each do |trail| %>
-  <div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>">
+<div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>" data-favourites-target= "toggleBookmarkIcon" >
     <%# Bookmark %>
-    <%= link_to toggle_favorite_trail_path(trail), data:{turbo_method: :post, action: "click->favourite#bookmarked" } do %>
+    <%= link_to toggle_favorite_trail_path(trail), data:{turbo_method: :post, action: action} do %>
       <% if user_signed_in? %>
         <% if current_user.favorited?(trail) %>
           <i class="fa-regular fa-bookmark fw-bold"></i>

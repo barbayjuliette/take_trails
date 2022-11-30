@@ -13,7 +13,7 @@
 
   <div id="upcoming-trips" class="cards" data-switch-tabs-target="upcomingtrips">
     <% if @upcoming_trips.empty? %>
-      <h3>You do not have any upcoming trips.</h3>
+      <p class = "msgempty mx-0"> You do not have any upcoming trips.</p>
     <% else %>
       <% @upcoming_trips.each do |trip| %>
 
@@ -67,7 +67,7 @@
 
   <div id="past-trips" class="cards d-none" data-switch-tabs-target="pasttrips">
     <% if @past_trips.empty? %>
-      <h3>You do not have any past trips.</h3>
+      <p class = "msgempty mx-0">You do not have any past trips.</p>
     <% else %>
       <% @past_trips.each do |trip| %>
 
