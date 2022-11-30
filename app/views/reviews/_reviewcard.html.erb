@@ -1,9 +1,9 @@
-<div id="show-pg-review-card" class="review mb-2">
+<div class="review">
   <div class="user-info">
-    <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+    <i class="fa-solid fa-circle-user avatar"></i>
     <div>
-      <h4>Your review</h4>
-      <p class="mt-0"><%= review.created_at.strftime('%-d %b %Y') %> </p>
+      <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+      <p><%= review.created_at.strftime('%-d %b %Y') %></p>
     </div>
     <div class="rating">
       <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
@@ -13,3 +13,19 @@
     <%= review.comment %>
   </div>
 </div>
+
+<%# <div class="review">
+  <div class="user-info">
+    <i class="fa-solid fa-circle-user avatar"></i>
+    <div>
+      <h4>${data.reviewer}</h4>
+      <p>${data.created_at}</p>
+    </div>
+    <div class="rating">
+      <h4>${data.rating}<i class="fa-solid fa-star"></i></h4>
+    </div>
+  </div>
+  <div class="reviews review-size">
+    ${data.review}
+  </div>
+</div> %>
