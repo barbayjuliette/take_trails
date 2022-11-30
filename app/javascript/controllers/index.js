@@ -30,6 +30,3 @@ application.register("tom-select", TomSelectController)
 
 import SwitchTabsController from "./switch_tabs_controller"
 application.register("switch-tabs", SwitchTabsController)
-
-import WeatherController from "./weather_controller"
-application.register("weather", WeatherController)

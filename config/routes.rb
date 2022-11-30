@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "trails#index"
 
-  get '/trips/:id/weather_forecast', to: 'trips#weather_forecast'
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -15,10 +13,6 @@ Rails.application.routes.draw do
     member do
       post 'toggle_favorite', to: "trails#toggle_favorite"
     end
-
-    # collection do
-    #   get :mine
-    # end
 
   end
 
