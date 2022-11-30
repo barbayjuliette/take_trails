@@ -84,7 +84,7 @@ class TrailsController < ApplicationController
     weathers = JSON.parse(weather_info)
     # index = nil
     array_days = []
-    start = Date.today
+    start = Date.today-1
     weathers["forecast"]["forecastday"].each do |day|
       min_temp = day["day"]["mintemp_c"]
       max_temp = day["day"]["maxtemp_c"]
