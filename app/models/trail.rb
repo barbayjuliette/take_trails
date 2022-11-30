@@ -45,7 +45,7 @@ class Trail < ApplicationRecord
 
   def categories
     Category.joins(tags: { review: { trip: :trail } })
-            .where(trails: {id: 1})
+            .where(trails: {id: self.id})
             .group('categories.name')
             .select('categories.name, COUNT(categories.name) as count')
             .order('count DESC')
