@@ -43,6 +43,12 @@ class TrailsController < ApplicationController
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
+    @categories = Category.joins(tags: { review: { trip: :trail } })
+                          .where(trails: {id: 1})
+                          .group('categories.name')
+                          .select('categories.name, COUNT(categories.name) as count')
+                          .order('count DESC')
+                          .limit(3)
   end
 
   def toggle_favorite
