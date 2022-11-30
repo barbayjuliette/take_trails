@@ -19,6 +19,9 @@ application.register("hello", HelloController)
 import InsertInListController from "./insert_in_list_controller"
 application.register("insert-in-list", InsertInListController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 

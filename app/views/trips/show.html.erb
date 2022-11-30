@@ -7,26 +7,17 @@
 
 <div class="d-flex">
   <%# map (left column) %>
-  <div id="trip-show-map-container">
-    <img class="h-100" src="https://static-maps.alltrails.com/production/at-map/22685628/trail-singapore-central-macritchie-reservoir-and-treetop-walk-loop-at-map-22685628-1656091103-414w200h-en-US-i-2.png" alt="">
+  <div class="align-self-stretch" id="left-column">
+    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="map"></div>
   </div>
   <%# right column %>
-  <div class="right-column py-3 px-4">
+  <div id="right-column" class="py-3 px-4">
     <%# info bar %>
     <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
-      <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y') %></div>
+      <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
         <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
         30° / 26° C
-      </div>
-      <div class="d-flex justify-content-end">
-        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">XL</div>
-        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">XF</div>
-        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">RJ</div>
-        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">JB</div>
-        <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">
-          <i class="fa-solid fa-plus"></i>
-        </div>
       </div>
     </div>
 
