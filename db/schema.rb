@@ -42,6 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_052927) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -78,6 +84,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_052927) do
     t.bigint "user_id"
     t.index ["trip_id"], name: "index_reviews_on_trip_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tags_on_category_id"
+    t.index ["review_id"], name: "index_tags_on_review_id"
   end
 
   create_table "trails", force: :cascade do |t|
@@ -120,6 +135,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_052927) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "reviews", "trips"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tags", "categories"
+  add_foreign_key "tags", "reviews"
   add_foreign_key "trips", "trails"
   add_foreign_key "trips", "users"
 end
