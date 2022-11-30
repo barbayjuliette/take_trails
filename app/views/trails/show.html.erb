@@ -90,6 +90,24 @@
           <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
         <% end %>
       </div>
+
+      <div class="row weather-box d-flex justify-content-center mt-3 mb-3">
+        <% @trailsforecast.each do |day| %>
+        <div class="col">
+          <div class="row weather-f">
+          <%= day[:time].strftime('%A') %>
+          </div>
+          <div class="row weather-f">
+          <%= day[:time].strftime('%d-%m-%y') %>
+          </div>
+          <div class="row weather-f">
+            <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+
     </div>
 
     <%# main body %>

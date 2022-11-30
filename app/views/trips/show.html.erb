@@ -12,8 +12,8 @@
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
         <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
         30° / 26° C %>
-        <% if @forecast %>
-          <img class="icon-w" src="<%= @forecast[:icon_url] %>" alt="">
+        <% if @forecast && @trip.date > Time.now %>
+          <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
           <div class="col">
             <div class="row">
               <div class="weather-p">
@@ -24,8 +24,8 @@
               <div class="weather-p"><%= @forecast[:condition] %></div>
             </div>
           </div>
-        <% else %>
-          <div class="weather-p">Weather data not available yet.</div>
+        <% elsif @trip.date > Time.now %>
+          <div class="weather-p">Weather data is not available yet.</div>
         <% end %>
       </div>
     </div>

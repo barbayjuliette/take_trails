@@ -43,6 +43,7 @@ class TrailsController < ApplicationController
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
+    @trailsforecast = weather_forecast(@trail)
   end
 
   def toggle_favorite
@@ -63,4 +64,36 @@ class TrailsController < ApplicationController
     # @trails = Trail.all
     # render :index
   end
+
+  def weather_forecast(trail)
+    # query the api from here
+    # https://api.openweathermap.org/data/2.5/weather?lat=1.3906746&lon=103.9883041&appid=6157d0b45dbc65d57d7bcb4569934b10
+
+    require "json"
+    require "open-uri"
+
+    url_m = "https://maps.googleapis.com/maps/api/geocode/json?address=#{trail.location}&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"
+    map_serialized = URI.open(url_m).read
+    maps = JSON.parse(map_serialized)
+    lat = maps["results"][0]["geometry"]["location"]["lat"]
+    lng = maps["results"][0]["geometry"]["location"]["lng"]
+
+
+    url_w = "http://api.weatherapi.com/v1/forecast.json?key=791c08d9b29546298d073547223011&q=#{lat},#{lng}&days=4&aqi=no&alerts=no"
+    weather_info = URI.open(url_w).read
+    weathers = JSON.parse(weather_info)
+    # index = nil
+    array_days = []
+    start = Date.today
+    weathers["forecast"]["forecastday"].each do |day|
+      min_temp = day["day"]["mintemp_c"]
+      max_temp = day["day"]["maxtemp_c"]
+      condition = day["day"]["condition"]["text"]
+      icon_url = day["day"]["condition"]["icon"]
+
+      array_days << { time: start += 1, min_temp: min_temp, max_temp: max_temp, condition: condition, icon_url: icon_url }
+    end
+    array_days
+  end
+
 end
