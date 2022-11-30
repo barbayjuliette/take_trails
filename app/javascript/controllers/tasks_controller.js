@@ -9,8 +9,8 @@ export default class extends Controller {
   //     alert("Hey from Stimulus");
   // }
 
-    toggle(element) {
-        const id = element.target.dataset.id
+    toggle(e) {
+        const id = e.target.dataset.id
         const csrfToken = document.querySelector("[name='csrf-token']").content
 
         fetch(`/tasks/${id}/toggle`, {
