@@ -22,5 +22,8 @@ application.register("insert-in-list", InsertInListController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
+
 import SwitchTabsController from "./switch_tabs_controller"
 application.register("switch-tabs", SwitchTabsController)

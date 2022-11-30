@@ -13,6 +13,7 @@ puts "Clearing old data..."
 Trail.destroy_all
 Trip.destroy_all
 User.destroy_all
+Category.destroy_all
 
 puts "Creating users..."
 users_filepath = "db/users.json"
@@ -26,6 +27,20 @@ users.each do |user|
     last_name: user["last_name"]
   )
 end
+
+puts "Creating categories..."
+Category.create!(name: 'Muddy')
+Category.create!(name: 'Lots of mosquitoes')
+Category.create!(name: 'Uneven path')
+Category.create!(name: 'Monkey sighting')
+Category.create!(name: 'Great views')
+
+# puts "Creating tags..."
+# Tag.create!(review: Review.first, category: Category.first)
+# Tag.create!(review: Review.first, category: Category.last)
+# Tag.create!(review: Review.last, category: Category.first)
+
+
 
 puts "Creating trails..."
 trails_filepath = "db/trails.json"
