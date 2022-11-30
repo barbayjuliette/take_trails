@@ -32,7 +32,7 @@ export default class extends Controller {
           this.pictureTarget.querySelector("input[type='file']").value = ""
           this.gridTarget.innerHTML = data.inserted_item
           this.uploadedTarget.innerHTML = "Picture successfully uploaded"
-          // this.element.insertAdjacentHTML("afterend",data.popup)
+          this.element.insertAdjacentHTML("afterend",data.popup)
           // this.element.insertAdjacentHTML("afterend",data.carousel)
         }
       })

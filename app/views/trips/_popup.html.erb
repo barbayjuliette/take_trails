@@ -10,7 +10,7 @@
               <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill %>
+              <%= cl_image_tag photo.key, class: "d-block w-100" %>
               <%# <%= render 'trips/carousel' photo: photo %>
             </div>
           </div>
