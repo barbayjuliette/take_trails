@@ -1,0 +1,18 @@
+<div id="show-pg-review-card" class="review mb-2">
+  <div class="user-info">
+    <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
+    <div>
+      <h4><%= review.user.first_name %> <%= review.user.last_name %></h4>
+      <p class="mt-0"><%= review.created_at.strftime('%-d %b %Y') %></p>
+    </div>
+    <div class="rating">
+      <h5><%= review.rating %><i class="fa-solid fa-star"></i> </h5>
+    </div>
+  </div>
+  <div class="reviews review-size">
+    <% review.categories.each do |category| %>
+      <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
+    <% end %>
+    <p class="review-comment"><%= review.comment %></p>
+  </div>
+</div>

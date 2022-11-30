@@ -14,17 +14,20 @@ class ReviewsController < ApplicationController
     end
     respond_to do |format|
       if @review.save
-        format.html { redirect_to trail_path(@trail) }
-        format.json do
-          render json: {
-            success: true,
-            review: @review.comment,
-            review_tags: @review.categories.map { |category| category.name },
-            rating: @review.rating,
-            reviewer:  current_user.first_name + " " + current_user.last_name,
-            created_at: @review.created_at.to_s.split(" ").first
-          }
-        end
+        format.html { redirect_to trip_path(@trip) }
+        format.json
+        # do
+        #   render json: {
+        #     success: true,
+        #     review: @review.comment,
+        #     # review_tags: [],
+        #     rating: @review.rating,
+        #     reviewer:  current_user.first_name + " " + current_user.last_name,
+        #     created_at: @review.created_at.strftime('%-d %b %Y'),
+        #     overall_rating: @review.trip.trail.rating,
+        #     review_count: @review.trip.trail.reviews.length
+        #   }
+        # end
       else
         format.html { render "shared/leavereview", status: :unprocessable_entity }
         format.json do

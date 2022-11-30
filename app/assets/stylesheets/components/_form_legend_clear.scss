@@ -255,3 +255,22 @@ legend ~ div.form-check:first-of-type {
   margin-top:20px;
   margin-bottom:30px;
 }
+
+.review-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: $trailgreen;
+  border-radius: 10px;
+  color:$trailyellow;
+  transition: all .15s ease-out;
+  letter-spacing: .1em;
+}
+
+.review-submit-btn:hover {
+  background-color: $trailgreen;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}
