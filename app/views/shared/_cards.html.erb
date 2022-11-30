@@ -1,8 +1,11 @@
 <div class="cards">
-  <% @trails.each do |trail| %>
-  <div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>">
+<% if @trails.empty? %>
+    <p class="msgempty"><%= empty_message %></p>
+  <% end %>
+ <% @trails.each do |trail| %>
+<div class="card-wrapper" data-controller="favourite" data-favourite-trail-value="<%= trail.id %>" data-favourites-target= "toggleBookmarkIcon" >
     <%# Bookmark %>
-    <%= link_to toggle_favorite_trail_path(trail), data:{turbo_method: :post, action: "click->favourite#bookmarked" } do %>
+    <%= link_to toggle_favorite_trail_path(trail), data:{turbo_method: :post, action: action} do %>
       <% if user_signed_in? %>
         <% if current_user.favorited?(trail) %>
           <i class="fa-regular fa-bookmark fw-bold"></i>
@@ -47,10 +50,12 @@
         <% minutes = (trail.duration % 60).to_i %>
         <% if hour == 00 %>
           <%= minutes %>m
+        <% elsif minutes == 0 %>
+          <%= hour %>h
         <% elsif minutes < 10 %>
-          <%= hour %>h 0<%= minutes %>m
+          <%= hour %>h 0<%= minutes %>min
         <% else %>
-          <%= hour %>h <%= minutes %>m
+          <%= hour %>h <%= minutes %>min
         <% end %>
         </p>
 

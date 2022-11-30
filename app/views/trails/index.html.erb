@@ -1,7 +1,11 @@
 
+<%# <% if current_user  %>
+<%# <%= render "shared/navbar2" %>
+<%# <% else  %>
+<%# <%= render "shared/navbar" %>
+<%# <% end %>
 
-
- <% if user_signed_in? %>
+<% if user_signed_in? %>
   <% else %>
 <%# header image %>
 <nav data-spy="scroll" data-target="#jump" data-offset="50">
@@ -19,95 +23,38 @@
 <% end %>
 
 
-
-
-
 <h1 class="margin-title-lg" id="trails"> Find your next hike ...</h1>
-<%# search form %>
-<div class="search-bar d-flex mb-4 justify-content-center">
-<%= form_with url: trails_path, method: :get, class: "d-flex" do %>
+
+<div class="simpleform-container">
+<form class="row align-items-center justify-content-center">
+  <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
+    <div class="col-lg-5">
+      <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail", value: params.dig(:search, :query) } %>
+    </div>
+
+    <div class="row justify-content-center align-items-center mb-4">
+      <div class="col-lg-2">
+      <%= f.input :difficulties, label: "Difficulty level", :label_html => { :class => 'type filterlabel' }, collection: Trail.difficulties.keys, selected: params.dig(:search, :difficulties), include_hidden: false, prompt: 'All' %>
+      </div>
+      <div class="col-lg-2">
+        <%= f.input :distance, label: "Distance", :label_html => { :class => 'type filterlabel' }, collection: Trail::DISTANCE_MAP.keys, selected: params.dig(:search, :distance), include_hidden: false, prompt: 'All' %>
+      </div>
+      <div class="col-lg-2">
+        <%= f.input :duration, label: "Duration", :label_html => { :class => 'type filterlabel' }, collection: Trail::DURATION_MAP.keys, selected: params.dig(:search, :duration),  include_hidden: false, prompt: 'All' %>
+      </div>
 
 
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control fs-5 searchbar",
-    placeholder: "Find a trail"
-  %>
 
-  <%= submit_tag "Search", class: "btn searchbtn" %>
-  <%= link_to "Clear Search", root_path, class: "btn clearbtn" %>
-<% end %>
+      <div class ='col-lg-1 gx-2'>
+        <%= f.submit "Search", class: "btn searchbtn" %>
+      </div>
+      <div class ='col-lg-1 gx-2' >
+        <%= link_to "Reset", trails_path, class: "btn clearbtncol" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<%= render 'shared/cards' %>
 
-
-
-
-
-<%# <%= form_with url: trial_path, method: :get, do %>
-  <%# <%= form.select :difficulty_level,
-    options_for_select(Trail::DIFFICULTIES),
-    { include_blank: 'All Trails' },
-    class: "border-blue-500 rounded",
-
-  %>
-   <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-<!-- Snip the search input -->
-<%# <% end %>
-<%# <%= link_to "Easy", trails_path(Trail::DIFFICULTIES =>"Easy") %>
-<%# <%= link_to "Intermediate", trails_path(Trail::DIFFICULTIES =>"Intermediate") %>
-<%# <%= link_to "Difficult", trails_path(Trail::DIFFICULTIES =>"Difficult") %>
-<%# <%= link_to "clear", trails_path(@trails) %>
-<%# <table>
-<tr>
-  <th>Trails</th>
-  <th>Difficulty Level</th>
-</tr>
-<% @trails.each do |trail| %>
-<%# <tr>
-  <td><%= trail.name %>
-  <%# <td><%= trail.difficulty %>
-<%# </tr>
-<% end %>
-<%# </table> %>
-
-
-<%# <div class="container">
-<h3>Search by:</h3>
-<%= form_tag(trails_path, method: :get) do %>
-<%# <select name=trails[:name], class="form-control">
-  <option value="None">-Select-</option>
-  <option value="Easy">Easy</option>
-  <option value="Intermediate">Intermediate</option>
-  <option value="Difficult">Difficult</option>
-</select><br><br>
-<% end %>
-
-<%# <div class="field">
-<%= form_tag(url: trails_path, method: :get) do %>
-  <%# <%= label_tag :difficulty,  %>
-  <%# <%= select_tag :difficulty, Trail.difficulties.keys %>
-  <%# <%= submit_tag 'Filter' %>
-<%# <% end %>
-<%# </div> %>
-
-<%# <%= form_tag(url: trails_path, method: :get) do %>
-  <%# <div class="input-group">
-    <%= select_tag :difficult, options_for_select(:difficult) %>
-    <%# <%= submit_tag 'Filter' %>
-  <%# </div>
-<% end %>
-
-<%# <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%# <%= f.input :difficulties, label: "Difficulty level",  collection: $difficulties, as: :check_boxes %>
-  <%# <%= f.input :duration, label: "Duration", collection: $duration, as: :check_boxes %>
-  <%# <%= f.submit "Search", class: "btn btn-primary" %>
-  <%# <%= link_to "Reset", root_path  %>
-<%# <% end %>
-<%#
-<%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-  <%# <%= f.input :difficulty_levels, label: "Difficult level", collection: Trail.difficulty_levels.keys, as: :check_boxes,  include_hidden: false %>
-  <%# <%= f.submit "Search", class: "btn btn-primary" %>
-  <%# <%= link_to "Reset", root_path %>
-<%# <% end %>
+  <%= render 'shared/cards', action: "click->favourite#toggleBookmarkIcon", empty_message: "No trails found!"  %>
+</div>
