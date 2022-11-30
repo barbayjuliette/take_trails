@@ -5,19 +5,6 @@ export default class extends Controller {
         console.log(this.element)
     }
 
-  //   show() {
-  //     alert("Hey from Stimulus");
-  // }
-    onSubmit() {
-      console.log(this.element)
-    event.preventDefault(); //prevents page refresh on submit
-
-    const description = document.getElementById('testing'); //get the input field
-    description.value = ''; //clear the input field
-
-    }
-
-
     toggle(e) {
         const id = e.target.dataset.id
         const csrfToken = document.querySelector("[name='csrf-token']").content

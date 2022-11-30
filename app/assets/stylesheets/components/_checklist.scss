@@ -1,99 +1,10 @@
 
-// .floating-button{
-//   background-color: $trailgreen;
-//   border-radius: 50%;
-
-
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  right: 0;
-  background-color: $trailgreen;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 5px;
-
-  .fa-solid {
-    font-size: 1.8em !important;
-    margin-left: 9px;
-    text-align:center;
-    padding-top: 5px
-  }
-}
-
-[class^="icon-"], [class*=" icon-"] {
-  display: inline-block;
-  width: 100%;
-}
-
-.sidenav a {
-  position: absolute;
-  padding: 0px;
-  text-decoration: none;
-  font-size: 25px;
-  color: black;
-  display: block;
-  transition: 0.3s;
-
-}
-
-// }
-// .sidenav {
-//   height: 100%;
-//   width: 0;
-//   position: fixed;
-//   z-index: 1000;
-//   top: 0;
-//   right: 0;
-//   background-color: #568B57;
-//   overflow-x: hidden;
-//   transition: 0.5s;
-//   padding-top: 60px;
-// }
-
-// .sidenav a {
-//   padding: 8px 8px 8px 32px;
-//   text-decoration: none;
-//   font-size: 25px;
-//   color: #818181;
-//   display: block;
-//   transition: 0.3s;
-// }
-
-
-// .sidenav a:hover {
-//   color: #f1f1f1;
-// }
-
-
-.sidenav .closebtn {
-  position: absolute;
-  font-size: 32px;
-  margin-left: 50px;
-  position: absolute;
-  top: 70px;
-  right: 280px;
-}
 
 #main {
   transition: margin-right .5s;
   padding: 0px;
   z-index: 1000;
 }
-
-
-
-
-/* dashed border */
-// background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669443056/borderbottom_t2ynhv.svg');
-//   background-size: 80%;
-//   background-repeat: no-repeat;
-//   background-position: bottom center, 50%, 50%;
-
 
 .top-border {
   background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669772201/Untitled_mlfkj4.svg');
@@ -102,7 +13,6 @@
   background-position: top center, 40%, 50%;
 }
 
-
 .checklist-head {
   z-index: 10;
   font-family: 'Jonesy';
@@ -110,7 +20,7 @@
   font-style: normal;
   width:100%;
   margin: auto;
-  margin-top:5px !important;
+  margin-top:5px;
   font-weight: 400;
   font-size: 25px;
   line-height: 120%;
@@ -119,34 +29,6 @@
   padding-bottom: 10px;
   border-bottom: 0.7px dashed #432f29;
   text-align: center;
-
-}
-
-.checklist-body {
-  font-style: normal;
-  width:80%;
-  margin: auto;
-  margin-top:10px !important;
-  margin-bottom: 30px;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 120%;
-  letter-spacing: .06em;
-  padding: 16px 0;
-  text-align: left;
-  height:85%;
-}
-
-
-.add-checklist {
-  width:100%;
-  height:45px;
-  border-radius: 10px;
-  letter-spacing: .1em;
-  background-color: none;
-  border: 1px solid $trailgreen !important;
-  margin-top: 0px;
-  margin-bottom: 20px;
 }
 
 .check-list {
@@ -157,6 +39,7 @@
   padding-bottom: 0px !important;
   margin-top: 10px;
 }
+
 .form-check-input {
   width: 1.2em !important;
   height: 1.2em !important;
@@ -189,14 +72,6 @@
     padding-top: 20px;
     background-color: white;
   }
-
-  .checklist-add {
-    height:70px !important;
-    border-radius: 20px;
-    background-color: $trailgreen !important;
-  }
-
-
 
   .custom-add-input {
     display: flex;
@@ -236,10 +111,8 @@
     border-color: $trailgreen !important;
   }
 
-  //testing
 
-
-  /* Button used to open the chat form - fixed at the bottom of the page */
+  /* Button used to open the checklist */
 .open-button {
   background-color: $trailgreen;
   color: white;
@@ -256,8 +129,8 @@
 
 }
 
-/* The popup chat - hidden by default */
-.chat-popup {
+/* The popup checklist - hidden by default */
+.checklist-popup {
   display: none;
   position: fixed;
   width: 300px;
@@ -310,16 +183,10 @@
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.check-container .cancel {
-  background-color: red;
-}
-
 /* Add some hover effects to buttons */
 .check-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-
 
 
 .close {
@@ -338,8 +205,3 @@
     font-size: 2em;
   }
 }
-
-// .form-check-input:focus {
-//   box-shadow: none !important;
-//   border: 1px solid rgba(0, 0, 0, 0.25) !important;
-// }
