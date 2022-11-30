@@ -115,26 +115,21 @@
       <%= render "shared/leavereview" %>
     </div>
 
-    <% if @trip.date > Time.now %>
-      <h3 class="mb-3"><strong>Getting There</strong></h3>
-      <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
-    <% else %>
-      <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
-      <%= simple_form_for(@trip, method: :patch) do |f| %>
-        <div class="d-flex p-2 justify-content-start align-items-baseline">
-          <%= f.input :photos,  as: :file, input_html: { multiple: true }, label: false, class: "form-pictures" %>
-          <%= f.submit 'Add pictures', class: "add-photos-btn" %>
-        </div>
+    <div data-controller="insert-pictures">
+      <% if @trip.date > Time.now %>
+        <h3 class="mb-3"><strong>Getting There</strong></h3>
+        <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+      <% else %>
+        <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
+        <%= render "trips/form"  %>
+        <% if @trip.photos.attached? %>
+          <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
+          <div class="trips-pictures" data-insert-pictures-target="grid" >
+            <%= render 'trips/photos' %>
+          </div>
+        <% end %>
       <% end %>
-      <% if @trip.photos.attached? %>
-        <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
-        <div class="trips-pictures">
-          <% @trip.photos.each do |photo| %>
-           <div class="image-container"><%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %></div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+    </div>
 
   </div>
 </div>

@@ -1,0 +1,6 @@
+<%# <div class="image-container"><%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %>
+
+<% @trip.photos.each do |photo| %>
+  <%# <%= render 'trips/photos', photo: photo %>
+  <div class="image-container"><%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %></div>
+<% end %>
