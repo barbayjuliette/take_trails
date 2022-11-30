@@ -122,6 +122,7 @@
       <% else %>
         <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
         <%= render "trips/form"  %>
+        <p id="upload-sucess" data-insert-pictures-target="uploaded"></p>
         <% if @trip.photos.attached? %>
           <h3 class="mb-3"><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
           <div class="trips-pictures" data-insert-pictures-target="grid" >

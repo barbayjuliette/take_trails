@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-pictures"
 export default class extends Controller {
-  static targets = ["grid", "picture"]
+  static targets = ["grid", "picture", "uploaded"]
 
   connect() {
     // console.log(this.element)
@@ -18,6 +18,7 @@ export default class extends Controller {
 
     //console.log("TODO: send request in AJAX")
 
+    this.uploadedTarget.innerHTML = "Loading picture ..."
 
     fetch(this.pictureTarget.action, {
       method: "POST",
@@ -29,7 +30,11 @@ export default class extends Controller {
         if(data.inserted_item) {
           console.log(this.pictureTarget.querySelector("input[type='file']") );
           this.pictureTarget.querySelector("input[type='file']").value = ""
-          this.gridTarget.insertAdjacentHTML('beforeend', data.inserted_item)
+          console.log(data.inserted_item)
+          this.gridTarget.innerHTML = data.inserted_item
+          // this.gridTarget.insertAdjacentHTML('beforebegin','<p>  Thanks for uploading your pictures!</p>')
+          this.uploadedTarget.innerHTML = "Picture successfully uploaded"
+
         }
       })
   }
