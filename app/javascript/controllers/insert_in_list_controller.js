@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-in-list"
 export default class extends Controller {
-  static targets = ["items", "form", "blank", "count", "userreview", "overallrating"]
+  static targets = ["items", "form", "count", "userreview", "overallrating"]
 
   connect() {
-    console.dir(this.overallratingTarget)
+    console.log('Connected to insert-in-list controller')
+    console.dir(this.countTarget)
   }
 
   send(event) {
@@ -26,20 +27,15 @@ export default class extends Controller {
             <h3 class="submitted">Thanks for submitting a review!</h3>
           </div>
         `
-        let newCount = 0
+        let newCount = this.countTarget.innerText.match(/\d+/)
 
-        if (this.countTarget.innerHTML) {
-          newCount = this.countTarget.innerHTML.match(/\d+/)[0]
-          this.countTarget.innerHTML = (Number(newCount)+1) + " reviews"
+        if (newCount) {
+          this.countTarget.innerHTML = `<h2><strong>${Number(newCount[0])+1} reviews</strong></h2>`
         } else {
-          this.countTarget.innerHTML = "1 review"
+          this.countTarget.innerHTML = "<h2><strong>1 review</strong></h2>"
         }
 
         this.itemsTarget.insertAdjacentHTML("afterbegin", data.reviewcard);
-
-        this.blankTarget.innerHTML = ``
-
-        // document.querySelector("#main_review_count").innerHTML = (Number(newCount)+1) + " reviews"
 
         // on show page
         document.querySelector("#no-review").classList.add('d-none');

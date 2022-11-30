@@ -109,21 +109,7 @@
         <% end %>
       </div>
       <% if @trip.review.present? %>
-        <div id="show-pg-review-card" class="review mb-2">
-          <div class="user-info">
-            <i id="show-pg-user-avatar" class="fa-solid fa-circle-user avatar"></i>
-            <div>
-              <h4>Your review</h4>
-              <p class="mt-0"><%= @trip.review.created_at.strftime('%-d %b %Y') %> </p>
-            </div>
-            <div class="rating">
-              <h5><%= @trip.review.rating %><i class="fa-solid fa-star"></i> </h5>
-            </div>
-          </div>
-          <div class="reviews review-size">
-            <%= @trip.review.comment %>
-          </div>
-        </div>
+        <%= render "reviews/reviewcard", review: @trip.review %>
       <% end %>
       <% if @trip.review.blank? && @trip.date < Time.now %>
         <div class="d-flex align-items-center mb-2">
@@ -155,15 +141,20 @@
                   </div>
                 <% end %>
                 <%# Review list %>
-                <% if @trip.trail.reviews.blank? %>
-                  <h2><strong data-insert-in-list-target="count"></h2>
-                <% else %>
-                  <h2><strong data-insert-in-list-target="count"><%= @trip.trail.reviews.count %> reviews</strong></h2>
-                <% end %>
-                <div data-insert-in-list-target="items">
-                  <%= render "reviews/reviews" %>
+                <div data-insert-in-list-target="count">
+                  <% if @trip.trail.reviews.blank? %>
+                    <h4>No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>!</h4>
+                  <% else %>
+                    <h2><strong><%= pluralize(@trip.trail.reviews.count, 'review')%></strong></h2>
+                  <% end %>
                 </div>
-                <%# end of reivew list %>
+
+                <div data-insert-in-list-target="items">
+                  <% @trip.trail.reviews.reverse_each do |review| %>
+                    <%= render "reviews/reviewcard", review: review %>
+                  <% end %>
+                </div>
+                <%# end of review list %>
               </div>
             </div>
           </div>
