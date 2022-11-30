@@ -7,9 +7,9 @@
                 required: true,
                 autofocus: true,
                 label: false,
-                placeholder: "COMMENT",
+                placeholder: "COMMENT (minimum 10 characters)",
                 input_html: { class: "review-label"} %>
     <%= f.association :categories, label: false, input_html: { multiple: true, placeholder: 'TAG YOUR EXPERIENCE', data: { controller: "tom-select", tom_select_options_value: {tags: true}}, class: "tag-form d-flex " } %>
-    <%= f.button :submit, "SUBMIT REVIEW", class: "login-btn" %>
+    <%= f.button :submit, "SUBMIT REVIEW", class: "review-submit-btn p-3" %>
   <% end %>
 </div>
