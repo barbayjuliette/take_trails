@@ -54,7 +54,8 @@ trails.each do |trail|
     difficulty: trail["difficulty"],
     description: trail["description"],
     duration: trail["duration"],
-    location: trail["location"]
+    location: trail["location"],
+    coordinates: trail["coordinates"]
   )
   trail["photos"].each_with_index do |photo_url, i|
     file = URI.open(photo_url)
