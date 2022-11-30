@@ -5,7 +5,7 @@
       <div class="p5"><a href="#">ABOUT US</a></div>
       <div class="p5"> <%= link_to "ALL TRAILS", "/trails#trails"%></div>
       <% if user_signed_in? %>
-      <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path%></div>
+      <div class="p5"><%= link_to "MY BOOKMARKS", bookmarks_path, data: {turbo: false} %></div>
       <div class="p5"><%= link_to "MY TRIPS", trips_path%></div>
       <% else %>
       <% end %>

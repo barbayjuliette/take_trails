@@ -20,7 +20,8 @@ export default class extends Controller {
     .then(response => response.json())
     .then((data) => {
       // if (data.success) {
-        // in modal
+
+      // in modal
         this.formTarget.innerHTML = `
           <div class=''>
             <br>

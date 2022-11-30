@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.trip = @trip
+    review_params[:category_ids][1..].each do |id|
+      Tag.new(review: @review, category: Category.find(id.to_i))
+    end
     respond_to do |format|
       if @review.save
         format.html { redirect_to trip_path(@trip) }
@@ -49,6 +52,6 @@ class ReviewsController < ApplicationController
   # private
 
   def review_params
-    params.require(:review).permit(:comment, :rating)
+    params.require(:review).permit(:comment, :rating, category_ids: [])
   end
 end

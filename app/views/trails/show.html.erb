@@ -52,8 +52,8 @@
 
         <%# Bookmark icon %>
         <span class="text-decoration-none text-dark">
-          <div class="d-flex justify-content-center align-items-center mx-2">
-            <%= link_to toggle_favorite_trail_path(@trail), remote: true, data:{turbo_method: :post} do %>
+          <div class="d-flex justify-content-center align-items-center mx-2" data-controller="favourite" data-favourite-trail-value="<%= @trail.id %>">
+            <%= link_to toggle_favorite_trail_path(@trail), data:{ turbo_method: :post, action: "click->favourite#toggleBookmarkIcon" }, class: "bookmark-show" do %>
               <% if user_signed_in? %>
                 <% if current_user.favorited?(@trail) %>
                   <i class="fa-regular fa-bookmark fw-bold bookmark-show"></i>
