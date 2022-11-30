@@ -12,7 +12,7 @@
   z-index: 1000;
   top: 0;
   right: 0;
-  background-color: #568B57;
+  background-color: $trailgreen;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 5px;
@@ -96,8 +96,8 @@
 
 
 .top-border {
-  background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669442879/border_1_vi8ecb.svg');
-  background-size: 90%;
+  background-image: url('https://res.cloudinary.com/ddaoe4tdm/image/upload/v1669772201/Untitled_mlfkj4.svg');
+  background-size: 95%;
   background-repeat: no-repeat;
   background-position: top center, 40%, 50%;
 }
@@ -110,12 +110,12 @@
   font-style: normal;
   width:100%;
   margin: auto;
-  margin-top:0px !important;
+  margin-top:5px !important;
   font-weight: 400;
   font-size: 25px;
   line-height: 120%;
   letter-spacing: .06em;
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 10px;
   border-bottom: 0.7px dashed #432f29;
   text-align: center;
@@ -181,11 +181,13 @@
 
 
   .checklist-forms {
-    width:90% !important;
+    width:280px !important;
     margin: auto;
-    margin-top: 20px;
+    // margin-top: 20px;
     margin-bottom: 10px;
     align-items: center;
+    padding-top: 20px;
+    background-color: white;
   }
 
   .checklist-add {
@@ -216,8 +218,9 @@
   }
 
   .custom-add-button {
-    background-color: #568B57 !important;
+    background-color: white !important;
     font-size: 14px;
+    color: $trailgreen;
     display: flex;
     height: 30px;
     width: 30px;
@@ -228,6 +231,9 @@
     padding: 0px;
   }
 
+  .form-control:focus {
+    border-color: $trailgreen !important;
+  }
 
   //testing
 
@@ -258,7 +264,7 @@
   right: 40px;
   border: 0px solid #f1f1f1;
   z-index: 9;
-  background-color: #568B57;
+  background-color: $trailgreen;
   border-radius: 5px;
 }
 
