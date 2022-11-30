@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   has_many :categories, through: :tags
   belongs_to :trail
   has_many_attached :photos
+
   validates :comment, length: { minimum: 10 }, presence: true
   validates :rating, presence: true
 end
