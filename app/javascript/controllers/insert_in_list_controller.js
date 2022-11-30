@@ -15,22 +15,23 @@ export default class extends Controller {
     .then(response => response.json())
     .then((data) => {
       if (data.success) {
-         this.itemsTarget.insertAdjacentHTML("afterbegin", `
-         <div class="review">
-              <div class="user-info">
-                <i class="fa-solid fa-circle-user avatar"></i>
-              <div>
-                <h4>${data.reviewer}</h4>
-                <p>${data.created_at}</p>
-              </div>
-              <div class="rating">
-          <h4>${data.rating}<i class="fa-solid fa-star"></i> </h4>
-        </div>
+        this.itemsTarget.insertAdjacentHTML("afterbegin", `
+        <div class="review">
+          <div class="user-info">
+            <i class="fa-solid fa-circle-user avatar"></i>
+            <div>
+              <h4>${data.reviewer}</h4>
+              <p>${data.created_at}</p>
             </div>
-            <div class="reviews review-size">
-              ${data.review}
+            <div class="rating">
+            <h5>${data.rating}<i class="fa-solid fa-star"></i> </h5>
             </div>
           </div>
+          <div class="reviews review-size">
+            ${data.review_tags.map((t)=>`<span class='tag tag-item rounded-pill px-2 py-1 me-1 mb-2'>${t}</span>`).join("")}
+            <p class="review-comment">${data.review}</p>
+          </div>
+        </div>
          `)
 
         this.formTarget.innerHTML = `

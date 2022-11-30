@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.trip = @trip
+    review_params[:category_ids][1..].each do |id|
+      Tag.new(review: @review, category: Category.find(id.to_i))
+    end
     respond_to do |format|
       if @review.save
         format.html { redirect_to trail_path(@trail) }
@@ -16,7 +19,7 @@ class ReviewsController < ApplicationController
           render json: {
             success: true,
             review: @review.comment,
-            # review_tags: [],
+            review_tags: @review.categories.map { |category| category.name },
             rating: @review.rating,
             reviewer:  current_user.first_name + " " + current_user.last_name,
             created_at: @review.created_at.to_s.split(" ").first
@@ -42,10 +45,16 @@ class ReviewsController < ApplicationController
   #   @trip = Trip.find(params[:trip_id])
   #   @review = Review.new
   # end
+  # def self.tag_counts
+  #   Category.joins(reviews: trail).where("trail.id = ?", trip.trail_id)
+  #           .group("tags.category_id")
+  #           .select("trail.id, categories.*, COUNT(tags.category_id) as count")
+  #           .order('count DESC').limit(3)
+  # end
 
   # private
 
   def review_params
-    params.require(:review).permit(:comment, :rating)
+    params.require(:review).permit(:comment, :rating, category_ids: [])
   end
 end

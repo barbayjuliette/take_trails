@@ -1,8 +1,6 @@
-
 <div class= "checklist-forms row">
     <div class="col-10 m-0">
   <%= simple_form_for [@trip, @task] do |f| %>
-  <%= form_group_for f, :description, label: false  do %>
           <%= f.input :description,
                       label: false,
                       placeholder: "ADD AN ITEM",
@@ -11,7 +9,6 @@
         <%# <%= f.button :submit do, "ADD TO CHECKLIST", class: "submit" %>
 
     </div>
-     <% end %>
     <div class="col-2">
 
     <%= button_tag type: 'submit', class:"custom-add-button" do %>
@@ -19,5 +16,4 @@
     <% end %>
     </div>
   <% end %>
-  <%= render 'tasks/add_task_error_messages', task: @task %>
 </div>
