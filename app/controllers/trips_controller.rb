@@ -26,18 +26,14 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.photos.attach(photo_params[:photos])
 
-    respond_to do|format|
+    respond_to do |format|
       if @trip.save
         format.html { redirect_to trip_path(@trip) }
-        format.json
       else
         format.html { render 'trips/show', status: :unprocessable_entity }
-        format.json
       end
+      format.json
     end
-
-
-    redirect_to trip_path(@trip)
   end
 
   private

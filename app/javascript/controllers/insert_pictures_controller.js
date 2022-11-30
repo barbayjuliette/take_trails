@@ -8,7 +8,8 @@ export default class extends Controller {
     // console.log(this.element)
     // console.log(this.gridTarget)
     // console.log(this.pictureTarget)
-    this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    // this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+    console.log(this.pictureTarget.querySelector("input[type='file']"))
   }
 
   upload(event) {
@@ -20,16 +21,16 @@ export default class extends Controller {
 
     fetch(this.pictureTarget.action, {
       method: "POST",
-      headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken  },
+      headers: { "Accept": "application/json" },
       body: new FormData(this.pictureTarget)
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
-        // I want to insert the picture inside the grid
-        console.log(data.inserted_item)
-        console.log(data.form)
-        this.gridTarget.insertAdjacentHTML('beforeend', data.my_inserted_item)
+        if(data.inserted_item) {
+          console.log(this.pictureTarget.querySelector("input[type='file']") );
+          this.pictureTarget.querySelector("input[type='file']").value = ""
+          this.gridTarget.insertAdjacentHTML('beforeend', data.inserted_item)
+        }
       })
   }
 }
