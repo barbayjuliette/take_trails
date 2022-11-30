@@ -40,4 +40,13 @@ class Trail < ApplicationRecord
     end
     total_rating.fdiv(self.reviews.count)
   end
+
+  def categories
+    Category.joins(tags: { review: { trip: :trail } })
+            .where(trails: {id: 1})
+            .group('categories.name')
+            .select('categories.name, COUNT(categories.name) as count')
+            .order('count DESC')
+            .limit(3)
+  end
 end

@@ -12,4 +12,9 @@
   <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#leavereview">
     <%= sprintf('%.1f', trail.rating) %> (<%= pluralize(trail.reviews.count, 'review') %>)
   </a>
+  <div class="mb-3">
+    <% trail.categories.each do |category| %>
+      <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
+    <% end %>
+  </div>
 </div>

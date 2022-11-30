@@ -1,7 +1,6 @@
 class TrailsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show toggle_favorite]
 
-  # GET /
   def index
     @trails = Trail.all
 
@@ -26,10 +25,7 @@ class TrailsController < ApplicationController
       @trails = @trails.where('duration >= ?', duration_hash[:min])
                        .where("duration <= ?", duration_hash[:max])
     end
-
   end
-
-
 
   def create
     @trail = Trail.find(params[:trail_id])
@@ -37,18 +33,11 @@ class TrailsController < ApplicationController
     if trip.save
       redirect_to trips_path, notice: "Trip created!"
     end
-  # GET /trips
   end
 
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
-    @categories = Category.joins(tags: { review: { trip: :trail } })
-                          .where(trails: {id: 1})
-                          .group('categories.name')
-                          .select('categories.name, COUNT(categories.name) as count')
-                          .order('count DESC')
-                          .limit(3)
   end
 
   def toggle_favorite
@@ -66,7 +55,5 @@ class TrailsController < ApplicationController
         format.json { render json: { favourited: nil, redirect: new_user_session_path } }
       end
     end
-    # @trails = Trail.all
-    # render :index
   end
 end
