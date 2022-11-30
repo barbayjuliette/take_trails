@@ -1,6 +1,6 @@
 <div class= "checklist-forms row">
-    <div class="col-10 m-0">
   <%= simple_form_for [@trip, @task] do |f| %>
+    <div class="d-flex justify-content-around align-items-center">
           <%= f.input :description,
                       label: false,
                       placeholder: "ADD AN ITEM",
@@ -8,12 +8,10 @@
 
         <%# <%= f.button :submit do, "ADD TO CHECKLIST", class: "submit" %>
 
-    </div>
-    <div class="col-2">
 
-    <%= button_tag type: 'submit', class:"custom-add-button" do %>
-        <i class="fas fa-plus"></i>
-    <% end %>
+      <%= button_tag type: 'submit', class:"custom-add-button" do %>
+          <i class="fas fa-plus"></i>
+      <% end %>
     </div>
   <% end %>
 </div>

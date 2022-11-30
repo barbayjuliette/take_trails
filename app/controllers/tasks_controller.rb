@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     @task.trip = @trip
     respond_to do |format|
       if @task.save
+
         format.turbo_stream
         format.html { redirect_to tasks_url, notice: "Task was successfully created" }
       else
