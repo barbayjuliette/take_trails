@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "trails#index"
+
+  get '/trips/:id/weather_forecast', to: 'trips#weather_forecast'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
 
   end
 
-   
+
 
   resources :trips, only: %i[index show] do
     resources :reviews, only: %i[create]

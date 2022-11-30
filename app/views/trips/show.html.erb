@@ -13,12 +13,18 @@
         <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
         30° / 26° C %>
       </div>
-      <%# self note: delete open-weather-api.rb and _weather.scss files if not needed" %>
+
       <div class="container">
         <%# for weather %>
 
+          <p><span id="temp_min"></span></p>
+          <p><span id="temp_max"></span></p>
+          <p><span id="icon"></span></p>
+          <p><span id="main"></span></p>
+          <p><span id="description"></span></p>
+        <%# end of weather %>
       </div>
-      <script src="weather-api.js"></script>
+      <%# <script src="../weather_api.js"></script> %>
 
       <div class="d-flex justify-content-end">
         <div class="ms-1 friend-avatar d-flex justify-content-center align-items-center trip-pg-font-size">XL</div>
