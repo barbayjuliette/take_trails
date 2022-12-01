@@ -64,9 +64,28 @@ class TripsController < ApplicationController
     end
   end
 
+  def update
+    @trip = Trip.find(params[:id])
+    @trip.photos.attach(photo_params[:photos])
+    # @count = photo_params[:photos].size
+
+    respond_to do |format|
+      if @trip.save
+        format.html { redirect_to trip_path(@trip) }
+      else
+        format.html { render 'trips/show', status: :unprocessable_entity }
+      end
+      format.json
+    end
+  end
+
   private
 
   def trip_params
     params.require(:trip).permit(:date)
+  end
+
+  def photo_params
+    params.require(:trip).permit(photos: [])
   end
 end

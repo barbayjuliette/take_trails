@@ -1,0 +1,14 @@
+
+  <% idp = photo.blob_id %>
+  <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render 'trips/carousel', photo: photo %>
+            </div>
+          </div>
+        </div>
+      </div>

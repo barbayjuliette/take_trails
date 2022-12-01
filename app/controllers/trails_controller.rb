@@ -38,7 +38,17 @@ class TrailsController < ApplicationController
   def show
     @trail = Trail.find(params[:id])
     @trip = Trip.new
+<<<<<<< HEAD
+    @trips = Trip.where(trail: @trail)
+    @user_photos = []
+    @trips.each do |trip|
+      trip.photos.each do |photo|
+        @user_photos << photo
+      end
+    end
+=======
     @trailsforecast = weather_forecast(@trail)
+>>>>>>> master
   end
 
   def toggle_favorite
