@@ -9,19 +9,25 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.trip = @trip
+    review_params[:category_ids][1..].each do |id|
+      Tag.new(review: @review, category: Category.find(id.to_i))
+    end
     respond_to do |format|
       if @review.save
-        format.html { redirect_to trail_path(@trail) }
-        format.json do
-          render json: {
-            success: true,
-            review: @review.comment,
-            # review_tags: [],
-            rating: @review.rating,
-            reviewer:  current_user.first_name + " " + current_user.last_name,
-            created_at: @review.created_at.to_s.split(" ").first
-          }
-        end
+        format.html { redirect_to trip_path(@trip) }
+        format.json
+        # do
+        #   render json: {
+        #     success: true,
+        #     review: @review.comment,
+        #     # review_tags: [],
+        #     rating: @review.rating,
+        #     reviewer:  current_user.first_name + " " + current_user.last_name,
+        #     created_at: @review.created_at.strftime('%-d %b %Y'),
+        #     overall_rating: @review.trip.trail.rating,
+        #     review_count: @review.trip.trail.reviews.length
+        #   }
+        # end
       else
         format.html { render "shared/leavereview", status: :unprocessable_entity }
         format.json do
@@ -46,6 +52,6 @@ class ReviewsController < ApplicationController
   # private
 
   def review_params
-    params.require(:review).permit(:comment, :rating)
+    params.require(:review).permit(:comment, :rating, category_ids: [])
   end
 end

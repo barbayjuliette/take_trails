@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center mb-3">
+  <div class="d-flex me-2">
+    <% trail.rating.floor.times do %>
+      <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
+    <% end %>
+    <% if (trail.rating - trail.rating.floor) >= 0.3 && (trail.rating - trail.rating.floor) < 0.8 %>
+      <i style="color: yellow" class="fa-solid fa-star-half me-1 trip-pg-star-size"></i>
+    <% elsif (trail.rating - trail.rating.floor) >= 0.8 %>
+      <i style="color: yellow" class="fa-solid fa-star me-1 trip-pg-star-size"></i>
+    <% end %>
+  </div>
+  <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#leavereview">
+    <%= sprintf('%.1f', trail.rating) %> (<%= pluralize(trail.reviews.count, 'review') %>)
+  </a>
+</div>
