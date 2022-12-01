@@ -59,9 +59,6 @@ class TrailsController < ApplicationController
   end
 
   def weather_forecast(trail)
-    # query the api from here
-    # https://api.openweathermap.org/data/2.5/weather?lat=1.3906746&lon=103.9883041&appid=6157d0b45dbc65d57d7bcb4569934b10
-
     require "json"
     require "open-uri"
 
@@ -72,7 +69,7 @@ class TrailsController < ApplicationController
     lng = maps["results"][0]["geometry"]["location"]["lng"]
 
 
-    url_w = "http://api.weatherapi.com/v1/forecast.json?key=791c08d9b29546298d073547223011&q=#{lat},#{lng}&days=4&aqi=no&alerts=no"
+    url_w = "http://api.weatherapi.com/v1/forecast.json?key=791c08d9b29546298d073547223011&q&q=#{lat},#{lng}&days=4&aqi=no&alerts=no"
     weather_info = URI.open(url_w).read
     weathers = JSON.parse(weather_info)
     # index = nil

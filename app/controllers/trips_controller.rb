@@ -26,7 +26,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @review = Review.new
-    @task = Task.new
     @forecast = weather_forecast(@trip)
   end
 
