@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: "trails#index"
 
@@ -20,8 +21,14 @@ Rails.application.routes.draw do
 
   resources :trips, only: %i[index show] do
     resources :reviews, only: %i[create]
+    resources :tasks, only: %i[create ]
   end
 
   resources :trips, only: %i[index show]
+
+  resources :tasks, only: %i[index show destroy edit update]
+
+  post "tasks/:id/toggle", to: "tasks#toggle"
   get '/bookmarks', to: 'favorites#index', as: 'bookmarks'
+
 end

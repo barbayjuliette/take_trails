@@ -74,10 +74,9 @@
 }
 
 .input-footer {
-  /* Tell the input to use all the available space */
+
   flex-grow:2;
   padding-left: 10px;
-  /* And hide the input's outline, so the form looks like the outline */
   width: 200px;
   height: 40px;
   border: 0px !important;
@@ -85,12 +84,10 @@
 }
 
 input:focus {
-  /* removing the input focus blue box. Put this on the form if you like. */
   outline: none;
 }
 
 .submit {
-  /* Just a little styling to make it pretty */
   border:0px;
   background:white;
   color:black;
