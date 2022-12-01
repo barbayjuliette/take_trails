@@ -10,7 +10,10 @@ export default class extends Controller {
       this.element ,
       this.optionsValue
     );
-
-    new TomSelect('#form-control',{create:true});
+    try {
+      new TomSelect('#form-control',{create:true});
+    } catch(e) {
+      console.log("caught:", e)
+    }
   }
 }

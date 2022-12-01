@@ -1,8 +1,13 @@
 class TripsController < ApplicationController
   # GET /trips
   def index
+
+    @trips = Trip.where(user: current_user)
+    @tasks = Task.all
+
     @upcoming_trips = Trip.where(user: current_user).where('date > ?', Time.now).order('date ASC')
     @past_trips = Trip.where(user: current_user).where('date < ?', Time.now).order('date DESC')
+
   end
 
   # POST /trails/:trail_id/trips
@@ -11,6 +16,7 @@ class TripsController < ApplicationController
     trip_date = DateTime.parse("#{trip_params[:date]} +08:00")
     trip = Trip.new(user: current_user, trail: @trail, date: trip_date)
     if trip.save
+      trip.create_checklist(current_user)
       redirect_to trip_path(trip), notice: "Trip created!"
     else
       render 'trails/show', locals: {trip: trip}
@@ -20,6 +26,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @review = Review.new
+    @task = Task.new
   end
 
   private
