@@ -1,5 +1,5 @@
 <%= simple_form_for(@trip, method: :patch, data: {action: "submit->insert-pictures#upload", insert_pictures_target:"picture"}) do |f| %>
-  <div class="d-flex p-2 justify-content-start align-items-baseline">
+  <div class="d-flex justify-content-start align-items-baseline">
     <%= f.input :photos,  as: :file, input_html: { multiple: true }, label: false, class: "form-pictures" %>
     <%= f.submit 'Add pictures', class: "add-photos-btn" %>
   </div>
