@@ -84,4 +84,21 @@ Trip.where('date < ?', Time.now).each do |trip|
   )
 end
 
+puts "Creating past trips with no reviews for demo..."
+sungei = Trail.find_by(name: 'Sungei Buloh Wetland Reserve Short Loop')
+user_xe = User.find_by(first_name: 'Xing Ern')
+user_xx = User.find_by(first_name: 'Xiaoxi')
+user_jb = User.find_by(first_name: 'Juliette')
+user_rj = User.find_by(first_name: 'Raihan')
+# past trip with no reviews
+trip_xe = Trip.new(user: user_xe, trail: sungei, date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00"))
+trip_xe.save(validate: false)
+trip_xx = Trip.new(user: user_xx, trail: sungei, date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00"))
+trip_xx.save(validate: false)
+trip_jb = Trip.new(user: user_jb, trail: sungei, date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00"))
+trip_jb.save(validate: false)
+trip_rj = Trip.new(user: user_rj, trail: sungei, date: DateTime.parse("2022-11-#{rand(28..30)}T#{rand(6..17)}:00+08:00"))
+trip_rj.save(validate: false)
+# xe, xx, jb to create reviews and add photos to Sungei Buloh trails in the website
+
 puts "Done!"
