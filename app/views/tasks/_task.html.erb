@@ -1,15 +1,16 @@
 <div class="check-list">
-<div>
+
   <%= form_with(model: task) do |form| %>
       <%= form.check_box :completed,
                         data: {
                           id: task.id,
                           action: "tasks#toggle"
                         },
+                        id: "task-#{task.id}",
                         class: "form-check-input" %>
-                        </div>
 
-      <div class="item-inner"><%= task.description %></div>
+
+      <label class="item-inner" for="task-<%= task.id %>"><%= task.description %></label>
     <% end %>
     <%# <%= link_to "Edit", edit_task_path(task),
                 class: "btn bg-gray-100"%>

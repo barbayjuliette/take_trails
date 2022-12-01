@@ -32,11 +32,17 @@
 }
 
 .check-list {
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 1fr 8fr;
-
   margin-top: 10px;
+
+  form {
+    line-height: 1;
+  }
+
+  .item-inner {
+    margin-left: 8px;
+  }
 }
 
 .form-check-input {
