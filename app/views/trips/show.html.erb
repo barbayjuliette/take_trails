@@ -1,4 +1,10 @@
 
+<button class="open-button" onclick="openForm()">
+  <i class="fa-solid fa-list-check fa-2x"></i>
+</button>
+
+
+
 <div class="d-flex">
   <%# map (left column) %>
   <div class="align-self-stretch" id="left-column">
@@ -163,3 +169,15 @@
 
   </div>
 </div>
+
+
+ <%= render 'shared/checklist' %>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   acts_as_favoritor
   has_many :trips, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   # has_many :reviews, through: :trips
 

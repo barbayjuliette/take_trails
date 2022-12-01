@@ -1,8 +1,13 @@
 class TripsController < ApplicationController
   # GET /trips
   def index
+
+    @trips = Trip.where(user: current_user)
+    @tasks = Task.all
+
     @upcoming_trips = Trip.where(user: current_user).where('date > ?', Time.now).order('date ASC')
     @past_trips = Trip.where(user: current_user).where('date < ?', Time.now).order('date DESC')
+
   end
 
   # POST /trails/:trail_id/trips
@@ -20,6 +25,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @review = Review.new
+    @task = Task.new
   end
 
   private

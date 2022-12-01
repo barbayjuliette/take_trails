@@ -1,21 +1,13 @@
-    <!-- this is your page content -->
-<%# <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
 
-
-
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-} %>
+<div class="checklist-popup" id="myForm">
+  <div class="check-container">
+    <p class="checklist-head top-border ">My checklist!</p>
+      <div>
+        <div id="tasks" class="" data-controller="tasks">
+          <%= render @trip.tasks %>
+        </div>
+      </div>
+  </div>
+    <%= render "tasks/form", task: @task %>
+    <button type="button" class="closebtn close fa-solid fa-xmark" onclick="closeForm()"></button>
+  </div>
