@@ -1,4 +1,10 @@
 
+<button class="open-button" onclick="openForm()">
+  <i class="fa-solid fa-list-check fa-2x"></i>
+</button>
+
+
+
 <div class="d-flex">
   <%# map (left column) %>
   <div class="align-self-stretch" id="left-column">
@@ -112,6 +118,11 @@
               <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
             </a>
           </div>
+          <div class="mb-3">
+            <% @trip.trail.categories.each do |category| %>
+              <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
+            <% end %>
+          </div>
         <% end %>
       </div>
       <% if @trip.review.present? %>
@@ -173,3 +184,15 @@
 
   </div>
 </div>
+
+
+ <%= render 'shared/checklist' %>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
