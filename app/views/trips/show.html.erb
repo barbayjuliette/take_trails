@@ -97,6 +97,11 @@
               <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
             </a>
           </div>
+          <div class="mb-3">
+            <% @trip.trail.categories.each do |category| %>
+              <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
+            <% end %>
+          </div>
         <% end %>
       </div>
       <% if @trip.review.present? %>
