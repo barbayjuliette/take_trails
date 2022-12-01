@@ -90,24 +90,6 @@
           <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
         <% end %>
       </div>
-
-      <div class="row weather-box d-flex justify-content-center mt-3 mb-3">
-        <% @trailsforecast.each do |day| %>
-        <div class="col">
-          <div class="row weather-f">
-          <%= day[:time].strftime('%A') %>
-          </div>
-          <div class="row weather-f">
-          <%= day[:time].strftime('%d-%m-%y') %>
-          </div>
-          <div class="row weather-f">
-            <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
-          </div>
-        </div>
-        <% end %>
-
-      </div>
-
     </div>
 
     <%# main body %>
@@ -138,6 +120,25 @@
       </div>
       <%# description %>
       <p style="white-space: pre-line;" class="show-pg-font-size"><%= @trail.description %></p>
+
+      <br>
+        <h5 class="mb-3"><strong>Weather Forecast</strong></h5>
+        <div class="d-flex flex-row mt-3 mb-3">
+          <% @trailsforecast.each do |day| %>
+            <div class="d-flex flex-column align-items-center me-4">
+              <div class="show-pg-font-size">
+              <%= day[:time].strftime('%A') %>
+              </div>
+              <div class="show-pg-font-size">
+                <%= day[:time].strftime('%-d/%-m') %>
+              </div>
+                <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
+            </div>
+          <% end %>
+        </div>
+
+
+
     </div>
   </div>
 </div>
