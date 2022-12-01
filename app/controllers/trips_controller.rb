@@ -25,6 +25,7 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     @trip.photos.attach(photo_params[:photos])
+    # @count = photo_params[:photos].size
 
     respond_to do |format|
       if @trip.save

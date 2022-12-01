@@ -18,7 +18,7 @@ export default class extends Controller {
 
     //console.log("TODO: send request in AJAX")
 
-    this.uploadedTarget.innerHTML = "Loading picture ..."
+    this.uploadedTarget.innerHTML = "Loading pictures ..."
 
     fetch(this.pictureTarget.action, {
       method: "POST",
@@ -27,7 +27,6 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
         if(data.inserted_item) {
           this.pictureTarget.querySelector("input[type='file']").value = ""
           this.gridTarget.innerHTML = data.inserted_item
