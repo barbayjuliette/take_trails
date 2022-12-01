@@ -10,10 +10,11 @@ require "json"
 require "faker"
 
 puts "Clearing old data..."
-Trail.destroy_all
-Trip.destroy_all
 User.destroy_all
+Trail.destroy_all
 Category.destroy_all
+Trip.destroy_all
+Review.destroy_all
 
 puts "Creating users..."
 users_filepath = "db/users.json"
@@ -27,20 +28,6 @@ users.each do |user|
     last_name: user["last_name"]
   )
 end
-
-puts "Creating categories..."
-Category.create!(name: 'Muddy')
-Category.create!(name: 'Lots of mosquitoes')
-Category.create!(name: 'Uneven path')
-Category.create!(name: 'Monkey sighting')
-Category.create!(name: 'Great views')
-
-# puts "Creating tags..."
-# Tag.create!(review: Review.first, category: Category.first)
-# Tag.create!(review: Review.first, category: Category.last)
-# Tag.create!(review: Review.last, category: Category.first)
-
-
 
 puts "Creating trails..."
 trails_filepath = "db/trails.json"
@@ -63,6 +50,17 @@ trails.each do |trail|
   end
   new_trail.save
 end
+
+puts "Creating categories..."
+Category.create!(name: 'Muddy paths')
+Category.create!(name: 'Many mosquitoes')
+Category.create!(name: 'Uneven paths')
+Category.create!(name: 'Monkey sightings')
+Category.create!(name: 'Family-friendly')
+Category.create!(name: 'Great views')
+Category.create!(name: 'Uphill climbs')
+Category.create!(name: 'Coastal/water views')
+Category.create!(name: 'Dense forests')
 
 puts "Creating trips..."
 User.all.each do |user|
