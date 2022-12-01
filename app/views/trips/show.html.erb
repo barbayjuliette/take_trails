@@ -2,7 +2,7 @@
 <div class="d-flex">
   <%# map (left column) %>
   <div class="align-self-stretch" id="left-column">
-    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="map"></div>
+    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
   </div>
   <%# right column %>
   <div id="right-column" class="py-3 px-4">
