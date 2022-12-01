@@ -33,7 +33,6 @@ export default class extends Controller {
           this.gridTarget.innerHTML = data.inserted_item
           this.uploadedTarget.innerHTML = "Picture successfully uploaded"
           this.element.insertAdjacentHTML("afterend",data.popup)
-          // this.element.insertAdjacentHTML("afterend",data.carousel)
         }
       })
   }
