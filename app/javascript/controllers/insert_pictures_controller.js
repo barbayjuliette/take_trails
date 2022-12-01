@@ -9,7 +9,6 @@ export default class extends Controller {
     // console.log(this.gridTarget)
     // console.log(this.pictureTarget)
     // this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-    console.log(this.pictureTarget.querySelector("input[type='file']"))
   }
 
   upload(event) {
