@@ -37,7 +37,6 @@ class TrailsController < ApplicationController
     if trip.save
       redirect_to trips_path, notice: "Trip created!"
     end
-  # GET /trips
   end
 
   def show
