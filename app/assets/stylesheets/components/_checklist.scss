@@ -114,6 +114,7 @@
 
   /* Button used to open the checklist */
 .open-button {
+  z-index:2000;
   background-color: $trailgreen;
   color: white;
   // padding: 16px 20px;
@@ -121,7 +122,7 @@
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  bottom: 150px;
+  bottom: 120px;
   right: 40px;
   width: 50px;
   height: 50px;
