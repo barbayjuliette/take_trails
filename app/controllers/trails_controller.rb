@@ -46,7 +46,6 @@ class TrailsController < ApplicationController
       end
     end
     @trailsforecast = weather_forecast(@trail)
-
   end
 
   def toggle_favorite
