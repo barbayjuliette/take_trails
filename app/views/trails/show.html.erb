@@ -126,10 +126,10 @@
         <div class="d-flex flex-row mt-3 mb-3">
           <% @trailsforecast.each do |day| %>
             <div class="d-flex flex-column align-items-center me-4">
-              <div class="show-pg-font-size">
+              <div>
               <%= day[:time].strftime('%A') %>
               </div>
-              <div class="show-pg-font-size">
+              <div>
                 <%= day[:time].strftime('%-d/%-m') %>
               </div>
                 <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
