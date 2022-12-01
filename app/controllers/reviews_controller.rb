@@ -48,6 +48,12 @@ class ReviewsController < ApplicationController
   #   @trip = Trip.find(params[:trip_id])
   #   @review = Review.new
   # end
+  # def self.tag_counts
+  #   Category.joins(reviews: trail).where("trail.id = ?", trip.trail_id)
+  #           .group("tags.category_id")
+  #           .select("trail.id, categories.*, COUNT(tags.category_id) as count")
+  #           .order('count DESC').limit(3)
+  # end
 
   # private
 

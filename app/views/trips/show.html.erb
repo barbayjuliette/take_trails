@@ -1,8 +1,14 @@
 
+<button class="open-button" onclick="openForm()">
+  <i class="fa-solid fa-list-check fa-2x"></i>
+</button>
+
+
+
 <div class="d-flex">
   <%# map (left column) %>
   <div class="align-self-stretch" id="left-column">
-    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="map"></div>
+    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
   </div>
   <%# right column %>
   <div id="right-column" class="py-3 px-4">
@@ -10,8 +16,23 @@
     <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
       <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
-        <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
-        30° / 26° C
+        <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
+        30° / 26° C %>
+        <% if @forecast && @trip.date > Time.now %>
+          <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
+          <div class="col">
+            <div class="row">
+              <div class="weather-p">
+                <%= @forecast[:min_temp] %> / <%= @forecast[:max_temp] %> ° C
+              </div>
+            </div>
+            <div class="row">
+              <div class="weather-p"><%= @forecast[:condition] %></div>
+            </div>
+          </div>
+        <% elsif @trip.date > Time.now %>
+          <div class="weather-p">Weather data is not available yet.</div>
+        <% end %>
       </div>
     </div>
 
@@ -96,6 +117,11 @@
             <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#leavereview">
               <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
             </a>
+          </div>
+          <div class="mb-3">
+            <% @trip.trail.categories.each do |category| %>
+              <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -190,3 +216,15 @@
 
   </div>
 </div>
+
+
+ <%= render 'shared/checklist', trip: @trip, task: @task %>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>

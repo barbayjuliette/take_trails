@@ -1,0 +1,17 @@
+<div class= "checklist-forms row" id="myform">
+  <%= form_with(model: [ @trip, task ] ) do |form| %>
+    <%# <%= simple_form_for [@trip, @task], data: { controller: :form, action: "turbo:submit-end->form#clear" } do |f| %>
+    <div class="d-flex justify-content-around align-items-center mb-3">
+      <%= form.text_field :description,
+                          label: false,
+                          placeholder: "ADD AN ITEM",
+                          class: "custom-add-input" %>
+
+        <%# <%= f.button :submit do, "ADD TO CHECKLIST", class: "submit" %>
+    <%# <%= form.submit "add", class: "fas fa-plus" %>
+    <%= button_tag type: 'submit', class:"custom-add-button" do %>
+       <i class="fas fa-plus"></i>
+    <% end %>
+    </div>
+  <% end %>
+</div>
