@@ -8,14 +8,14 @@
 <% if user_signed_in? %>
   <% else %>
 <%# header image %>
-<nav data-spy="scroll" data-target="#jump" data-offset="50">
-  <section class="hero image-as-background container-fluid" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
-    <div class="hero-container">
-      <div class="hero-title animate fadeInLeft delay-600 d-flex">
+<nav data-spy="scroll" data-target="#jump">
+  <section class="explore image-as-background container-fluid" style="background-image: url('https://images.unsplash.com/photo-1626568767524-50b13c293a6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
+    <div class="explore-container">
+      <div class="explore-title animate fadeInLeft delay-600 d-flex">
         Find a new adventure
       </div>
       <div class="d-flex justify-content-center" id="jump">
-        <a href="#trails" class="hero-button animate fadeInLeft delay-800" title="Click to see more">EXPLORE</a>
+        <a href="#trails" class="explore-button animate fadeInLeft delay-800" title="Click to see more">EXPLORE</a>
       </div>
     </div>
   </section>
@@ -26,35 +26,31 @@
 <h1 class="margin-title-lg" id="trails"> Find your next hike ...</h1>
 
 <div class="simpleform-container">
-<form class="row align-items-center justify-content-center">
-  <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-    <div class="col-lg-5">
-      <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail", value: params.dig(:search, :query) } %>
-    </div>
-
-    <div class="row justify-content-center align-items-center mb-4">
-      <div class="col-lg-2">
-      <%= f.input :difficulties, label: "Difficulty level", :label_html => { :class => 'type filterlabel' }, collection: Trail.difficulties.keys, selected: params.dig(:search, :difficulties), include_hidden: false, prompt: 'All' %>
-      </div>
-      <div class="col-lg-2">
-        <%= f.input :distance, label: "Distance", :label_html => { :class => 'type filterlabel' }, collection: Trail::DISTANCE_MAP.keys, selected: params.dig(:search, :distance), include_hidden: false, prompt: 'All' %>
-      </div>
-      <div class="col-lg-2">
-        <%= f.input :duration, label: "Duration", :label_html => { :class => 'type filterlabel' }, collection: Trail::DURATION_MAP.keys, selected: params.dig(:search, :duration),  include_hidden: false, prompt: 'All' %>
+  <form class="row align-items-center justify-content-center">
+    <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
+      <div class="col-lg-5">
+        <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail", value: params.dig(:search, :query) } %>
       </div>
 
+      <div class="row justify-content-center align-items-center mb-4">
+        <div class="col-lg-2">
+          <%= f.input :difficulties, label: "Difficulty level", :label_html => { :class => 'type filterlabel' }, collection: Trail.difficulties.keys, selected: params.dig(:search, :difficulties), include_hidden: false, prompt: 'All' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.input :distance, label: "Distance", :label_html => { :class => 'type filterlabel' }, collection: Trail::DISTANCE_MAP.keys, selected: params.dig(:search, :distance), include_hidden: false, prompt: 'All' %>
+        </div>
+        <div class="col-lg-2">
+          <%= f.input :duration, label: "Duration", :label_html => { :class => 'type filterlabel' }, collection: Trail::DURATION_MAP.keys, selected: params.dig(:search, :duration),  include_hidden: false, prompt: 'All' %>
+        </div>
 
-
-      <div class ='col-lg-1 gx-2'>
-        <%= f.submit "Search", class: "btn searchbtn" %>
+        <div class ='col-lg-1 gx-2'>
+          <%= f.submit "Search", class: "btn searchbtn" %>
+        </div>
+        <div class ='col-lg-1 gx-2' >
+          <%= link_to "Reset", trails_path, class: "btn clearbtncol" %>
+        </div>
       </div>
-      <div class ='col-lg-1 gx-2' >
-        <%= link_to "Reset", trails_path, class: "btn clearbtncol" %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
 </div>
-
 
   <%= render 'shared/cards', action: "click->favourite#toggleBookmarkIcon", empty_message: "No trails found!"  %>
-</div>
