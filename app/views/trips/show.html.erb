@@ -34,7 +34,7 @@
         <% else %>
           <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
             <button id="create-trip-btn" class="btn" data-action="click->display-form#display">Create Another Trip</button>
-            <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
+            <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card_2, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
               <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
               <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
               <% if @trip.errors.any? %>
