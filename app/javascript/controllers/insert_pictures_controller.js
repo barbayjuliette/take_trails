@@ -16,9 +16,9 @@ export default class extends Controller {
     const submittedFiles = event.target.querySelector("input[type='file']").files
 
     if (!submittedFiles.length) {
-      this.uploadedTarget.innerHTML = "No pictures selected ..."
+      this.uploadedTarget.innerHTML = "No photos selected."
     } else {
-      this.uploadedTarget.innerHTML = "Loading pictures ..."
+      this.uploadedTarget.innerHTML = "Loading photos ..."
 
       fetch(this.pictureTarget.action, {
         method: "POST",
@@ -30,7 +30,7 @@ export default class extends Controller {
           if(data.inserted_item) {
             this.pictureTarget.querySelector("input[type='file']").value = ""
             this.gridTarget.innerHTML = data.inserted_item
-            this.uploadedTarget.innerHTML = "Picture successfully uploaded"
+            this.uploadedTarget.innerHTML = "Photo successfully uploaded!"
             this.element.insertAdjacentHTML("afterend",data.popup)
           }
         })
