@@ -137,8 +137,9 @@
     align-items: center;
     overflow: hidden;
     z-index: 4;
-    border-bottom: 1px solid rgb(197, 197, 197);
-    justify-content: space-between
+    // border-bottom: 1px solid rgb(197, 197, 197);
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px rgb(213, 213, 213);
 
   }
   .topnav {
