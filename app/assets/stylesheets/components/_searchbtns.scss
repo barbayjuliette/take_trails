@@ -30,7 +30,7 @@ abbr {
   justify-content: center;
   align-items: center;
   margin-top: -20px;
-  width: 100%;
+  width: 400px;
   height: 40px;
   font-size: 15px;
 }
@@ -86,4 +86,11 @@ abbr {
 
 // .weather-box {
 //   border: 1px solid #e0e0e0;
+// }
+
+// @media only screen and (max-width: 920px) {
+//   body {
+//     display: flex;
+//     flex-direction: column;
+//   }
 // }

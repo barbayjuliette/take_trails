@@ -30,7 +30,7 @@
 <div class="simpleform-container">
   <form class="row align-items-center justify-content-center">
     <%= simple_form_for :search, url: trails_path, method: "GET" do |f| %>
-      <div class="col-lg-5">
+      <div class="d-flex flex-column justify-content-center align-items-center mx-2">
         <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail", value: params.dig(:search, :query) } %>
       </div>
 
