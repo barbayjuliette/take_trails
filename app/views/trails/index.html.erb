@@ -32,21 +32,23 @@
         <%= f.input :query, label: "", :input_html => { :class => 'form-control searchbar', placeholder: "Search a trail", value: params.dig(:search, :query) } %>
       </div>
 
-      <div class="row justify-content-center align-items-center mb-4">
-        <div class="col-lg-2">
+      <div class="d-flex flex-sm-row flex-column justify-content-center align-items-center mb-4">
+        <div class="p-2">
           <%= f.input :difficulties, label: "Difficulty level", :label_html => { :class => 'type filterlabel' }, collection: Trail.difficulties.keys, selected: params.dig(:search, :difficulties), include_hidden: false, prompt: 'All' %>
         </div>
-        <div class="col-lg-2">
+        <div class="p-2">
           <%= f.input :distance, label: "Distance", :label_html => { :class => 'type filterlabel' }, collection: Trail::DISTANCE_MAP.keys, selected: params.dig(:search, :distance), include_hidden: false, prompt: 'All' %>
         </div>
-        <div class="col-lg-2">
+        <div class="p-2">
           <%= f.input :duration, label: "Duration", :label_html => { :class => 'type filterlabel' }, collection: Trail::DURATION_MAP.keys, selected: params.dig(:search, :duration),  include_hidden: false, prompt: 'All' %>
         </div>
 
-        <div class ='col-lg-1 gx-2'>
-          <%= f.submit "Search", class: "btn searchbtn" %>
-        </div>
-        <div class ='col-lg-1 gx-2' >
+        <div class="buttons-wrap d-flex">
+          <div class="p-1">
+            <%= f.submit "Search", class: "btn searchbtn" %>
+          </div>
+
+        <div class="p-1">
           <%= link_to "Reset", trails_path, class: "btn clearbtncol" %>
         </div>
       </div>
