@@ -54,3 +54,45 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+.add-photos-btn {
+  margin-top:10px;
+  background-color: $trailgreen;
+  padding-right: 12px;
+  padding-left: 12px;
+  height: 45px;
+  border-radius: 5px;
+  color: $trailyellow;
+  transition: all .15s ease-out;
+  font-size: 0.9rem;
+  margin-left: 30px;
+  height: 2rem;
+  border: none;
+}
+
+.add-photos-btn:hover {
+  background-color: $trailgreen;
+  transition: all .15s ease-out;
+  color: $trailyellow;
+  opacity: .8;
+}
+
+#trip_photo {
+  width: 100% !important;
+  height: 2.1rem;
+}
+
+.trips-pictures {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.trip-picture {
+  width: 100%;
+  height: 100%;
+}
+.trip-picture:hover {
+  opacity: 0.85;
+  transform: scale(1.07);
+}
