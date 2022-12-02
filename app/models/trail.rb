@@ -18,7 +18,7 @@ class Trail < ApplicationRecord
     '> 90 mins' => {min: 91, max: 500 }
   }
 
-  enum :difficulty, { Easy: 'Easy', Intermediate: 'Intermediate', Difficult: 'Difficult' }
+  enum :difficulty, { Easy: 'Easy', Moderate: 'Moderate', Difficult: 'Difficult' }
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { minimum: 5 }

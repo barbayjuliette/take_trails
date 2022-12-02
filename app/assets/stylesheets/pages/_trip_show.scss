@@ -25,12 +25,11 @@
   color: $traillightgreen;
 }
 
-.friend-avatar {
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  background-color: $traillightgreen;
-  color: white;
+#date_card_2 {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: 5;
 }
 
 .trip-pg-font-size {
@@ -65,7 +64,7 @@
   color: $trailyellow;
   transition: all .15s ease-out;
   font-size: 0.9rem;
-  margin-left: 30px;
+  margin-left: 10px;
   height: 2rem;
   border: none;
 }
