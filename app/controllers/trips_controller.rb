@@ -28,6 +28,7 @@ class TripsController < ApplicationController
     @review = Review.new
     @task = Task.new
     @forecast = weather_forecast(@trip)
+    @new_trip = Trip.new
   end
 
   def weather_forecast(trip)

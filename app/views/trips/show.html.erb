@@ -17,8 +17,6 @@
     <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
       <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
-        <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
-        30° / 26° C %>
         <% if @forecast && @trip.date > Time.now %>
           <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
           <div class="col">
@@ -33,6 +31,22 @@
           </div>
         <% elsif @trip.date > Time.now %>
           <div class="weather-p">Weather data is not available yet.</div>
+        <% else %>
+          <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
+            <button id="create-trip-btn" class="btn" data-action="click->display-form#display">Create Another Trip</button>
+            <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card_2, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
+              <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
+              <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
+              <% if @trip.errors.any? %>
+                <ul class="list-inline mb-0">
+                    <% trip.errors.full_messages.each do |message| %>
+                        <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
+                    <% end %>
+                </ul>
+              <% end %>
+              <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -98,7 +112,7 @@
     </div>
 
     <%# ratings & reviews %>
-    <div class="border-bottom divider mb-3" data-controller="insert-in-list">
+    <div class="border-bottom divider mb-3 pb-2" data-controller="insert-in-list">
       <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
       <div data-insert-in-list-target="overallrating">
         <% if @trip.trail.reviews.empty? %>
@@ -142,7 +156,7 @@
           </div>
         </div>
       <% end %>
-      <%# Modal %>
+      <%# Reviews modal %>
         <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-scrollable rounded-2">
             <div class="modal-content">
@@ -180,24 +194,24 @@
         <%# end of modal %>
     </div>
 
+    <%# Map/uploaded photos %>
     <div data-controller="insert-pictures">
       <% if @trip.date > Time.now %>
         <h3 class="mb-3"><strong>Getting There</strong></h3>
         <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
       <% else %>
-        <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
-        <%= render "trips/form"  %>
+        <h3 class="mb-3"><strong>Share Your Photos</strong></h3>
+        <%= render "trips/form" %>
         <p id="upload-sucess" data-insert-pictures-target="uploaded"></p>
-              <%# <h3 class="mb-3" ><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
-              <div class="trips-pictures" data-insert-pictures-target="grid" >
-                <% if @trip.photos.attached? %>
-                  <%= render 'trips/photos' %>
-                <% end %>
-              </div>
+        <div class="trips-pictures" data-insert-pictures-target="grid" >
+          <% if @trip.photos.attached? %>
+            <%= render 'trips/photos' %>
           <% end %>
+        </div>
+      <% end %>
     </div>
 
-  <% @trip.photos.each do |photo| %>
+    <% @trip.photos.each do |photo| %>
       <% idp = photo.blob_id %>
       <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
         <div class="modal-dialog" role="document">
@@ -213,23 +227,18 @@
       </div>
     <% end %>
 
-
-
   </div>
-
 </div>
-
 
 <% if @trip.date > Time.now %>
   <%= render 'shared/checklist', trip: @trip, task: @task %>
 <% end %>
 
-
 <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 </script>

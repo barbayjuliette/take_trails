@@ -32,6 +32,9 @@ application.register("scroll", ScrollController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
+import SwiperController from "./swiper_controller"
+application.register("swiper", SwiperController)
+
 import SwitchTabsController from "./switch_tabs_controller"
 application.register("switch-tabs", SwitchTabsController)
 
