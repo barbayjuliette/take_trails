@@ -19,7 +19,7 @@
 }, {
   "name": "Coney Island Loop",
   "distance": 5.6,
-  "difficulty": "Intermediate",
+  "difficulty": "Moderate",
   "description": "Discover the rustic charms of Coney Island Park, home to a wide variety of habitats and a diverse range of fauna and flora, including several nationally threatened species. Accessible from Punggol Promenade Punggol Point Walk, this 50-hectare ecologically sustainable park is favoured by more than 80 species of birds, offering visitors an ideal location for birdwatching.\n\nExplore the forest and mangrove habitats on foot or by bicycle. Be charmed by five differently themed beach areas and a variety of habitats which support beautiful free-flowering plants and critically endangered species.",
   "duration": 80,
   "location": "Coney Island (West Entrance)",
@@ -28,7 +28,7 @@
 }, {
   "name": "Southern Ridges Trail",
   "distance": 6.6,
-  "difficulty": "Intermediate",
+  "difficulty": "Moderate",
   "description": "A seamless expanse of green open spaces, the Southern Ridges is a 10-km trail that offers a unique outdoor experience in the southwest of Singapore.\n\nFrom the many architecturally striking bridges and walkways, trekkers can enjoy a panoramic view of the verdant greenery in the three parks and one nature reserve that make up the Southern Ridges – the lush hilly parks of Mount Faber, Telok Blangah Hill and Kent Ridge, and the rich flora and fauna of Labrador Nature Reserve.",
   "duration": 110,
   "location": "Kent Ridge Park",
@@ -46,7 +46,7 @@
   }, {
   "name": "Casuarina Road - Bukit Panjang",
   "distance": 7.2,
-  "difficulty": "Intermediate",
+  "difficulty": "Moderate",
   "description": "This series of boardwalks through the Central Catchment Nature Reserve brings you through one of Singapore's last remaining mature secondary forests and along the edge of Lower Peirce Reservoir.\n\nYou can find rubber trees and oil palms within the Reserve as the plot of land adjacent to it was formerly a rubber plantation. This area is not only known for its former rubber plantations but the existing Old Upper Thomson Road used to be Singapore’s first race track for racing cars.",
   "duration": 130,
   "location": "Casuarina Road Car Park",
@@ -91,7 +91,7 @@
 }, {
   "name": "Green Corridor Trail",
   "distance": 4.7,
-  "difficulty": "Intermediate",
+  "difficulty": "Moderate",
   "description": "The Rail Corridor is a continuous green passage that allows wildlife movement between major green spaces. It also serves as a recreational corridor for all members of the public.",
   "duration": 70,
   "location": "Rail Corridor (Rifle Range)",
@@ -118,7 +118,7 @@
 }, {
   "name": "Mandai Trail",
   "distance": 7.1,
-  "difficulty": "Intermediate",
+  "difficulty": "Moderate",
   "description": "Not many know this, but Singapore is home to some of the world's oldest forests. In fact, our sunny island was once filled with Dipterocarp forests (species-rich primary lowland forests). Less than 0.5 per cent of the original primary forest cover remains today – only found in small patches within the Central Catchment Nature Reserve and the Bukit Timah Nature Reserve.\n\nOne of the best hiking trails to go to admire Singapore's green lung in its full glory is the Mandai T15 Trail, which is part of the Central Catchment Nature Reserve. The trail around the area may not be as popular as Macritchie or Bukit Timah, but it's not as daunting as it appears to be. In fact, it's an easy and levelled hike for both amateurs and pro hikers alike.",
   "duration": 150,
   "location": "Chestnut Nature Park (Northern Loop)",

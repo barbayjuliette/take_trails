@@ -21,44 +21,34 @@ class TasksController < ApplicationController
     end
   end
 
-  def toggle
-    @task = Task.find(params[:id])
-    @task.update(completed: params[:completed])
+  # def edit
+  #   @task = Task.find(params[:id])
+  # end
 
-    render json: { message: "Done!" }
-  end
+  # def update
+  #   @task = Task.find(params[:id])
 
-  def edit
-    @task = Task.find(params[:id])
-  end
+  #   respond_to do |format|
+  #     if @task.update(task_params)
+  #       format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  def update
-    @task = Task.find(params[:id])
-
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to tasks_url, notice: "Task was successfully updated" }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@task) }
-      format.html         { redirect_to tasks_path }
-    end
-  end
+  # def destroy
+  #   @task = Task.find(params[:id])
+  #   @task.destroy
+  #   respond_to do |format|
+  #     format.turbo_stream { render turbo_stream: turbo_stream.remove(@task) }
+  #     format.html         { redirect_to tasks_path }
+  #   end
+  # end
 
   def toggle
     @task = Task.find(params[:id])
     @task.update(completed: params[:completed])
-
-    render json
-    # : { message: "Success" }
   end
 
   private
