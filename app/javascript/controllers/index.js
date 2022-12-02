@@ -19,19 +19,24 @@ application.register("hello", HelloController)
 import InsertInListController from "./insert_in_list_controller"
 application.register("insert-in-list", InsertInListController)
 
+
+import InsertPicturesController from "./insert_pictures_controller"
+application.register("insert-pictures", InsertPicturesController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import ScrollController from "./scroll_controller"
+application.register("scroll", ScrollController)
 
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
+import SwitchTabsController from "./switch_tabs_controller"
+application.register("switch-tabs", SwitchTabsController)
 
 import TasksController from "./tasks_controller"
 application.register("tasks", TasksController)
 
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
-
-
-import SwitchTabsController from "./switch_tabs_controller"
-application.register("switch-tabs", SwitchTabsController)

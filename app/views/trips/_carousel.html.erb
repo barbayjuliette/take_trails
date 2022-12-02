@@ -1,0 +1,35 @@
+    <% idp = photo.blob_id %>
+    <% active_index = @trip.photos.find_index { |p| p.blob_id == idp } %>
+
+    <div id="carouselExampleIndicators<%= idp %>" class="carousel slide carousel-fade" data-bs-ride="true">
+        <div class="carousel-indicators mb-0">
+            <% (@trip.photos.size).times do |i| %>
+             <% if i == active_index %>
+                 <button type="button" class="active" data-bs-target="#carouselExampleIndicators<%= idp %>" data-bs-slide-to="<%= active_index %>" aria-label="Slide <%= active_index + 1 %>"></button>
+             <% else %>
+                 <button type="button" data-bs-target="#carouselExampleIndicators<%= idp %>" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i + 1 %>"></button>
+             <% end %>
+            <% end %>
+        </div>
+        <div class="carousel-inner">
+          <% (@trip.photos.size).times do |i| %>
+            <% if i == active_index %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag @trip.photos[i].key, class: "d-block w-100" %>
+                </div>
+            <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag @trip.photos[i].key, class: "d-block w-100" %>
+                </div>
+            <% end %>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators<%= idp %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators<%= idp %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
