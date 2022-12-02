@@ -14,8 +14,10 @@
       <div class="explore-title animate fadeInLeft delay-600 d-flex">
         Find a new adventure
       </div>
+
       <div class="d-flex justify-content-center">
         <button data-action="click->scroll#scroll" class=" btn explore-button animate fadeInLeft delay-800" title="Click to see more"> EXPLORE </button>
+
       </div>
     </div>
   </section>
@@ -55,17 +57,5 @@
 
   <%= render 'shared/cards', action: "click->favourite#toggleBookmarkIcon", empty_message: "No trails found!"  %>
 
+
 </div>
-
-<%# <script>
-
- function scrollFunction1() {
-        let e = document.getElementById("trails");
-        e.scrollIntoView({
-          block: 'start',
-          behavior: 'smooth',
-          inline: 'start'
-        });
-      }
-
-</script> %>

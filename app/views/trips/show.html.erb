@@ -1,7 +1,8 @@
-
-<button class="open-button" onclick="openForm()">
-  <i class="fa-solid fa-list-check fa-2x"></i>
-</button>
+<% if @trip.date > Time.now %>
+  <button class="open-button" onclick="openForm()">
+    <i class="fa-solid fa-list-check fa-2x"></i>
+  </button>
+<% end %>
 
 
 
@@ -16,8 +17,23 @@
     <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
       <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
-        <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
-        30° / 26° C
+        <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
+        30° / 26° C %>
+        <% if @forecast && @trip.date > Time.now %>
+          <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
+          <div class="col">
+            <div class="row">
+              <div class="weather-p">
+                <%= @forecast[:min_temp] %> / <%= @forecast[:max_temp] %> ° C
+              </div>
+            </div>
+            <div class="row">
+              <div class="weather-p"><%= @forecast[:condition] %></div>
+            </div>
+          </div>
+        <% elsif @trip.date > Time.now %>
+          <div class="weather-p">Weather data is not available yet.</div>
+        <% end %>
       </div>
     </div>
 
@@ -164,14 +180,50 @@
         <%# end of modal %>
     </div>
 
-    <h3 class="mb-3"><strong>Getting There</strong></h3>
-    <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+    <div data-controller="insert-pictures">
+      <% if @trip.date > Time.now %>
+        <h3 class="mb-3"><strong>Getting There</strong></h3>
+        <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+      <% else %>
+        <h3 class="mb-3"><strong>Share your pictures with other users </strong></h3>
+        <%= render "trips/form"  %>
+        <p id="upload-sucess" data-insert-pictures-target="uploaded"></p>
+              <%# <h3 class="mb-3" ><strong>Your pictures from <%= @trip.trail.name %></strong></h3>
+              <div class="trips-pictures" data-insert-pictures-target="grid" >
+                <% if @trip.photos.attached? %>
+                  <%= render 'trips/photos' %>
+                <% end %>
+              </div>
+          <% end %>
+    </div>
+
+  <% @trip.photos.each do |photo| %>
+      <% idp = photo.blob_id %>
+      <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render 'trips/carousel', photo: photo %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
 
   </div>
+
 </div>
 
 
- <%= render 'shared/checklist' %>
+<% if @trip.date > Time.now %>
+  <%= render 'shared/checklist', trip: @trip, task: @task %>
+<% end %>
+
 
 <script>
 function openForm() {
