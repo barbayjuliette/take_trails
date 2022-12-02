@@ -43,29 +43,29 @@
               <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
             </div>
             <div class="card-body">
-              <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %>&nbsp;&nbsp;&nbsp;
-              <i class="fa-solid fa-arrows-left-right"></i> <%= trip.trail.distance %> km&nbsp;&nbsp;&nbsp;
-              <i class="fa-regular fa-clock"></i></i>
-              <% hour = (trip.trail.duration / 60).to_i %>
-              <% minutes = (trip.trail.duration % 60).to_i %>
-              <% if hour == 00 %>
-                <%= minutes %>m
-              <% elsif minutes < 10 %>
-                <%= hour %>h 0<%= minutes %>m
-              <% else %>
-                <%= hour %>h <%= minutes %>m
-              <% end %>
+              <p class="card-text">
+                <i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %>&nbsp;&nbsp;&nbsp;
+                <i class="fa-solid fa-arrows-left-right"></i> <%= trip.trail.distance %> km&nbsp;&nbsp;&nbsp;
+                <i class="fa-regular fa-clock"></i></i>
+                <% hour = (trip.trail.duration / 60).to_i %>
+                <% minutes = (trip.trail.duration % 60).to_i %>
+                <% if hour == 00 %>
+                  <%= minutes %>m
+                <% elsif minutes == 0 %>
+                  <%= hour %>h
+                <% elsif minutes < 10 %>
+                  <%= hour %>h 0<%= minutes %>min
+                <% else %>
+                  <%= hour %>h <%= minutes %>min
+                <% end %>
               </p>
             </div>
-
           <% end %>
         </div>
 
       <% end %>
     <% end %>
   </div>
-
-
 
   <div id="past-trips" class="cards d-none" data-switch-tabs-target="pasttrips">
     <% if @past_trips.empty? %>
@@ -99,21 +99,23 @@
               <p class="card-text"><i class="fa-solid fa-location-pin mb-2"></i> <%= trip.trail.location %></p>
             </div>
             <div class="card-body">
-              <p class="card-text"><i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %>&nbsp;&nbsp;&nbsp;
-              <i class="fa-solid fa-arrows-left-right"></i> <%= trip.trail.distance %> km&nbsp;&nbsp;&nbsp;
-              <i class="fa-regular fa-clock"></i></i>
-              <% hour = (trip.trail.duration / 60).to_i %>
-              <% minutes = (trip.trail.duration % 60).to_i %>
-              <% if hour == 00 %>
-                <%= minutes %>m
-              <% elsif minutes < 10 %>
-                <%= hour %>h 0<%= minutes %>m
-              <% else %>
-                <%= hour %>h <%= minutes %>m
-              <% end %>
+              <p class="card-text">
+                <i class="fa-solid fa-person-hiking"></i> <%= trip.trail.difficulty %>&nbsp;&nbsp;&nbsp;
+                <i class="fa-solid fa-arrows-left-right"></i> <%= trip.trail.distance %> km&nbsp;&nbsp;&nbsp;
+                <i class="fa-regular fa-clock"></i></i>
+                <% hour = (trip.trail.duration / 60).to_i %>
+                <% minutes = (trip.trail.duration % 60).to_i %>
+                <% if hour == 00 %>
+                  <%= minutes %>m
+                <% elsif minutes == 0 %>
+                  <%= hour %>h
+                <% elsif minutes < 10 %>
+                  <%= hour %>h 0<%= minutes %>min
+                <% else %>
+                  <%= hour %>h <%= minutes %>min
+                <% end %>
               </p>
             </div>
-
           <% end %>
         </div>
 

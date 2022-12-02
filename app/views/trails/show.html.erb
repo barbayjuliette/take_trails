@@ -1,4 +1,3 @@
-
 <%# image carousel %>
 
 <%= render 'banner_1', trail: @trail %>
@@ -33,12 +32,6 @@
               <% end %>
             </div>
           </span>
-
-          <a class="text-decoration-none text-dark" href="#">
-            <div class="d-flex justify-content-center align-items-center mx-2">
-              <i id="friends" class="fa-solid fa-users"></i>
-            </div>
-          </a>
         </div>
 
         <%# create trip %>
@@ -87,118 +80,94 @@
         </div>
         <%# description %>
         <p style="white-space: pre-line;" class="show-pg-font-size"><%= @trail.description %></p>
-
         <br>
-          <h5 class="mb-3"><strong>Weather Forecast</strong></h5>
-          <div class="d-flex flex-row mt-3 mb-3">
-            <% @trailsforecast.each do |day| %>
-              <div class="d-flex flex-column align-items-center me-4">
-                <div>
-                <%= day[:time].strftime('%A') %>
-                </div>
-                <div>
-                  <%= day[:time].strftime('%-d/%-m') %>
-                </div>
-                  <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
+        <%# weather forecast %>
+        <h5 class="mb-3"><strong>Weather Forecast</strong></h5>
+        <div class="d-flex flex-row mt-3 mb-3">
+          <% @trailsforecast.each do |day| %>
+            <div class="d-flex flex-column align-items-center me-4">
+              <div>
+              <%= day[:time].strftime('%A') %>
               </div>
-            <% end %>
-          </div>
-
-
-
+              <div>
+                <%= day[:time].strftime('%-d/%-m') %>
+              </div>
+              <img class="icon-trail" src="<%= day[:icon_url] %>" alt="">
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="cust-container border-bottom divider mb-3">
-    <div class="row py-2">
-      <%# overall rating, tags %>
-      <div class="col-12 col-lg-3 pe-4 mb-2">
-        <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
-        <div class="d-flex align-items-center mb-3">
-          <% unless @trail.reviews.empty? %>
-            <div class="d-flex me-2">
-              <% @trail.rating.floor.times do %>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-              <% end %>
-              <% if (@trail.rating - @trail.rating.floor) >= 0.3 && (@trail.rating - @trail.rating.floor) < 0.8 %>
-                <i style="color: yellow" class="fa-solid fa-star-half me-1"></i>
-              <% elsif (@trail.rating - @trail.rating.floor) >= 0.8 %>
-                <i style="color: yellow" class="fa-solid fa-star me-1"></i>
-              <% end %>
-            </div>
-            <a class="text-muted text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#allReviews">
-              <%= sprintf('%.1f', @trail.rating) %> (<%= pluralize(@trail.reviews.count, 'review') %>)
+<%# Reviews & Ratings %>
+<div class="cust-container border-bottom divider mb-3">
+  <div class="row py-2">
+    <%# overall rating, tags %>
+    <div class="col-12 col-lg-3 pe-4 mb-2">
+      <h3 class="mb-3"><strong>Ratings & Reviews</strong></h3>
+      <div class="d-flex align-items-center mb-3">
+        <% unless @trail.reviews.empty? %>
+          <div class="d-flex me-2">
+            <% @trail.rating.floor.times do %>
+              <i style="color: yellow" class="fa-solid fa-star me-1"></i>
             <% end %>
+            <% if (@trail.rating - @trail.rating.floor) >= 0.3 && (@trail.rating - @trail.rating.floor) < 0.8 %>
+              <i style="color: yellow" class="fa-solid fa-star-half me-1"></i>
+            <% elsif (@trail.rating - @trail.rating.floor) >= 0.8 %>
+              <i style="color: yellow" class="fa-solid fa-star me-1"></i>
+            <% end %>
+          </div>
+          <a class="text-muted text-decoration-underline" href="#" data-bs-toggle="modal" data-bs-target="#allReviews">
+            <%= sprintf('%.1f', @trail.rating) %> (<%= pluralize(@trail.reviews.count, 'review') %>)
           </a>
-        </div>
-        <div class="d-flex flex-wrap">
-          <% @trail.categories.each do |category| %>
-            <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
-          <% end %>
-        </div>
+        <% end %>
       </div>
-      <%# reviews %>
-      <div class="col-12 col-lg-9">
-        <% if @trail.reviews.blank? %>
-          <p>No reviews for this trail yet.</p>
-        <% else %>
-          <% @trail.reviews.reverse.first(3).each do |review| %>
-            <%= render "reviews/reviewcard", review: review %>
-          <% end %>
-          <%# trigger modal to see all reviews (modal at bottom) %>
-          <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#allReviews">
-            See all reviews
-          </button>
+      <div class="d-flex flex-wrap">
+        <% @trail.categories.each do |category| %>
+          <span class="tag tag-item rounded-pill px-2 py-1 me-1 mb-2"><%= category.name %></span >
         <% end %>
       </div>
     </div>
+    <%# reviews %>
+    <div class="col-12 col-lg-9">
+      <% if @trail.reviews.blank? %>
+        <p>No reviews for this trail yet.</p>
+      <% else %>
+        <% @trail.reviews.reverse.first(3).each do |review| %>
+          <%= render "reviews/reviewcard", review: review %>
+        <% end %>
+        <%# trigger modal to see all reviews (modal at bottom) %>
+        <button type="button" class="btn text-muted text-decoration-underline" data-bs-toggle="modal" data-bs-target="#allReviews">
+          See all reviews
+        </button>
+      <% end %>
+    </div>
   </div>
+</div>
 
-
+<%# Trail Map %>
 <% if @user_photos.size > 0 %>
   <div class="cust-container border-bottom divider mb-3">
 <% else %>
   <div class="cust-container">
 <% end %>
-  <div class="row py-2">
-    <div class="col-12 col-lg-3 pe-4">
-      <h3 class="mb-3"><strong>Trail Map</strong></h3>
-    </div>
-    <div class="col-12 col-lg-9">
-      <div data-controller="map" data-map-coordinates-value="<%= @trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trail-map"></div>
-
-    </div>
-  </div>
-
-  <%# modal %>
-  <div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable rounded-2">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title " id="staticBackdropLabel"></h1>
-          <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h2><strong data-insert-in-list-target="count"><%= pluralize(@trail.reviews.count, 'review') %></strong></h2>
-          <% @trail.reviews.reverse.each do |review| %>
-            <%= render "reviews/reviewcard", review: review %>
-          <% end %>
-        </div>
+    <div class="row py-2">
+      <div class="col-12 col-lg-3 pe-4">
+        <h3 class="mb-3"><strong>Trail Map</strong></h3>
+      </div>
+      <div class="col-12 col-lg-9 mb-3">
+        <div data-controller="map" data-map-coordinates-value="<%= @trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trail-map"></div>
       </div>
     </div>
   </div>
 
-
-
-</div>
-
-
+<%# Community Photos %>
 <% if @user_photos.size > 0 %>
   <div class="cust-container">
     <div class="row py-2">
       <div class="col-12 col-lg-3 pe-4">
-        <h3 class="mb-3"><strong> Pictures from other hikers</strong></h3>
+        <h3 class="mb-3"><strong>Other Hikers' Photos</strong></h3>
       </div>
       <div class="col-12 col-lg-9">
         <div class="trips-pictures" data-insert-pictures-target="grid" >
@@ -214,19 +183,38 @@
   </div>
 <% end %>
 
-  <% @user_photos.each do |photo| %>
-      <% idp = photo.blob_id %>
-      <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= render 'trails/carousel', photo: photo %>
-            </div>
-          </div>
+<%# Reviews modal %>
+<div class="modal fade rounded-2" id="allReviews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="allReviews" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable rounded-2">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2><strong data-insert-in-list-target="count"><%= pluralize(@trail.reviews.count, 'review') %></strong></h2>
+        <% @trail.reviews.reverse.each do |review| %>
+          <%= render "reviews/reviewcard", review: review %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# Photos modal %>
+<% @user_photos.each do |photo| %>
+  <% idp = photo.blob_id %>
+  <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render 'trails/carousel', photo: photo %>
         </div>
       </div>
-    <% end %>
+    </div>
+  </div>
+<% end %>
 </main>
