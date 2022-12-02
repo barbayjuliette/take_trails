@@ -1,7 +1,8 @@
-
-<button class="open-button" onclick="openForm()">
-  <i class="fa-solid fa-list-check fa-2x"></i>
-</button>
+<% if @trip.date > Time.now %>
+  <button class="open-button" onclick="openForm()">
+    <i class="fa-solid fa-list-check fa-2x"></i>
+  </button>
+<% end %>
 
 
 
@@ -215,10 +216,14 @@
 
 
   </div>
+
 </div>
 
 
- <%= render 'shared/checklist', trip: @trip, task: @task %>
+<% if @trip.date > Time.now %>
+  <%= render 'shared/checklist', trip: @trip, task: @task %>
+<% end %>
+
 
 <script>
 function openForm() {

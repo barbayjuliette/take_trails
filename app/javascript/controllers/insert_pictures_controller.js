@@ -9,30 +9,31 @@ export default class extends Controller {
     // console.log(this.gridTarget)
     // console.log(this.pictureTarget)
     // this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-    console.log(this.pictureTarget.querySelector("input[type='file']"))
   }
 
   upload(event) {
-    // console.log(event)
-    event.preventDefault()
+    event.preventDefault();
+    const submittedFiles = event.target.querySelector("input[type='file']").files
 
-    //console.log("TODO: send request in AJAX")
+    if (!submittedFiles.length) {
+      this.uploadedTarget.innerHTML = "No pictures selected ..."
+    } else {
+      this.uploadedTarget.innerHTML = "Loading pictures ..."
 
-    this.uploadedTarget.innerHTML = "Loading pictures ..."
-
-    fetch(this.pictureTarget.action, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: new FormData(this.pictureTarget)
-    })
-      .then(response => response.json())
-      .then((data) => {
-        if(data.inserted_item) {
-          this.pictureTarget.querySelector("input[type='file']").value = ""
-          this.gridTarget.innerHTML = data.inserted_item
-          this.uploadedTarget.innerHTML = "Picture successfully uploaded"
-          this.element.insertAdjacentHTML("afterend",data.popup)
-        }
+      fetch(this.pictureTarget.action, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(this.pictureTarget)
       })
+        .then(response => response.json())
+        .then((data) => {
+          if(data.inserted_item) {
+            this.pictureTarget.querySelector("input[type='file']").value = ""
+            this.gridTarget.innerHTML = data.inserted_item
+            this.uploadedTarget.innerHTML = "Picture successfully uploaded"
+            this.element.insertAdjacentHTML("afterend",data.popup)
+          }
+        })
+    }
   }
 }

@@ -26,6 +26,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @review = Review.new
+    @task = Task.new
     @forecast = weather_forecast(@trip)
   end
 
@@ -67,7 +68,7 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     @trip.photos.attach(photo_params[:photos])
-    # @count = photo_params[:photos].size
+    @count = photo_params[:photos].size
 
     respond_to do |format|
       if @trip.save
