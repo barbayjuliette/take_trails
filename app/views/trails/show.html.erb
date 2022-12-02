@@ -1,3 +1,4 @@
+
 <%# image carousel %>
 
 <%= render 'banner', trail: @trail %>
@@ -153,14 +154,19 @@
     </div>
   </div>
 
+
+<% if @user_photos.size > 0 %>
+  <div class="cust-container border-bottom divider mb-3">
+<% else %>
   <div class="cust-container">
-    <div class="row py-2">
-      <div class="col-12 col-lg-3 pe-4">
-        <h3 class="mb-3"><strong>Trail Map</strong></h3>
-      </div>
-      <div class="col-12 col-lg-9">
-        <div data-controller="map" data-map-coordinates-value="<%= @trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trail-map"></div>
-      </div>
+<% end %>
+  <div class="row py-2">
+    <div class="col-12 col-lg-3 pe-4">
+      <h3 class="mb-3"><strong>Trail Map</strong></h3>
+    </div>
+    <div class="col-12 col-lg-9">
+      <div data-controller="map" data-map-coordinates-value="<%= @trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trail-map"></div>
+
     </div>
   </div>
 
@@ -181,4 +187,48 @@
       </div>
     </div>
   </div>
+
+
+
+</div>
+
+
+<% if @user_photos.size > 0 %>
+  <div class="cust-container">
+    <div class="row py-2">
+      <div class="col-12 col-lg-3 pe-4">
+        <h3 class="mb-3"><strong> Pictures from other hikers</strong></h3>
+      </div>
+      <div class="col-12 col-lg-9">
+        <div class="trips-pictures" data-insert-pictures-target="grid" >
+          <% @user_photos.each do |photo| %>
+            <% idp = photo.blob_id %>
+            <a class="image-container" type="button" data-bs-toggle="modal" data-bs-target='#showpictures<%= idp %>'>
+              <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %>
+            </a>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+  <% @user_photos.each do |photo| %>
+      <% idp = photo.blob_id %>
+      <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= render 'trails/carousel', photo: photo %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
 </main>
