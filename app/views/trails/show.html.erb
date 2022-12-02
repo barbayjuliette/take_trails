@@ -1,7 +1,6 @@
 <%# image carousel %>
 
-<%= render 'banner_1', trail: @trail %>
-<%#= render 'banner_2', trail: @trail %>
+<%= render 'banner', trail: @trail %>
 
 <main>
   <div class="cust-container border-bottom divider mb-3">
@@ -176,11 +175,13 @@
             <a class="image-container" type="button" data-bs-toggle="modal" data-bs-target='#showpictures<%= idp %>'>
               <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, class: "trip-picture" %>
             </a>
+
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
 <% end %>
 
 <%# Reviews modal %>
@@ -214,7 +215,9 @@
           <%= render 'trails/carousel', photo: photo %>
         </div>
       </div>
+
     </div>
   </div>
 <% end %>
+
 </main>
