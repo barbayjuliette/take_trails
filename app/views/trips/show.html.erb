@@ -5,7 +5,7 @@
 <% end %>
 
 
-  <div class="row">
+  <div class="row mx-2">
     <%# map (left column) %>
     <div id="left-column" class="col-lg-5 col-sm-12 order-lg-1 order-2 py-3 pe-lg-0 px-4">
       <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
