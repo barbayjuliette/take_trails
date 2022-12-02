@@ -218,17 +218,28 @@ legend ~ div.form-check:first-of-type {
 .userlogin {
   width: 80%;
   margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   justify-items: center;
   margin-bottom: 20px;
-  margin-top:20px;
+  margin-top:50px;
 
   .link {
     margin-top:20px;
     width:100%;
   }
 }
+
+@media (max-width: 800px) {
+  .userlogin {
+    flex-wrap: wrap
+  }
+
+  .log-in {
+    margin-top: 20px;
+  }
+}
+
+
 
 .log-in {
   width: 100%;
