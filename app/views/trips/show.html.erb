@@ -5,112 +5,110 @@
 <% end %>
 
 
-  <div class="row mx-2">
-    <%# map (left column) %>
-    <div id="left-column" class="col-lg-5 col-sm-12 order-lg-1 order-2 py-3 pe-lg-0 px-4">
-      <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
-    </div>
-    <%# right column %>
-    <div id="right-column" class="col-lg-7 col-sm-12 py-3 px-4 order-lg-2 order-1">
-      <%# info bar %>
-      <div id="info-bar" class="py-2 px-3 mt-5 mt-lg-0 mb-3 d-flex justify-content-between">
-        <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
-        <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
-          <%# <i id="weather-icon" class="fa-solid fa-cloud-sun me-2"></i>
-          30° / 26° C %>
-          <% if @forecast && @trip.date > Time.now %>
-            <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
-            <div class="col">
-              <div class="row">
-                <div class="weather-p">
-                  <%= @forecast[:min_temp] %> / <%= @forecast[:max_temp] %> ° C
-                </div>
-              </div>
-              <div class="row">
-                <div class="weather-p"><%= @forecast[:condition] %></div>
+<div class="row mx-2">
+  <%# map (left column) %>
+  <div id="left-column" class="col-lg-5 col-sm-12 order-lg-1 order-2 py-3 pe-lg-0 px-4">
+    <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
+  </div>
+  <%# right column %>
+  <div id="right-column" class="col-lg-7 col-sm-12 py-3 px-4 order-lg-2 order-1">
+    <%# info bar %>
+    <div id="info-bar" class="py-2 px-3 mt-5 mt-lg-0 mb-3 d-flex justify-content-between">
+      <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
+      <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
+        <% if @forecast && @trip.date > Time.now %>
+          <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
+          <div class="col">
+            <div class="row">
+              <div class="weather-p">
+                <%= @forecast[:min_temp] %> / <%= @forecast[:max_temp] %> ° C
               </div>
             </div>
-          <% elsif @trip.date > Time.now %>
-            <div class="weather-p">Weather data is not available yet.</div>
-          <% else %>
-            <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
-              <button id="create-trip-btn" class="btn" data-action="click->display-form#display">Create Another Trip</button>
-              <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card_2, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
-                <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
-                <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
-                <% if @trip.errors.any? %>
-                  <ul class="list-inline mb-0">
-                      <% trip.errors.full_messages.each do |message| %>
-                          <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
-                      <% end %>
-                  </ul>
-                <% end %>
-                <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
+            <div class="row">
+              <div class="weather-p"><%= @forecast[:condition] %></div>
+            </div>
+          </div>
+        <% elsif @trip.date > Time.now %>
+          <div class="weather-p">Weather data is not available yet.</div>
+        <% else %>
+          <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
+            <button id="create-trip-btn" class="btn" data-action="click->display-form#display">Create Another Trip</button>
+            <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card_2, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
+              <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
+              <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
+              <% if @trip.errors.any? %>
+                <ul class="list-inline mb-0">
+                    <% trip.errors.full_messages.each do |message| %>
+                        <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
+                    <% end %>
+                </ul>
               <% end %>
+              <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%# image carousel %>
+    <div class="w-auto mb-3">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators mb-0">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <% if @trip.trail.photos.size > 1 %>
+            <% (@trip.trail.photos.size - 1).times do |i| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i + 1 %>" aria-label="Slide <%= i + 2 %>"></button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @trip.trail.photos.first.key, class: "d-block w-100", id: :trip_trail_img %>
+          </div>
+          <% @trip.trail.photos[1..].each do |photo| %>
+            <div class="carousel-item">
+              <%= cl_image_tag photo.key, class: "d-block w-100", id: :trip_trail_img %>
             </div>
           <% end %>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
+    </div>
 
-      <%# image carousel %>
-      <div class="w-auto mb-3">
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-indicators mb-0">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <% if @trip.trail.photos.size > 1 %>
-              <% (@trip.trail.photos.size - 1).times do |i| %>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i + 1 %>" aria-label="Slide <%= i + 2 %>"></button>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= cl_image_tag @trip.trail.photos.first.key, class: "d-block w-100", id: :trip_trail_img %>
-            </div>
-            <% @trip.trail.photos[1..].each do |photo| %>
-              <div class="carousel-item">
-                <%= cl_image_tag photo.key, class: "d-block w-100", id: :trip_trail_img %>
-              </div>
-            <% end %>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+    <div class="border-bottom divider mb-3">
+      <h1><strong><%= @trip.trail.name %></strong></h1>
+      <%# basic trail info %>
+      <div class="mb-2">
+        <span class="me-1 show-pg-font-size"><i class="fa-solid fa-location-pin"></i> <a href="#map_directions"><%= @trip.trail.location %></a></span>
       </div>
-
-      <div class="border-bottom divider mb-3">
-        <h1><strong><%= @trip.trail.name %></strong></h1>
-        <%# basic trail info %>
-        <div class="mb-2">
-          <span class="me-1 show-pg-font-size"><i class="fa-solid fa-location-pin"></i> <a href="#map_directions"><%= @trip.trail.location %></a></span>
-        </div>
-        <div class="d-flex mb-3">
-          <span class="me-5 show-pg-font-size">
-            <i class="fa-regular fa-clock me-1"></i>
-            <% hour = (@trip.trail.duration / 60).to_i %>
-            <% minutes = (@trip.trail.duration % 60).to_i %>
-            <% if minutes == 0 %>
-              <%= pluralize(hour, "hour") %>
-            <% elsif hour == 0 %>
-              <%= pluralize(minutes, "minute") %>
-            <% elsif minutes < 10 %>
-              <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
-            <% else %>
-              <%= pluralize(hour, "hour") %> <%= minutes %> minutes
-            <% end %>
-          </span>
-          <span class="me-5 show-pg-font-size"><i class="fa-solid fa-arrows-left-right me-1"></i> <%= @trip.trail.distance %> km</span>
-          <span class="show-pg-font-size"><i class="fa-solid fa-person-hiking me-1"></i> <%= @trip.trail.difficulty %></span>
-        </div>
-        <%# description %>
-        <p style="white-space: pre-line;" class="trip-pg-font-size"><%= @trip.trail.description %></p>
+      <div class="d-flex mb-3">
+        <span class="me-5 show-pg-font-size">
+          <i class="fa-regular fa-clock me-1"></i>
+          <% hour = (@trip.trail.duration / 60).to_i %>
+          <% minutes = (@trip.trail.duration % 60).to_i %>
+          <% if minutes == 0 %>
+            <%= pluralize(hour, "hour") %>
+          <% elsif hour == 0 %>
+            <%= pluralize(minutes, "minute") %>
+          <% elsif minutes < 10 %>
+            <%= pluralize(hour, "hour") %> 0<%= minutes %> minutes
+          <% else %>
+            <%= pluralize(hour, "hour") %> <%= minutes %> minutes
+          <% end %>
+        </span>
+        <span class="me-5 show-pg-font-size"><i class="fa-solid fa-arrows-left-right me-1"></i> <%= @trip.trail.distance %> km</span>
+        <span class="show-pg-font-size"><i class="fa-solid fa-person-hiking me-1"></i> <%= @trip.trail.difficulty %></span>
       </div>
+      <%# description %>
+      <p style="white-space: pre-line;" class="trip-pg-font-size"><%= @trip.trail.description %></p>
+    </div>
 
     <%# ratings & reviews %>
     <div class="border-bottom divider mb-3 pb-2" data-controller="insert-in-list">
@@ -140,60 +138,60 @@
             <% end %>
           </div>
         <% end %>
-        </div>
-        <% if @trip.review.present? %>
-          <%= render "reviews/reviewcard", review: @trip.review %>
-        <% end %>
-        <% if @trip.review.blank? && @trip.date < Time.now %>
-          <div class="d-flex align-items-center mb-2">
-            <div data-insert-in-list-target="userreview" class="flex-grow-1">
-              <div id="no-review">
-                <p class="mb-0">You have not left a review yet.</p>
-                <%# button to trigger modal %>
-                <button type="button" class="btn text-muted text-decoration-underline px-0" data-bs-toggle="modal" data-bs-target="#leavereview">
-                  Leave a review
-                </button>
-              </div>
+      </div>
+      <% if @trip.review.present? %>
+        <%= render "reviews/reviewcard", review: @trip.review %>
+      <% end %>
+      <% if @trip.review.blank? && @trip.date < Time.now %>
+        <div class="d-flex align-items-center mb-2">
+          <div data-insert-in-list-target="userreview" class="flex-grow-1">
+            <div id="no-review">
+              <p class="mb-0">You have not left a review yet.</p>
+              <%# button to trigger modal %>
+              <button type="button" class="btn text-muted text-decoration-underline px-0" data-bs-toggle="modal" data-bs-target="#leavereview">
+                Leave a review
+              </button>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
 
       <%# Reviews modal %>
-        <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable rounded-2">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title " id="staticBackdropLabel"></h1>
-                <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <% if @trip.review.blank? && @trip.date < Time.now %>
-                  <h2><strong>Leave a review</strong></h2>
-                  <div data-insert-in-list-position-value="afterbegin">
-                    <%= render "reviews/reviewform" %>
-                    <br><br>
-                  </div>
+      <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable rounded-2">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title " id="staticBackdropLabel"></h1>
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if @trip.review.blank? && @trip.date < Time.now %>
+                <h2><strong>Leave a review</strong></h2>
+                <div data-insert-in-list-position-value="afterbegin">
+                  <%= render "reviews/reviewform" %>
+                  <br><br>
+                </div>
+              <% end %>
+              <%# Review list %>
+              <div data-insert-in-list-target="count">
+                <% if @trip.trail.reviews.blank? %>
+                  <h4>No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>!</h4>
+                <% else %>
+                  <h2><strong><%= pluralize(@trip.trail.reviews.count, 'review')%></strong></h2>
                 <% end %>
-                <%# Review list %>
-                <div data-insert-in-list-target="count">
-                  <% if @trip.trail.reviews.blank? %>
-                    <h4>No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>!</h4>
-                  <% else %>
-                    <h2><strong><%= pluralize(@trip.trail.reviews.count, 'review')%></strong></h2>
-                  <% end %>
-                </div>
-                  <div data-insert-in-list-target="items">
-                    <% @trip.trail.reviews.reverse_each do |review| %>
-                      <%= render "reviews/reviewcard", review: review %>
-                    <% end %>
-                  </div>
-                  <%# end of review list %>
-                </div>
               </div>
+              <div data-insert-in-list-target="items">
+                <% @trip.trail.reviews.reverse_each do |review| %>
+                  <%= render "reviews/reviewcard", review: review %>
+                <% end %>
+              </div>
+              <%# end of review list %>
             </div>
           </div>
         </div>
-        <%# end of modal %>
+      </div>
+      <%# end of modal %>
+    </div>
 
     <%# Map/uploaded photos %>
     <div data-controller="insert-pictures">
@@ -228,24 +226,7 @@
       </div>
     <% end %>
 
-      <% @trip.photos.each do |photo| %>
-          <% idp = photo.blob_id %>
-          <div class="modal" id='showpictures<%= idp %>' role="dialog" aria-labelledby='showpictures<%= idp %>'>
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'trips/carousel', photo: photo %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
   </div>
-</div>
 </div>
 
 <% if @trip.date > Time.now %>
