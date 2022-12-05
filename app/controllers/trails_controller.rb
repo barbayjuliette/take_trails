@@ -69,7 +69,7 @@ class TrailsController < ApplicationController
     require "json"
     require "open-uri"
 
-    url_m = "https://maps.googleapis.com/maps/api/geocode/json?address=#{trail.location}&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"
+    url_m = "https://maps.googleapis.com/maps/api/geocode/json?address=#{trail.location}&key=#{ENV['GOOGLE_API_KEY']}"
     map_serialized = URI.open(url_m).read
     maps = JSON.parse(map_serialized)
     lat = maps["results"][0]["geometry"]["location"]["lat"]
