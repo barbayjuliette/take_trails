@@ -45,7 +45,6 @@ class TrailsController < ApplicationController
         @user_photos << photo
       end
     end
-    @trailsforecast = weather_forecast(@trail)
   end
 
   def toggle_favorite
@@ -63,34 +62,6 @@ class TrailsController < ApplicationController
         format.json { render json: { favourited: nil, redirect: new_user_session_path } }
       end
     end
-  end
-
-  def weather_forecast(trail)
-    require "json"
-    require "open-uri"
-
-    url_m = "https://maps.googleapis.com/maps/api/geocode/json?address=#{trail.location}&key=#{ENV['GOOGLE_API_KEY']}"
-    map_serialized = URI.open(url_m).read
-    maps = JSON.parse(map_serialized)
-    lat = maps["results"][0]["geometry"]["location"]["lat"]
-    lng = maps["results"][0]["geometry"]["location"]["lng"]
-
-
-    url_w = "http://api.weatherapi.com/v1/forecast.json?key=791c08d9b29546298d073547223011&q&q=#{lat},#{lng}&days=4&aqi=no&alerts=no"
-    weather_info = URI.open(url_w).read
-    weathers = JSON.parse(weather_info)
-    # index = nil
-    array_days = []
-    start = Date.today-1
-    weathers["forecast"]["forecastday"].each do |day|
-      min_temp = day["day"]["mintemp_c"]
-      max_temp = day["day"]["maxtemp_c"]
-      condition = day["day"]["condition"]["text"]
-      icon_url = day["day"]["condition"]["icon"]
-
-      array_days << { time: start += 1, min_temp: min_temp, max_temp: max_temp, condition: condition, icon_url: icon_url }
-    end
-    array_days
   end
 
 end

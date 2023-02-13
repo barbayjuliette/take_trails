@@ -16,37 +16,7 @@
     <div id="info-bar" class="py-2 px-3 mt-5 mt-lg-0 mb-3 d-flex justify-content-between">
       <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
-        <% if @forecast && @trip.date > Time.now %>
-          <img class="icon-trip" src="<%= @forecast[:icon_url] %>" alt="">
-          <div class="col">
-            <div class="row">
-              <div class="weather-p">
-                <%= @forecast[:min_temp] %> / <%= @forecast[:max_temp] %> ° C
-              </div>
-            </div>
-            <div class="row">
-              <div class="weather-p"><%= @forecast[:condition] %></div>
-            </div>
-          </div>
-        <% elsif @trip.date > Time.now %>
           <div class="weather-p">Weather data is not available yet.</div>
-        <% else %>
-          <div id="add-trip" class="d-flex justify-content-center" data-controller="display-form">
-            <button id="create-trip-btn" class="btn" data-action="click->display-form#display">Create Another Trip</button>
-            <%= simple_form_for [@trip.trail, @new_trip], html: {data: {controller: 'flatpickr', turbo: false, display_form_target: "form"}, id: :date_card_2, class: "#{@trip.errors.any? ? "" : "d-none"} bg-white border p-3"} do |f| %>
-              <%= f.label :date, 'Set a date/time', class: "d-block mb-1" %>
-              <%= f.input_field :date, as: :string, id: :date_input, class: "mb-1", data: { flatpickr_target: "date" }, placeholder: "Click to select a date/time" %>
-              <% if @trip.errors.any? %>
-                <ul class="list-inline mb-0">
-                    <% trip.errors.full_messages.each do |message| %>
-                        <li class="text-danger list-inline-item fs-6 mb-0 ms-1 mt-1"><%= message %></li>
-                    <% end %>
-                </ul>
-              <% end %>
-              <%= f.button :submit, id: :submit_date_btn, class: "btn btn-primary mt-2 py-2 px-3" %>
-            <% end %>
-          </div>
-        <% end %>
       </div>
     </div>
 
