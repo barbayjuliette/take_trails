@@ -5,16 +5,15 @@
 <% end %>
 
 
-
-<div class="d-flex">
+<div class="row mx-2">
   <%# map (left column) %>
-  <div class="align-self-stretch" id="left-column">
+  <div id="left-column" class="col-lg-5 col-sm-12 order-lg-1 order-2 py-3 pe-lg-0 px-4">
     <div data-controller="map" data-map-coordinates-value="<%= @trip.trail.coordinates %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" id="trip-map"></div>
   </div>
   <%# right column %>
-  <div id="right-column" class="py-3 px-4">
+  <div id="right-column" class="col-lg-7 col-sm-12 py-3 px-4 order-lg-2 order-1">
     <%# info bar %>
-    <div id="info-bar" class="py-2 px-3 mb-3 d-flex justify-content-between">
+    <div id="info-bar" class="py-2 px-3 mt-5 mt-lg-0 mb-3 d-flex justify-content-between">
       <div id="trip-date" class="d-flex align-items-center trip-pg-font-size"><%= @trip.date.strftime('%-d %b %Y, %l.%M%p') %></div>
       <div class="d-flex justify-content-center align-items-center trip-pg-font-size">
           <div class="weather-p">Weather data is not available yet.</div>
@@ -100,7 +99,7 @@
               <% end %>
             </div>
             <a class="text-muted text-decoration-underline trip-pg-font-size" href="#" data-bs-toggle="modal" data-bs-target="#leavereview">
-              <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
+            <%= sprintf('%.1f', @trip.trail.rating) %> (<%= pluralize(@trip.trail.reviews.count, 'review') %>)
             </a>
           </div>
           <div class="mb-3">
@@ -126,49 +125,49 @@
           </div>
         </div>
       <% end %>
-      <%# Reviews modal %>
-        <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable rounded-2">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title " id="staticBackdropLabel"></h1>
-                <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <% if @trip.review.blank? && @trip.date < Time.now %>
-                  <h2><strong>Leave a review</strong></h2>
-                  <div data-insert-in-list-position-value="afterbegin">
-                    <%= render "reviews/reviewform" %>
-                    <br><br>
-                  </div>
-                <% end %>
-                <%# Review list %>
-                <div data-insert-in-list-target="count">
-                  <% if @trip.trail.reviews.blank? %>
-                    <h4>No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>!</h4>
-                  <% else %>
-                    <h2><strong><%= pluralize(@trip.trail.reviews.count, 'review')%></strong></h2>
-                  <% end %>
-                </div>
 
-                <div data-insert-in-list-target="items">
-                  <% @trip.trail.reviews.reverse_each do |review| %>
-                    <%= render "reviews/reviewcard", review: review %>
-                  <% end %>
+      <%# Reviews modal %>
+      <div class="modal fade rounded-2" id="leavereview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable rounded-2">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title " id="staticBackdropLabel"></h1>
+              <button type="button" class="btn-close border-bottom-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if @trip.review.blank? && @trip.date < Time.now %>
+                <h2><strong>Leave a review</strong></h2>
+                <div data-insert-in-list-position-value="afterbegin">
+                  <%= render "reviews/reviewform" %>
+                  <br><br>
                 </div>
-                <%# end of review list %>
+              <% end %>
+              <%# Review list %>
+              <div data-insert-in-list-target="count">
+                <% if @trip.trail.reviews.blank? %>
+                  <h4>No reviews yet. Be the first to leave a review for <%= @trip.trail.name %>!</h4>
+                <% else %>
+                  <h2><strong><%= pluralize(@trip.trail.reviews.count, 'review')%></strong></h2>
+                <% end %>
               </div>
+              <div data-insert-in-list-target="items">
+                <% @trip.trail.reviews.reverse_each do |review| %>
+                  <%= render "reviews/reviewcard", review: review %>
+                <% end %>
+              </div>
+              <%# end of review list %>
             </div>
           </div>
         </div>
-        <%# end of modal %>
+      </div>
+      <%# end of modal %>
     </div>
 
     <%# Map/uploaded photos %>
     <div data-controller="insert-pictures">
       <% if @trip.date > Time.now %>
         <h3 class="mb-3"><strong>Getting There</strong></h3>
-        <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=AIzaSyAFZzGMoUtW258mKHEh0j5Hz-A6fT7PkZw"></iframe></a>
+        <a id="map_directions"><iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@trip.trail.location} Singapore" %>&key=<%= ENV['GOOGLE_API_KEY'] %>"></iframe></a>
       <% else %>
         <h3 class="mb-3"><strong>Share Your Photos</strong></h3>
         <%= render "trips/form" %>

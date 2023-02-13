@@ -30,7 +30,6 @@ class TripsController < ApplicationController
     @new_trip = Trip.new
   end
 
-
   def update
     @trip = Trip.find(params[:id])
     @trip.photos.attach(photo_params[:photos])
